@@ -1,6 +1,6 @@
 {
   "name": "sapui5-llm-ready",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "SAPUI5 LLM-Ready Design System with Validation Framework",
   "main": "validation/run-validation.js",
   "scripts": {
