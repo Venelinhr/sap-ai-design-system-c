@@ -245,13 +245,35 @@ node benchmark/run-benchmark.js leaderboard
 
 ## 📊 Workflow Diagrams
 
+**SAPUI5 LLM-Ready Workflow**
+
 ![SAPUI5 LLM-Ready Workflow](diagrams/SAPUI5%20LLM-Ready%20Workflow.png)
+
+This diagram shows the transformation from traditional SAP design systems to LLM-ready systems. Traditional systems (built for humans) cause LLM hallucinations and ~50% build failures. LLM-ready systems (built for machines) achieve zero hallucinations and 100% build success through component registries and validation.
+
+---
+
+**SAPUI5 LLM-Ready Transformation Workflow**
 
 ![SAPUI5 LLM-Ready Transformation Workflow](diagrams/SAPUI5%20LLM-Ready%20Transformation%20Workflow.png)
 
+The 5-step transformation process: (1) Define Source of Truth from SAPUI5 API, (2) Extract & Structure components into machine-readable format, (3) Constrain LLM with component registry, (4) Add retrieval for context, (5) Validate and iterate. This systematic approach transforms human-readable documentation into machine-readable systems.
+
+---
+
+**LLM-Ready Validation Pipeline**
+
 ![LLM-Ready Validation Pipeline](diagrams/LLM-Ready%20Validation%20Pipeline.png)
 
+The validation pipeline ensures code quality through automated checks: JSON schema validation, component whitelist verification, design token compliance, hallucination detection, and scoring (Structure 25, Components 20, Props 15, SAPUI5 Compliance 25, Consistency 15). Both Cursor AI and Claude AI achieved 95/100 scores with zero hallucinations.
+
+---
+
+**Breakthrough Flow Methodology**
+
 ![Breakthrough Flow Methodology](diagrams/Breakthrough%20Flow%20Methodology.png)
+
+This methodology represents the breakthrough moment when we shifted from prompt engineering to system design. The key insight: instead of trying to make LLMs understand human documentation, we restructure the design system to be machine-readable. This reduced hallucinations from common to zero and improved build success from 50% to 100%.
 
 **Additional Figma Diagrams:**
 - [LLM-Ready System Architecture](https://www.figma.com/board/yuDdy0qWqwBgdtULdxbWI4) - System architecture with data flow
