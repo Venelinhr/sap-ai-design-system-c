@@ -320,6 +320,27 @@ Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 ![Example 9](examples/example-9.png)
 ![Example 10](examples/example-10.png)
 
+## 💬 Example Prompt
+
+Here's a basic prompt example for building SAPUI5 applications using the LLM-Ready design system:
+
+```
+I want you to build a SAP Fiori application using SAPUI5.
+
+Requirements:
+- Page: Customer Subscription List
+- Components:
+  - Header (Title: "Customer Subscriptions")
+  - Toolbar with Search and Add button
+  - Table (columns: Customer Name, Type, Status, Amount)
+  - Detail view for each subscription
+
+Use ONLY components from this design system registry.
+Do NOT hallucinate or use components not in the registry.
+```
+
+**For detailed prompt examples, see:** [Detailed Prompt Example](docs/DETAILED_PROMPT_EXAMPLE.md)
+
 ## �� Documentation
 
 - **[Easy Prompting Guide](docs/EASY_PROMPTING_GUIDE.md)** - How to use short names
