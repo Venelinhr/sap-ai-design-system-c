@@ -320,6 +320,18 @@ Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 ![Example 9](examples/example-9.png)
 ![Example 10](examples/example-10.png)
 
+## �� Documentation
+
+- **[Easy Prompting Guide](docs/EASY_PROMPTING_GUIDE.md)** - How to use short names
+- **[Validation Framework](docs/VALIDATION_FRAMEWORK.md)** - Validation system details
+- **[Testing with Claude](docs/TESTING_WITH_CLAUDE.md)** - Claude-specific instructions
+- **[Testing with Cursor](docs/TESTING_WITH_CURSOR.md)** - Cursor-specific instructions
+- **[Testing with Windsurf](docs/TESTING_WITH_WINDSURF.md)** - Windsurf-specific instructions
+- **[Prompt Examples](PROMPT_EXAMPLES.md)** - Example prompts for different use cases
+- **[Detailed Prompt Example](docs/DETAILED_PROMPT_EXAMPLE.md)** - Comprehensive prompt template
+
+---
+
 ## 💬 Example Prompt
 
 Here's a basic prompt example for building SAPUI5 applications using the LLM-Ready design system:
@@ -338,8 +350,6 @@ Requirements:
 Use ONLY components from this design system registry.
 Do NOT hallucinate or use components not in the registry.
 ```
-
-**For detailed prompt examples, see:** [Detailed Prompt Example](docs/DETAILED_PROMPT_EXAMPLE.md)
 
 ---
 
@@ -497,14 +507,6 @@ Ensure all components are from the registry and no hallucinations occur.
 ```
 
 </details>
-
-## �� Documentation
-
-- **[Easy Prompting Guide](docs/EASY_PROMPTING_GUIDE.md)** - How to use short names
-- **[Validation Framework](docs/VALIDATION_FRAMEWORK.md)** - Validation system details
-- **[Testing with Claude](docs/TESTING_WITH_CLAUDE.md)** - Claude-specific instructions
-- **[Testing with Cursor](docs/TESTING_WITH_CURSOR.md)** - Cursor-specific instructions
-- **[Testing with Windsurf](docs/TESTING_WITH_WINDSURF.md)** - Windsurf-specific instructions
 
 ## 🎓 Key Learnings
 
