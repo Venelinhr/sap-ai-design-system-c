@@ -341,6 +341,163 @@ Do NOT hallucinate or use components not in the registry.
 
 **For detailed prompt examples, see:** [Detailed Prompt Example](docs/DETAILED_PROMPT_EXAMPLE.md)
 
+---
+
+<details>
+<summary><strong>📖 View Detailed Prompt Example (Click to Expand)</strong></summary>
+
+## Detailed Prompt Example: Customer Subscription Management
+
+```
+I want you to build a complete SAP Fiori application using SAPUI5.
+
+## Application Overview
+Create a Customer Subscription Management application that allows sales representatives to view, create, and manage customer subscriptions.
+
+## Page Requirements
+
+### 1. Subscription List Page (Main Page)
+- **Header**: Title "Customer Subscriptions" with subtitle "Manage all customer subscriptions"
+- **Toolbar**: 
+  - Search bar (placeholder: "Search by customer name...")
+  - Filter button (icon: filter)
+  - Add button (text: "New Subscription", type: Emphasized)
+- **Table**: Display subscriptions with columns:
+  - Customer Name (text)
+  - Subscription Type (text)
+  - Start Date (date)
+  - End Date (date)
+  - Status (text with status indicator: Active/Expired)
+  - Amount (currency)
+  - Actions (button: "View Details")
+
+### 2. Subscription Detail Page
+- **Header**: Back button, Title "Subscription Details"
+- **Object Header**: 
+  - Customer Name (title)
+  - Subscription ID (subtitle)
+  - Status indicator (Active/Expired)
+- **Form**: Display subscription details
+  - Customer Name (Input field, read-only)
+  - Subscription Type (Select dropdown, options: Basic, Premium, Enterprise)
+  - Start Date (DatePicker)
+  - End Date (DatePicker)
+  - Amount (Input field, currency format)
+  - Status (Select dropdown, options: Active, Expired, Cancelled)
+  - Notes (TextArea)
+- **Footer**: 
+  - Edit button (left)
+  - Delete button (right, type: Reject)
+
+### 3. Create Subscription Dialog
+- **Header**: Title "Create New Subscription"
+- **Form**: 
+  - Customer Name (Input field, required)
+  - Subscription Type (Select dropdown, required, options: Basic, Premium, Enterprise)
+  - Start Date (DatePicker, required)
+  - End Date (DatePicker, required)
+  - Amount (Input field, currency format, required)
+  - Notes (TextArea, optional)
+- **Footer**: 
+  - Cancel button (left)
+  - Save button (right, type: Emphasized)
+
+## Component Requirements
+
+Use ONLY components from this design system registry. Do NOT hallucinate or use components not in the registry.
+
+### Required Components:
+- sap.m.Page (for all pages)
+- sap.m.ObjectHeader (for detail page)
+- sap.m.Table (for list view)
+- sap.m.Column (for table columns)
+- sap.m.ColumnListItem (for table rows)
+- sap.m.Text (for text display)
+- sap.m.Title (for titles)
+- sap.m.Button (for actions)
+- sap.m.Input (for input fields)
+- sap.m.Select (for dropdowns)
+- sap.m.DatePicker (for date selection)
+- sap.m.TextArea (for multi-line text)
+- sap.m.Toolbar (for page toolbar)
+- sap.m.SearchField (for search)
+- sap.m.Dialog (for create dialog)
+- sap.m.StandardListItem (for list items if needed)
+- sap.ui.layout.form.SimpleForm (for form layout)
+
+## Design Requirements
+
+### Theme and Styling:
+- Use sap_horizon theme
+- Use compact mode (sapUiSizeCompact)
+- Apply SAP Horizon design tokens for colors and spacing
+- Ensure responsive layout (mobile-friendly)
+
+### Layout:
+- Use ObjectPageLayout for detail page if available
+- Use ResponsiveGridLayout for forms
+- Ensure proper spacing between sections
+- Use standard SAP Fiori spacing tokens
+
+## Data Structure
+
+```json
+{
+  "subscriptions": [
+    {
+      "id": "SUB001",
+      "customerName": "Acme Corporation",
+      "subscriptionType": "Premium",
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "status": "Active",
+      "amount": 1200.00,
+      "notes": "Annual subscription"
+    }
+  ]
+}
+```
+
+## Validation Requirements
+
+1. All required fields must be validated
+2. End date must be after start date
+3. Amount must be positive number
+4. Customer name must not be empty
+5. Subscription type must be selected
+
+## Navigation
+
+- From List Page → Detail Page (click "View Details")
+- From List Page → Create Dialog (click "New Subscription")
+- From Detail Page → List Page (click Back button)
+- After Create → Return to List Page
+
+## Additional Requirements
+
+1. Use XML views for all pages
+2. Use ComponentContainer for app initialization
+3. Implement proper routing if needed
+4. Add event handlers for all buttons
+5. Use data binding for table and form fields
+6. Implement search functionality for the table
+7. Add status color coding (green for Active, red for Expired)
+
+## Output Format
+
+Please provide:
+1. Complete XML view code for all pages
+2. Component controller code (if needed)
+3. Main index.html file
+4. manifest.json (if routing is used)
+5. Any necessary model/data files
+
+Use short names for components where possible (e.g., "Page" instead of "sap.m.Page").
+Ensure all components are from the registry and no hallucinations occur.
+```
+
+</details>
+
 ## �� Documentation
 
 - **[Easy Prompting Guide](docs/EASY_PROMPTING_GUIDE.md)** - How to use short names
