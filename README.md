@@ -291,20 +291,20 @@ This methodology represents the breakthrough moment when we shifted from prompt 
 - [LLM-Ready System Architecture](https://www.figma.com/board/yuDdy0qWqwBgdtULdxbWI4) - System architecture with data flow
 - [Component Registry Flow](https://www.figma.com/board/hF4MpwElNu0gKACr9YxYGk) - Component registry and short name mapping
 
-## � Examples
+## 📸 Examples
 
 Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 
-![Example 1](diagrams/example-1.png)
-![Example 2](diagrams/example-2.png)
-![Example 3](diagrams/example-3.png)
-![Example 4](diagrams/example-4.png)
-![Example 5](diagrams/example-5.png)
-![Example 6](diagrams/example-6.png)
-![Example 7](diagrams/example-7.png)
-![Example 8](diagrams/example-8.png)
-![Example 9](diagrams/example-9.png)
-![Example 10](diagrams/example-10.png)
+![Example 1](examples/example-1.png)
+![Example 2](examples/example-2.png)
+![Example 3](examples/example-3.png)
+![Example 4](examples/example-4.png)
+![Example 5](examples/example-5.png)
+![Example 6](examples/example-6.png)
+![Example 7](examples/example-7.png)
+![Example 8](examples/example-8.png)
+![Example 9](examples/example-9.png)
+![Example 10](examples/example-10.png)
 
 ## �� Documentation
 
