@@ -1,0 +1,57 @@
+{
+  "last_updated": "2026-04-26T20:04:39.848Z",
+  "models": [
+    {
+      "name": "claude-haiku",
+      "average_score": 100,
+      "variance": 0,
+      "test_count": 1,
+      "scores": [
+        100
+      ]
+    },
+    {
+      "name": "claude-code",
+      "average_score": 99,
+      "variance": 1,
+      "test_count": 2,
+      "scores": [
+        98.57142857142857,
+        100
+      ]
+    },
+    {
+      "name": "cursor",
+      "average_score": 98,
+      "variance": 11,
+      "test_count": 6,
+      "scores": [
+        93,
+        93,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "name": "claude",
+      "average_score": 95,
+      "variance": 0,
+      "test_count": 2,
+      "scores": [
+        95,
+        95
+      ]
+    },
+    {
+      "name": "cursor-output.json",
+      "average_score": 93,
+      "variance": 0,
+      "test_count": 1,
+      "scores": [
+        93
+      ]
+    }
+  ]
+}

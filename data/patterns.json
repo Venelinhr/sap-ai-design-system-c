@@ -1,0 +1,26 @@
+{
+  "source": {
+    "system": "figma",
+    "ref": "https://www.figma.com/community/file/1494295794601744471"
+  },
+  "patterns": {
+    "listReport": {
+      "title": "List Report (table + filter bar)",
+      "description": "Common enterprise pattern: filter/search + data table + row actions.",
+      "uiPlan": {
+        "type": "pattern.listReport",
+        "regions": {
+          "header": {
+            "type": "sap.m.Toolbar"
+          },
+          "filters": {
+            "type": "sap.ui.comp.filterbar.FilterBar"
+          },
+          "content": {
+            "type": "sap.m.Table"
+          }
+        }
+      }
+    }
+  }
+}

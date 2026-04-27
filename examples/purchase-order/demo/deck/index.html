@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Case study — SAPUI5 + LLM-ready design system</title>
+    <link rel="preconnect" href="https://ui5.sap.com" />
+    <link rel="stylesheet" href="../_shared/llm-tokens.css" />
+    <link rel="stylesheet" href="../_shared/deck.css" />
+  </head>
+  <body>
+    <section>
+      <p class="kicker">Case study &amp; deck</p>
+      <h1>SAPUI5 + Figma + LLM-ready component registry</h1>
+      <p>
+        A repeatable pipeline: metadata from <strong>SAPUI5</strong>, design signals from <strong>Figma</strong>, strict
+        <strong>XML + TypeScript</strong> checks, and <strong>live Fiori Horizon</strong> demos that fail closed when
+        namespaces or aggregations are wrong.
+      </p>
+      <p class="quote">
+        “Build SAP Purchase Order” → <code>make build-sap-po</code> first, then open the demos — same path for every teammate.
+      </p>
+      <div class="row">
+        <a class="btn" href="http://localhost:8085" target="_blank" rel="noreferrer">8085 — PO demo (fullscreen)</a>
+        <a class="btn ok" href="http://localhost:8087" target="_blank" rel="noreferrer">8087 — Top-20 showcase</a>
+        <a class="btn secondary" href="http://localhost:8084" target="_blank" rel="noreferrer">8084 — Pitch</a>
+      </div>
+      <p class="warn deck-warn-localhost">
+        <strong>localhost links only work on your computer</strong> after you start the matching server
+        (for example <code>make demo-showcase</code> for 8087 — see <code>Makefile</code>).
+        If the browser says <em>connection refused</em>, the server is not running or the port is in use. Full step → result:
+        <code>examples/purchase-order/DEMO-INSTRUCTIONS.md</code> §0.
+      </p>
+    </section>
+
+    <section>
+      <h2>0. How it started</h2>
+      <p>
+        The team was shipping faster with LLM-assisted UI, but outputs drifted: pseudo-SAP markup, mixed libraries, and
+        Figma screenshots pasted into prompts without a <strong>machine-verifiable</strong> contract. We needed a design
+        system that an <strong>agent can read</strong> the same way a senior SAPUI5 developer does: from API metadata,
+        not from vibes.
+      </p>
+      <p>
+        We paired <strong>official SAPUI5 API knowledge</strong> (namespaces, aggregations, themes) with a small
+        <strong>canonical schema</strong> and <strong>validators</strong> so “generate a PO form” is a testable recipe,
+        not a one-off chat.
+      </p>
+    </section>
+
+    <section>
+      <h2>1. The issue</h2>
+      <ul>
+        <li><strong>Unreadable to agents:</strong> Figma is visual truth for humans, not a complete control contract for code generation.</li>
+        <li><strong>False confidence:</strong> XML that “looks Fiori” but uses wrong default namespaces, missing <code>sap.m.App</code> + <code>Page</code>, or invalid form aggregations.</li>
+        <li><strong>No single pipeline:</strong> every developer had a different prompt, different “SAP-like” component set, and no shared regression test.</li>
+        <li><strong>Theme &amp; density drift:</strong> without pinning <code>sap_horizon</code> and compact mode, side-by-sides with real SAP apps were unfair.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. Main goal</h2>
+      <p>
+        Make the <strong>SAP design system (SAPUI5 + Fiori patterns)</strong> <strong>semantically legible and enforceable
+        for LLM agents</strong>: a registry + tools + live demos so generation and review use the <strong>same
+        source-backed facts</strong>, and bad XML cannot pass the build.
+      </p>
+      <p>
+        <span class="tag">Out of scope (deliberate)</span> Replacing Figma. <span class="tag">In scope</span> Signals from
+        Figma (tokens, common patterns) layered on a SAPUI5 metadata registry, plus strict view validation and runnable SAP-only UIs.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. What we manage to hit the goal</h2>
+      <h3>Artifacts</h3>
+      <ul>
+        <li><strong>ComponentSpec</strong> JSON Schema and <code>data/registry.json</code> (normalized metadata).</li>
+        <li><strong>Extractors and seed workflow</strong> for SAPUI5 docs; <code>data/top_components_seed.yaml</code> for the “top 20” controls to demo first.</li>
+        <li><strong>Figma signals</strong> in YAML — tokens and patterns, not a full Figma-to-code compiler.</li>
+        <li><strong>API / scripts</strong> for deterministic retrieval and validation (FastAPI, Python scripts).</li>
+        <li><strong>Two SAP-only demos</strong> — PO form (<code>sap.m.App</code> + <code>Page</code>) and enterprise <code>sap.uxap.ObjectPageLayout</code> showcase.</li>
+      </ul>
+      <h3>People process</h3>
+      <ul>
+        <li>One <strong>golden command</strong> before any stakeholder demo: <code>make build-sap-po</code>.</li>
+        <li>One <strong>team test protocol</strong> (see section 15) so everyone exercises ports 8085 and 8087 the same way.</li>
+        <li>Publish: follow <code>docs/GITHUB_PUBLISH.md</code> for a clean repo others can clone and run.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Stages — problem → design → build → learn</h2>
+      <h3>4.1 Problem discovery</h3>
+      <p>Catalog failure modes: invalid namespaces, missing shell controls, unbound fragments, and LLM “inventing” properties.</p>
+      <h3>4.2 Design</h3>
+      <p>Lock a schema, define ComponentSpec, map SAPUI5 types to registry entries, define Figma signal slots (tokens, density).</p>
+      <h3>4.3 Build</h3>
+      <p>Implement extractors, validators, demos, and Makefile targets. Pin theme and full-viewport layout patterns.</p>
+      <h3>4.4 Learn (wrong turns → corrections)</h3>
+      <p>See section 7 — each wrong turn fed a new rule or a new check so it does not regress.</p>
+    </section>
+
+    <section>
+      <h2>5. How the problem is solved (architecture)</h2>
+      <ul>
+        <li><strong>Layer 1 — SAPUI5 truth:</strong> official API names, control modules, aggregations, associations.</li>
+        <li><strong>Layer 2 — Project truth:</strong> ComponentSpec + registry + validation scripts in CI.</li>
+        <li><strong>Layer 3 — Design intent:</strong> Figma Design Demo Kit + YAML signals (spacing, label patterns) — never contradict Layer 1.</li>
+        <li><strong>Layer 4 — Demos:</strong> static OpenUI5 bootstraps from <code>ui5.sap.com</code> with the same rules the validators enforce.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. Wrong turns (and what we do instead)</h2>
+      <ul>
+        <li><strong>React-first “SAP look”</strong> — rejected for the SAP story; we keep a React sample only for contrast. SAP demos are SAPUI5 only.</li>
+        <li><strong>Bare <code>Page</code> in a static <code>index.html</code></strong> — caused viewport clipping; we standardized on <code>sap.m.App</code> → <code>Page</code> (PO) or <code>ObjectPageLayout</code> (showcase) and fixed <code>#content</code> to full viewport.</li>
+        <li><strong>Treating Figma as executable spec</strong> — wrong; we use Figma for signals, SAPUI5 API for fact.</li>
+        <li><strong>Soft validation</strong> — “looks OK in browser” — replaced with <code>make build-sap-po</code> and <code>make all</code> gates.</li>
+        <li><strong>Unprefixed <code>ObjectPage</code> in XML with default <code>sap.m</code></strong> — fails at runtime; we default <code>xmlns="sap.uxap"</code> in the Object Page view and prefix <code>sap.m</code> with <code>m:</code>.</li>
+        <li><strong>Dialog without fragment wiring</strong> — <code>byId("confirmDialog")</code> from a fragment is brittle; we load with <code>sap.ui.xmlfragment(viewId, ...)</code>, <code>addDependent</code>, and keep a control reference.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. “He wrote directions” — operational rules</h2>
+      <ol class="list-protocol">
+        <li>Never ship a stakeholder demo with a failing <code>make build-sap-po</code>.</li>
+        <li>Prefer <strong>one documented path</strong> in <code>examples/purchase-order/DEMO-INSTRUCTIONS.md</code> over ad-hoc README sprawl.</li>
+        <li>When a control is in the “top 20” list, the enterprise showcase (8087) must exercise it in real XML, not a comment.</li>
+        <li>If you change namespaces in a view, run validators — the build is the teacher.</li>
+        <li>For GitHub: include <code>.gitignore</code>, <code>LICENSE</code>, and publish steps so others can mass-clone and run the same Make targets.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>8. Source of truth (what wins an argument)</h2>
+      <table class="sot">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Source of truth</th>
+            <th>How we use it</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Control API, properties, aggregations</td>
+            <td><a href="https://ui5.sap.com/#/api" target="_blank" rel="noreferrer">SAPUI5 API (ui5.sap.com)</a></td>
+            <td>Extractors, XML views, and validators align to this — not to generic HTML or React.</td>
+          </tr>
+          <tr>
+            <td>Theme &amp; shell patterns</td>
+            <td>Fiori + OpenUI5 demokit behavior</td>
+            <td><code>sap_horizon</code>, compact, <code>App</code>/<code>Page</code> or <code>ObjectPageLayout</code> for scroll and header.</td>
+          </tr>
+          <tr>
+            <td>Visual density, labels, spacing (design)</td>
+            <td><a href="https://www.figma.com/community/file/1494295794601744471" target="_blank" rel="noreferrer">Figma Design Demo Kit</a> + <code>data/figma/signals.yaml</code></td>
+            <td>Human + LLM “tone” of SAP UI; does not override API facts.</td>
+          </tr>
+          <tr>
+            <td>Project machine contract</td>
+            <td><code>schemas/component_spec.schema.json</code>, <code>data/registry.json</code></td>
+            <td>Generation and RAG must serialize to this shape.</td>
+          </tr>
+          <tr>
+            <td>“Did we break the SAP demos?”</td>
+            <td><code>scripts/validate_sap_purchase_order_demo.py</code>, <code>make build-sap-po</code></td>
+            <td>Replaces eyeballing XML in a PR.</td>
+          </tr>
+          <tr>
+            <td>Behavior in real framework</td>
+            <td><a href="https://github.com/UI5/openui5" target="_blank" rel="noreferrer">OpenUI5 source</a></td>
+            <td>Deep dives, QUnit URLs via run-test skill when you embed in a product.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>9. The two SAP-only demos (what to open)</h2>
+      <p><span class="tag">PO form</span> <code>examples/purchase-order/demo/ui5/webapp/</code> — classic worklist-style form, <code>form:SimpleForm</code>, full viewport. Port <strong>8085</strong> via <code>make demo-ui5</code>.</p>
+      <p><span class="tag">Enterprise showcase</span> <code>examples/enterprise-llm-showcase/webapp/</code> — <strong>~20 most-used seed controls</strong> from <code>data/top_components_seed.yaml</code> in one <strong>Object Page</strong> (plus dialog, table, toolbar). Port <strong>8087</strong> via <code>make demo-showcase</code>.</p>
+    </section>
+
+    <section>
+      <h2>10. Top-20 seed (covered in the 8087 app)</h2>
+      <p>
+        <code>sap.m</code>: Button, Input, Select, ComboBox, DatePicker, Table, ColumnListItem, Dialog, MessageStrip, Toolbar, OverflowToolbar, SearchField, Page, Panel, Text, Label, CheckBox, Switch, ObjectStatus — plus
+        <code>sap.uxap.ObjectPageLayout</code>. The showcase wires them in one scrollable Fiori object page with a confirmation dialog.
+      </p>
+    </section>
+
+    <section>
+      <h2>11. What “LLM-readable” means here</h2>
+      <ul>
+        <li><strong>Deterministic names</strong> — library names, modules, and XML tag prefixes match API docs.</li>
+        <li><strong>Retrievable facts</strong> — registry and schema so agents fetch “what to instantiate” and “valid children,” not guess.</li>
+        <li><strong>Testable output</strong> — generated views must pass the same validators as hand-written ones.</li>
+        <li><strong>Visible proof</strong> — demos render with the real SAP theme from CDN, not a CSS skin.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>12. Rebuild: one command after install</h2>
+      <p>From project root: <code>make build-sap-po</code> then start servers (see next slide). Full steps: <code>examples/purchase-order/DEMO-INSTRUCTIONS.md</code>.</p>
+      <div class="row">
+        <a class="btn" href="http://localhost:8085" target="_blank" rel="noreferrer">Open 8085</a>
+        <a class="btn ok" href="http://localhost:8087" target="_blank" rel="noreferrer">Open 8087</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>13. Other ports (narrative + optional React)</h2>
+      <ul>
+        <li><strong>8083</strong> — this deck, <code>make demo-deck</code></li>
+        <li><strong>8084</strong> — pitch with embeds, <code>make demo-pitch</code></li>
+        <li><strong>8086</strong> — optional non-SAP React sample, <code>make demo-react</code> (contrast only)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>14. Reference links (bookmark)</h2>
+      <ul>
+        <li><a href="https://ui5.sap.com/#/api" target="_blank" rel="noreferrer">SAPUI5 API (ui5.sap.com)</a></li>
+        <li><a href="https://www.figma.com/community/file/1494295794601744471" target="_blank" rel="noreferrer">Figma Design Demo Kit</a></li>
+        <li><a href="https://github.com/UI5/openui5" target="_blank" rel="noreferrer">OpenUI5 source</a></li>
+        <li><a href="https://github.com/UI5/openui5/tree/master/.claude/skills/run-test" target="_blank" rel="noreferrer">OpenUI5 run-test skill (QUnit / URLs)</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>15. Team test protocol (everyone — same order)</h2>
+      <ol class="list-protocol">
+        <li>Clone repo, <code>python3 -m pip install -e ".[dev]"</code>.</li>
+        <li>Run <code>make build-sap-po</code> — <strong>must be exit 0</strong>.</li>
+        <li>Terminal A: <code>make demo-ui5</code> → <a href="http://localhost:8085" target="_blank" rel="noreferrer">localhost:8085</a> — scroll inside page, no clipped shell — <strong>Save</strong> shows toast.</li>
+        <li>Terminal B: <code>make demo-showcase</code> → <a href="http://localhost:8087" target="_blank" rel="noreferrer">localhost:8087</a> — object page sections load; <strong>Open review…</strong> opens dialog; <strong>Close</strong> returns; <strong>Add line</strong> appends a row.</li>
+        <li>Terminal C: <code>make demo-deck</code> — confirm this page scrolls and links work while 8085/8087 are up.</li>
+        <li>Optional: <code>make all</code> before merge.</li>
+      </ol>
+      <p class="warn">If a port is refused, nothing is “wrong with SAP” — start the matching <code>make demo-*</code> and retry.</p>
+    </section>
+
+    <section>
+      <h2>16. GitHub for mass usage</h2>
+      <p>Follow <code>docs/GITHUB_PUBLISH.md</code> in the repository: license, <code>.gitignore</code>, and a short “clone and run” for Make targets. Tag a release when <code>make all</code> is green so downstream teams pin a version.</p>
+    </section>
+
+    <section>
+      <h2>17. Industry pattern: “LLM-readable” design system (Pandya)</h2>
+      <p>
+        We apply the same <strong>principles</strong> as
+        <a href="https://hvpandya.com/llm-design-systems" target="_blank" rel="noreferrer">Expose your design system to LLMs</a> (Hardik Pandya):
+        <strong>session-start specs</strong>, a <strong>closed token</strong> layer, <strong>automated audit</strong>, and <strong>drift awareness</strong> — adapted to <strong>SAPUI5 + Fiori</strong> (API registry + theme) instead of hand-written React <code>tokens.css</code> for every app screen.
+      </p>
+      <p>
+        Repo truth: <code>docs/COMPARISON_PANDYA.md</code> (mapping table), <code>AGENTS.md</code>, <code>specs/</code>, and <code>make token-audit</code> for static deck/pitch CSS.
+      </p>
+    </section>
+  </body>
+</html>

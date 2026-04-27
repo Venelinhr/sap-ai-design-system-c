@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PO Demo - React</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 24px; max-width: 700px; }
+      form { display: grid; gap: 10px; }
+      label { display: grid; gap: 4px; }
+      button { margin-right: 8px; }
+      .error { color: #b00020; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useState } = React;
+
+      const initialState = {
+        poNumber: "",
+        supplier: "",
+        docDate: "",
+        currency: "EUR",
+        amount: "",
+        urgent: false,
+        notes: ""
+      };
+
+      function PurchaseOrderForm() {
+        const [po, setPo] = useState(initialState);
+        const [error, setError] = useState("");
+
+        const setField = (key, value) => setPo((prev) => ({ ...prev, [key]: value }));
+
+        const onSave = (e) => {
+          e.preventDefault();
+          if (!po.poNumber || !po.supplier) {
+            setError("PO Number and Supplier are required.");
+            return;
+          }
+          setError("");
+          alert("Saved Purchase Order: " + po.poNumber);
+        };
+
+        const onCancel = () => {
+          setPo(initialState);
+          setError("");
+        };
+
+        return (
+          <form onSubmit={onSave} aria-label="Purchase Order Entry Form">
+            <h2>Purchase Order Entry (React Demo)</h2>
+            {error ? <p className="error" role="alert">{error}</p> : null}
+
+            <label>
+              PO Number
+              <input value={po.poNumber} onChange={(e) => setField("poNumber", e.target.value)} required />
+            </label>
+            <label>
+              Supplier
+              <input value={po.supplier} onChange={(e) => setField("supplier", e.target.value)} required />
+            </label>
+            <label>
+              Document Date
+              <input type="date" value={po.docDate} onChange={(e) => setField("docDate", e.target.value)} />
+            </label>
+            <label>
+              Currency
+              <select value={po.currency} onChange={(e) => setField("currency", e.target.value)}>
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+              </select>
+            </label>
+            <label>
+              Total Amount
+              <input type="number" value={po.amount} onChange={(e) => setField("amount", e.target.value)} />
+            </label>
+            <label>
+              Urgent
+              <input type="checkbox" checked={po.urgent} onChange={(e) => setField("urgent", e.target.checked)} />
+            </label>
+            <label>
+              Notes
+              <textarea rows="3" value={po.notes} onChange={(e) => setField("notes", e.target.value)} />
+            </label>
+            <div>
+              <button type="submit">Save</button>
+              <button type="button" onClick={onCancel}>Cancel</button>
+            </div>
+          </form>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<PurchaseOrderForm />);
+    </script>
+  </body>
+</html>
+

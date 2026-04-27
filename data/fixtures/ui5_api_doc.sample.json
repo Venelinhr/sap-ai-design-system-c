@@ -1,0 +1,21 @@
+{
+  "symbols": [
+    {
+      "kind": "class",
+      "name": "sap.m.Button",
+      "basename": "Button",
+      "description": "Button control.",
+      "since": "1.0",
+      "deprecated": false,
+      "properties": [
+        { "name": "text", "type": "string", "defaultValue": "", "required": false },
+        { "name": "enabled", "type": "boolean", "defaultValue": true, "required": false }
+      ],
+      "events": [
+        { "name": "press", "since": "1.0", "parameters": [] }
+      ],
+      "aggregations": []
+    }
+  ]
+}
+

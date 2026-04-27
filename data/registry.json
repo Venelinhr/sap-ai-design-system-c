@@ -1,0 +1,81 @@
+{
+  "generatedAt": "extract_sapui5",
+  "schemaVersion": "1.0.0",
+  "components": [
+    {
+      "schemaVersion": "1.0.0",
+      "id": "sap.m.Button",
+      "name": "Button",
+      "source": {
+        "system": "hybrid",
+        "ref": "sapui5:sap.m.Button + figma"
+      },
+      "category": "form",
+      "status": "stable",
+      "description": "Button control.",
+      "intentTags": [
+        "primary-action",
+        "secondary-action",
+        "destructive",
+        "tier-a"
+      ],
+      "props": [
+        {
+          "name": "text",
+          "type": {
+            "kind": "string"
+          },
+          "required": false,
+          "default": "",
+          "constraints": []
+        },
+        {
+          "name": "enabled",
+          "type": {
+            "kind": "boolean"
+          },
+          "required": false,
+          "default": true,
+          "constraints": []
+        }
+      ],
+      "events": [
+        {
+          "name": "press",
+          "parameters": [],
+          "since": "1.0"
+        }
+      ],
+      "slots": [],
+      "composition": {
+        "allowedWith": [],
+        "forbiddenWith": [],
+        "notes": [
+          "Prefer a single primary action per surface."
+        ]
+      },
+      "tokens": {
+        "semantic": {
+          "color.primary.bg": "sapPrimary",
+          "color.primary.text": "sapPrimaryText",
+          "color.danger.bg": "sapError",
+          "color.neutral.bg": "sapNeutral",
+          "spacing.2": "sapSpace2",
+          "spacing.3": "sapSpace3",
+          "radius.sm": "sapRadiusSmall"
+        },
+        "componentOverrides": {}
+      },
+      "a11y": {
+        "role": "",
+        "nameFrom": [],
+        "keyboard": [],
+        "notes": []
+      },
+      "examples": [],
+      "versioning": {
+        "since": "1.0"
+      }
+    }
+  ]
+}

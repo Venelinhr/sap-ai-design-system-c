@@ -1,0 +1,11 @@
+# Windsurf / CASCADE — sap-ai-design-system-c
+
+Work from the **repository root**. **Install:** docs/INSTALL_AND_VALIDATE.md — **Ship to GitHub:** docs/SHIP_TO_GITHUB.md — **Prompts:** docs/PROMPT_EVERYTHING.md — Rules: **AGENTS.md** (read first).
+
+- Clone URL: https://github.com/Venelinhr/sap-ai-design-system-c
+- Setup: `python3 -m venv .venv && source .venv/bin/activate && pip install -e ".[dev]" && make all`
+- SAPUI5 UI: only controls from the public API; prefer `sap_horizon` + compact like existing demos.
+- After view/XML changes: `make build-sap-po` or `make validate-sap-demo` as appropriate.
+- Static HTML tokens: `make token-audit`; use `llm-tokens.css` variables, not ad hoc hex in consumer files.
+- Deep dive (subscription Object Page demo): `.cursor/skills/sapui5-opl-subscription-demo/SKILL.md`
+- Human index: docs/ONBOARDING_AI_TOOLS.md, docs/PLAYBOOK_INDEX.md

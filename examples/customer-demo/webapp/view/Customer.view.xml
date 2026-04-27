@@ -1,0 +1,88 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+  xmlns:form="sap.ui.layout.form"
+  xmlns="sap.m"
+  controllerName="custdemo.controller.Customer"
+  displayBlock="true"
+  height="100%">
+  <App id="custApp" busyIndicatorDelay="0">
+    <pages>
+      <Page
+        title="Customer Management (OpenUI5 Demo)"
+        class="sapUiContentPadding"
+        showNavButton="false"
+        enableScrolling="true"
+        backgroundDesign="Standard">
+        <content>
+          <MessageStrip
+            text="Manage customer information using SAPUI5 controls and Fiori Horizon theme."
+            type="Information"
+            showIcon="true"
+          />
+          <form:SimpleForm
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="3"
+            labelSpanL="3"
+            labelSpanM="4"
+            adjustLabelSpan="false"
+            emptySpanXL="4"
+            emptySpanL="4"
+            emptySpanM="0"
+            columnsXL="2"
+            columnsL="2"
+            columnsM="1"
+            singleContainerFullSize="false">
+            <Label text="Customer ID" />
+            <Input value="{cust>/customerId}" required="true" placeholder="CUST-001234" />
+
+            <Label text="Company Name" />
+            <Input value="{cust>/companyName}" required="true" placeholder="Acme Corporation" />
+
+            <Label text="Contact Person" />
+            <Input value="{cust>/contactPerson}" placeholder="John Doe" />
+
+            <Label text="Email" />
+            <Input value="{cust>/email}" type="Email" placeholder="john.doe@acme.com" />
+
+            <Label text="Phone" />
+            <Input value="{cust>/phone}" type="Tel" placeholder="+1 555-123-4567" />
+
+            <Label text="Country" />
+            <Select selectedKey="{cust>/country}">
+              <items>
+                <core:Item key="US" text="United States" />
+                <core:Item key="DE" text="Germany" />
+                <core:Item key="GB" text="United Kingdom" />
+                <core:Item key="FR" text="France" />
+                <core:Item key="IN" text="India" />
+              </items>
+            </Select>
+
+            <Label text="Status" />
+            <Select selectedKey="{cust>/status}">
+              <items>
+                <core:Item key="active" text="Active" />
+                <core:Item key="inactive" text="Inactive" />
+                <core:Item key="pending" text="Pending" />
+              </items>
+            </Select>
+
+            <Label text="VIP Customer" />
+            <Switch state="{cust>/vip}" />
+
+            <Label text="Notes" />
+            <TextArea value="{cust>/notes}" rows="3" placeholder="Additional customer notes..." />
+          </form:SimpleForm>
+
+          <Toolbar>
+            <ToolbarSpacer />
+            <Button text="Save" type="Emphasized" press=".onSave" />
+            <Button text="Reset" press=".onReset" />
+          </Toolbar>
+        </content>
+      </Page>
+    </pages>
+  </App>
+</mvc:View>

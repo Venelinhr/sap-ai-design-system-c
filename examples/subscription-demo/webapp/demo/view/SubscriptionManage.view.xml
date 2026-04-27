@@ -1,0 +1,125 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+  xmlns:form="sap.ui.layout.form"
+  xmlns="sap.m"
+  controllerName="demo.controller.SubscriptionManage"
+  displayBlock="true"
+  height="100%">
+  <App id="subscriptionApp">
+    <pages>
+      <Page
+        id="subscriptionPage"
+        title="Customer Subscription Management"
+        showNavButton="false"
+        enableScrolling="true"
+        backgroundDesign="Standard"
+        class="sapUiContentPadding">
+        <content>
+          <Panel
+            id="customerPlanPanel"
+            headerText="Customer &amp; plan"
+            expandable="true"
+            expanded="true"
+            backgroundDesign="Solid"
+            class="sapUiSmallMarginBottom">
+            <content>
+              <form:SimpleForm
+                id="subscriptionSimpleForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                columnsM="1"
+                columnsL="2"
+                columnsXL="2"
+                labelSpanM="12"
+                labelSpanL="4"
+                labelSpanXL="4"
+                adjustLabelSpan="false"
+                emptySpanM="0"
+                emptySpanL="0"
+                emptySpanXL="0"
+                singleContainerFullSize="true"
+                width="100%">
+                <Label text="Customer name" required="true" />
+                <Input
+                  id="customerNameInput"
+                  value="{sub>/customerName}"
+                  placeholder="Customer name"
+                  required="true" />
+                <Label text="Subscription plan" />
+                <Select id="planSelect" selectedKey="{sub>/planKey}">
+                  <items>
+                    <core:Item key="standard" text="Standard" />
+                    <core:Item key="professional" text="Professional" />
+                    <core:Item key="enterprise" text="Enterprise" />
+                  </items>
+                </Select>
+              </form:SimpleForm>
+            </content>
+          </Panel>
+          <SearchField
+            id="subscriptionSearch"
+            class="sapUiSmallMarginBottom"
+            placeholder="Search subscriptions"
+            value="{sub>/search}"
+            search=".onSearch" />
+          <CheckBox
+            id="autoRenewCheck"
+            class="sapUiSmallMarginBottom"
+            text="Auto-renew subscriptions"
+            selected="{sub>/autoRenew}" />
+          <Table
+            id="subscriptionTable"
+            class="sapUiSmallMarginBottom"
+            mode="None"
+            backgroundDesign="Solid"
+            fixedLayout="false"
+            growing="false"
+            items="{sub>/items}">
+            <columns>
+              <Column>
+                <header>
+                  <Text text="Service" />
+                </header>
+              </Column>
+              <Column>
+                <header>
+                  <Text text="Status" />
+                </header>
+              </Column>
+              <Column>
+                <header>
+                  <Text text="Renewal date" />
+                </header>
+              </Column>
+              <Column>
+                <header>
+                  <Text text="Amount" />
+                </header>
+              </Column>
+            </columns>
+            <items>
+              <ColumnListItem type="Inactive">
+                <cells>
+                  <Text text="{sub>service}" />
+                  <Text text="{sub>status}" />
+                  <Text text="{sub>renewalDate}" />
+                  <Text text="{sub>amount}" />
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+          <OverflowToolbar design="Transparent">
+            <ToolbarSpacer />
+            <Button
+              id="saveButton"
+              text="Save"
+              type="Emphasized"
+              enabled="true"
+              press=".onSave" />
+          </OverflowToolbar>
+        </content>
+      </Page>
+    </pages>
+  </App>
+</mvc:View>

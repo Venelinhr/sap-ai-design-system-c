@@ -1,0 +1,66 @@
+{
+  "generatedAt": "extract_sapui5",
+  "schemaVersion": "1.0.0",
+  "components": [
+    {
+      "schemaVersion": "1.0.0",
+      "id": "sap.m.Button",
+      "name": "Button",
+      "source": {
+        "system": "sapui5",
+        "ref": "sapui5:sap.m.Button"
+      },
+      "category": "form",
+      "status": "stable",
+      "description": "Button control.",
+      "intentTags": [],
+      "props": [
+        {
+          "name": "text",
+          "type": {
+            "kind": "string"
+          },
+          "required": false,
+          "default": "",
+          "constraints": []
+        },
+        {
+          "name": "enabled",
+          "type": {
+            "kind": "boolean"
+          },
+          "required": false,
+          "default": true,
+          "constraints": []
+        }
+      ],
+      "events": [
+        {
+          "name": "press",
+          "parameters": [],
+          "since": "1.0"
+        }
+      ],
+      "slots": [],
+      "composition": {
+        "allowedWith": [],
+        "forbiddenWith": [],
+        "notes": []
+      },
+      "tokens": {
+        "semantic": {},
+        "componentOverrides": {}
+      },
+      "a11y": {
+        "role": "",
+        "nameFrom": [],
+        "keyboard": [],
+        "notes": []
+      },
+      "examples": [],
+      "versioning": {
+        "since": "1.0"
+      }
+    }
+  ]
+}

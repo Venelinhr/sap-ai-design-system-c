@@ -1,0 +1,62 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:form="sap.ui.layout.form"
+  xmlns:core="sap.ui.core"
+>
+  <Dialog
+    id="resubDialog"
+    title="Re-subscribe on commercial frame"
+    class="sapUiSizeCompact"
+    contentWidth="34rem"
+    stretchOnPhone="true"
+  >
+    <content>
+      <MessageStrip
+        type="Success"
+        showIcon="true"
+        text="Reactivation would reopen billing schedule and integration ports — here we only flip demo state and approval stages."
+        class="sapUiSmallMargin"
+      />
+      <Page id="resubPage" showHeader="true" title="Options" backgroundDesign="Solid">
+        <content>
+          <form:SimpleForm
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="4"
+            labelSpanL="4"
+            labelSpanM="4"
+            adjustLabelSpan="false"
+            emptySpanXL="0"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsXL="1"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="true"
+            class="sapUiSmallMargin"
+          >
+            <Label text="Offer" />
+            <Select selectedKey="{/resub/selectedPlan}" width="100%">
+              <items>
+                <core:Item key="same" text="Re-instate on same plan &amp; indexation (0% uplift demo)" />
+                <core:Item key="flex" text="New flex commitment — lower floor, higher variable" />
+                <core:Item key="suite" text="Bundle uplift — add BTP + Analytics Cloud (placeholder)" />
+              </items>
+            </Select>
+            <Label text="What happens" />
+            <Text
+              text="We clear the &quot;Cancellation scheduled&quot; state, re-lock approval stage 3–4 to Completed, and show Active in the header — mirroring a CPQ + CLM hand-back."
+            />
+          </form:SimpleForm>
+        </content>
+        <footer>
+          <OverflowToolbar>
+            <ToolbarSpacer />
+            <Button type="Transparent" text="Close" press=".onCloseResub" />
+            <Button type="Emphasized" text="Confirm re-subscribe" press=".onConfirmResub" />
+          </OverflowToolbar>
+        </footer>
+      </Page>
+    </content>
+  </Dialog>
+</core:FragmentDefinition>

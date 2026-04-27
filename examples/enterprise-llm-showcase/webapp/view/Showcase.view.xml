@@ -1,0 +1,141 @@
+<mvc:View
+  controllerName="showcase.controller.Showcase"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.uxap"
+  xmlns:m="sap.m"
+  xmlns:form="sap.ui.layout.form"
+  xmlns:core="sap.ui.core"
+  displayBlock="true"
+  height="100%">
+  <m:App id="showcaseApp" class="sapUiSizeCompact">
+    <m:pages>
+      <ObjectPageLayout
+        id="opl"
+        showTitleInHeaderContent="true"
+        alwaysShowContentHeader="true"
+        headerContentPinnable="true"
+        preserveHeaderStateOnScroll="true"
+        upperCaseAnchorBar="false">
+        <headerTitle>
+          <ObjectPageDynamicHeaderTitle>
+            <expandedHeading>
+              <m:HBox alignItems="Center" justifyContent="Start" wrap="Wrap">
+                <m:Title text="LLM design-system readiness — enterprise request" level="H2" wrapping="true" />
+                <m:ObjectStatus id="osHeader" text="In review" state="Information" class="sapUiSmallMarginBegin" />
+              </m:HBox>
+            </expandedHeading>
+            <snappedHeading>
+              <m:Title text="LLM readiness" level="H3" />
+            </snappedHeading>
+            <actions>
+              <m:Button text="Save draft" type="Emphasized" press=".onSave" />
+              <m:Button text="Open review…" type="Transparent" press=".onOpenDialog" />
+            </actions>
+          </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+        <headerContent>
+          <m:OverflowToolbar>
+            <m:SearchField width="22rem" placeholder="Search registry / components…" search=".onSearch" />
+            <m:ToolbarSpacer />
+            <m:Text text="Fiori Horizon · Compact · SAPUI5 only" />
+          </m:OverflowToolbar>
+          <m:MessageStrip
+            text="Showcase covers the top-component seed: sap.m + sap.ui.layout.form + sap.uxap (see data/top_components_seed.yaml)."
+            type="Information"
+            showIcon="true"
+            class="sapUiSmallMarginTop" />
+        </headerContent>
+        <sections>
+          <ObjectPageSection title="Request" id="secReq">
+            <subSections>
+              <ObjectPageSubSection title="Fields (SimpleForm)">
+                <blocks>
+                  <m:Panel headerText="Header (Panel)" expandable="true" expanded="true" class="sapUiResponsiveMargin">
+                    <m:content>
+                      <m:MessageStrip text="ResponsiveGridLayout matches Fiori form density." type="Success" showIcon="true" class="sapUiSmallMarginBottom" />
+                      <form:SimpleForm
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="5"
+                        adjustLabelSpan="false"
+                        emptySpanXL="2"
+                        emptySpanL="2"
+                        emptySpanM="0"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="1"
+                        singleContainerFullSize="false">
+                        <m:Label text="Request ID" />
+                        <m:Input value="{view>/reqId}" editable="false" />
+                        <m:Label text="Title" required="true" />
+                        <m:Input value="{view>/title}" required="true" />
+                        <m:Label text="Supplier" />
+                        <m:Input value="{view>/supplier}" />
+                        <m:Label text="Document date" />
+                        <m:DatePicker value="{view>/docDate}" displayFormat="yyyy-MM-dd" />
+                        <m:Label text="Currency" />
+                        <m:Select selectedKey="{view>/currency}">
+                          <m:items>
+                            <core:Item key="EUR" text="EUR" />
+                            <core:Item key="USD" text="USD" />
+                            <core:Item key="GBP" text="GBP" />
+                          </m:items>
+                        </m:Select>
+                        <m:Label text="Category" />
+                        <m:ComboBox selectedKey="{view>/catKey}">
+                          <m:items>
+                            <core:Item key="Schema" text="Schema" />
+                            <core:Item key="Extract" text="Metadata extract" />
+                            <core:Item key="Signals" text="Figma signals" />
+                          </m:items>
+                        </m:ComboBox>
+                        <m:Label text="Amount" />
+                        <m:Input value="{view>/amount}" type="Number" />
+                        <m:Label text="Urgent" />
+                        <m:Switch state="{view>/urgent}" />
+                        <m:Label text="Acknowledge policy" />
+                        <m:CheckBox selected="{view>/ack}" text="I confirm compliance with SAP design rules" />
+                      </form:SimpleForm>
+                    </m:content>
+                  </m:Panel>
+                </blocks>
+              </ObjectPageSubSection>
+            </subSections>
+          </ObjectPageSection>
+          <ObjectPageSection title="Line items" id="secTable">
+            <subSections>
+              <ObjectPageSubSection title="Table + toolbar">
+                <blocks>
+                  <m:Table items="{rows>/items}" inset="false" growing="true" growingThreshold="5" class="sapUiResponsiveMargin">
+                    <m:columns>
+                      <m:Column><m:Text text="Deliverable" /></m:Column>
+                      <m:Column><m:Text text="Status" /></m:Column>
+                      <m:Column><m:Text text="Health" /></m:Column>
+                    </m:columns>
+                    <m:items>
+                      <m:ColumnListItem vAlign="Middle" type="Navigation">
+                        <m:cells>
+                          <m:Text text="{rows>product}" />
+                          <m:Text text="{rows>status}" />
+                          <m:ObjectStatus text="{rows>st}" state="{rows>state}" />
+                        </m:cells>
+                      </m:ColumnListItem>
+                    </m:items>
+                  </m:Table>
+                  <m:Toolbar design="Transparent">
+                    <m:content>
+                      <m:ToolbarSpacer />
+                      <m:Button type="Emphasized" text="Add line" press=".onAddLine" />
+                    </m:content>
+                  </m:Toolbar>
+                </blocks>
+              </ObjectPageSubSection>
+            </subSections>
+          </ObjectPageSection>
+        </sections>
+      </ObjectPageLayout>
+    </m:pages>
+  </m:App>
+</mvc:View>

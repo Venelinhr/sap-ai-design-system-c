@@ -1,0 +1,76 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+  xmlns:form="sap.ui.layout.form"
+  xmlns="sap.m"
+  controllerName="podemo.controller.PurchaseOrder"
+  displayBlock="true"
+  height="100%">
+  <!-- sap.m.App = correct full-viewport shell; Page alone inside View often clips in bootstrap demos -->
+  <App id="poApp" busyIndicatorDelay="0">
+    <pages>
+  <Page
+    title="Purchase Order Entry (OpenUI5 Demo)"
+    class="sapUiContentPadding"
+    showNavButton="false"
+    enableScrolling="true"
+    backgroundDesign="Standard">
+    <content>
+      <MessageStrip
+        text="Create a new Purchase Order using SAPUI5 controls and Fiori Horizon theme."
+        type="Information"
+        showIcon="true"
+      />
+      <form:SimpleForm
+        editable="true"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="3"
+        labelSpanL="3"
+        labelSpanM="4"
+        adjustLabelSpan="false"
+        emptySpanXL="4"
+        emptySpanL="4"
+        emptySpanM="0"
+        columnsXL="2"
+        columnsL="2"
+        columnsM="1"
+        singleContainerFullSize="false">
+        <Label text="PO Number" />
+        <Input value="{po>/poNumber}" required="true" placeholder="4500001234" />
+
+        <Label text="Supplier" />
+        <Input value="{po>/supplier}" required="true" placeholder="Acme Supplies Ltd." />
+
+        <Label text="Document Date" />
+        <DatePicker value="{po>/docDate}" displayFormat="yyyy-MM-dd" />
+
+        <Label text="Currency" />
+        <Select selectedKey="{po>/currency}">
+          <items>
+            <core:Item key="EUR" text="EUR" />
+            <core:Item key="USD" text="USD" />
+            <core:Item key="GBP" text="GBP" />
+          </items>
+        </Select>
+
+        <Label text="Total Amount" />
+        <Input value="{po>/amount}" type="Number" />
+
+        <Label text="Urgent" />
+        <Switch state="{po>/urgent}" />
+
+        <Label text="Notes" />
+        <TextArea value="{po>/notes}" rows="3" />
+      </form:SimpleForm>
+
+      <Toolbar>
+        <ToolbarSpacer />
+        <Button text="Save" type="Emphasized" press=".onSave" />
+        <Button text="Cancel" press=".onCancel" />
+      </Toolbar>
+    </content>
+  </Page>
+    </pages>
+  </App>
+</mvc:View>
+

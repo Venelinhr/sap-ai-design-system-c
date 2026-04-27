@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "subscription-app",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "python3 -m http.server ${PORT:-8091} --directory examples/subscription-app/webapp"],
+      "port": 8091,
+      "autoPort": true
+    }
+  ]
+}

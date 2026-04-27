@@ -1,0 +1,171 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install Dev Dependencies",
+      "type": "shell",
+      "command": "python3 -m pip install -e \".[dev]\"",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Validate: Full Pipeline",
+      "type": "shell",
+      "command": "make all",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Validate: PO Deterministic",
+      "type": "shell",
+      "command": "make validate-po",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Validate: PO Claude (LLM)",
+      "type": "shell",
+      "command": "make validate-po-llm",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build Registry",
+      "type": "shell",
+      "command": "make build-registry",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Seed Top20",
+      "type": "shell",
+      "command": "make seed-top20",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Validate Registry",
+      "type": "shell",
+      "command": "make validate-registry",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build SAP Purchase Order",
+      "type": "shell",
+      "command": "make build-sap-po",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Validate: SAP Demo Exactness",
+      "type": "shell",
+      "command": "make validate-sap-demo",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run API",
+      "type": "shell",
+      "command": "make run-api",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Demo: OpenUI5 Purchase Order",
+      "type": "shell",
+      "command": "make demo-ui5",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Demo: Enterprise Top-20 Showcase (Object Page)",
+      "type": "shell",
+      "command": "make demo-showcase",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Demo: B2B Subscription & Billing",
+      "type": "shell",
+      "command": "make demo-subscription",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Demo: React Purchase Order",
+      "type": "shell",
+      "command": "make demo-react",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Demo: Case Study Deck (fullscreen)",
+      "type": "shell",
+      "command": "make demo-deck",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Demo: Pitch Landing Page",
+      "type": "shell",
+      "command": "make demo-pitch",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Demo: Show Run Commands",
+      "type": "shell",
+      "command": "make demo-up",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
+

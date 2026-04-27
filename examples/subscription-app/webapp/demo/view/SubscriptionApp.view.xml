@@ -1,0 +1,191 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+  xmlns:form="sap.ui.layout.form"
+  xmlns="sap.m"
+  controllerName="demo.controller.SubscriptionApp"
+  displayBlock="true"
+  height="100%">
+  <App id="subscriptionApp">
+    <pages>
+      <Page
+        id="subscriptionPage"
+        title="Subscription Management Dashboard"
+        showNavButton="false"
+        enableScrolling="true"
+        class="sapUiSizeCompact sapUiContentPadding">
+        <subHeader>
+          <Toolbar>
+            <ToolbarSpacer />
+            <Select
+              id="roleSelect"
+              selectedKey="{/currentRole}"
+              change=".onRoleChange"
+              width="180px">
+              <items>
+                <core:Item key="employee" text="Employee" />
+                <core:Item key="admin" text="Admin" />
+                <core:Item key="finance" text="Finance" />
+              </items>
+            </Select>
+          </Toolbar>
+        </subHeader>
+        <content>
+          <!-- EMPLOYEE DASHBOARD -->
+          <Panel
+            id="employeeDashboardPanel"
+            headerText="My Dashboard"
+            expandable="true"
+            expanded="true"
+            visible="{= ${/currentRole} === 'employee' }"
+            class="sapUiSmallMarginBottom">
+            <content>
+              <Table
+                id="mySubscriptionsTable"
+                mode="SingleSelect"
+                items="{/subscriptions}"
+                growing="true"
+                growingThreshold="5">
+                <columns>
+                  <Column width="25%"><Text text="Subscription" /></Column>
+                  <Column width="20%"><Text text="Vendor" /></Column>
+                  <Column width="15%"><Text text="Cost" /></Column>
+                  <Column width="20%"><Text text="Status" /></Column>
+                  <Column width="20%"><Text text="Renewal Date" /></Column>
+                </columns>
+                <items>
+                  <ColumnListItem type="Active">
+                    <cells>
+                      <Text text="{name}" />
+                      <Text text="{vendor}" />
+                      <Text text="{cost}" />
+                      <ObjectStatus text="{status}" state="{statusState}" />
+                      <Text text="{renewalDate}" />
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </content>
+          </Panel>
+
+          <!-- ADMIN DASHBOARD -->
+          <Panel
+            id="adminDashboardPanel"
+            headerText="Pending Approvals"
+            expandable="true"
+            expanded="true"
+            visible="{= ${/currentRole} === 'admin' }"
+            class="sapUiSmallMarginBottom">
+            <content>
+              <Table
+                id="approvalsTable"
+                mode="SingleSelect"
+                items="{/requests}"
+                growing="true"
+                growingThreshold="5">
+                <columns>
+                  <Column width="20%"><Text text="Requester" /></Column>
+                  <Column width="25%"><Text text="Subscription" /></Column>
+                  <Column width="15%"><Text text="Department" /></Column>
+                  <Column width="15%"><Text text="Cost" /></Column>
+                  <Column width="25%"><Text text="Actions" /></Column>
+                </columns>
+                <items>
+                  <ColumnListItem type="Active">
+                    <cells>
+                      <Text text="{requesterName}" />
+                      <Text text="{subscriptionName}" />
+                      <Text text="{department}" />
+                      <Text text="{estimatedCost}" />
+                      <Button
+                        text="Approve"
+                        type="Emphasized"
+                        press=".onApproveRequest" />
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </content>
+          </Panel>
+
+          <Panel
+            id="vendorsPanel"
+            headerText="Active Vendors"
+            expandable="true"
+            expanded="true"
+            visible="{= ${/currentRole} === 'admin' }"
+            class="sapUiSmallMarginBottom">
+            <content>
+              <Table
+                id="vendorsTable"
+                mode="SingleSelect"
+                items="{/vendors}">
+                <columns>
+                  <Column width="30%"><Text text="Vendor Name" /></Column>
+                  <Column width="25%"><Text text="Contact Email" /></Column>
+                  <Column width="20%"><Text text="Annual Cost" /></Column>
+                  <Column width="25%"><Text text="Renewal Date" /></Column>
+                </columns>
+                <items>
+                  <ColumnListItem type="Active">
+                    <cells>
+                      <Text text="{name}" />
+                      <Text text="{contactEmail}" />
+                      <Text text="{totalAnnualCost}" />
+                      <ObjectStatus text="{renewalSchedule}" state="{renewalState}" />
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </content>
+          </Panel>
+
+          <!-- FINANCE DASHBOARD -->
+          <Panel
+            id="financeDashboardPanel"
+            headerText="Cost Analysis"
+            expandable="true"
+            expanded="true"
+            visible="{= ${/currentRole} === 'finance' }"
+            class="sapUiSmallMarginBottom">
+            <content>
+              <Table
+                id="costTable"
+                mode="None"
+                items="{/subscriptions}">
+                <columns>
+                  <Column width="25%"><Text text="Subscription" /></Column>
+                  <Column width="20%"><Text text="Vendor" /></Column>
+                  <Column width="20%"><Text text="Monthly Cost" /></Column>
+                  <Column width="20%"><Text text="Annual Cost" /></Column>
+                  <Column width="15%"><Text text="Status" /></Column>
+                </columns>
+                <items>
+                  <ColumnListItem type="Inactive">
+                    <cells>
+                      <Text text="{name}" />
+                      <Text text="{vendor}" />
+                      <Text text="{cost}" />
+                      <Text text="{annualCost}" />
+                      <ObjectStatus text="{status}" state="{statusState}" />
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </content>
+          </Panel>
+
+          <!-- ACTION BUTTONS -->
+          <Toolbar>
+            <ToolbarSpacer />
+            <Button
+              text="Request New"
+              type="Emphasized"
+              visible="{= ${/currentRole} === 'employee' }"
+              press=".onOpenRequestForm" />
+          </Toolbar>
+        </content>
+      </Page>
+    </pages>
+  </App>
+</mvc:View>

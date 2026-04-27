@@ -1,0 +1,33 @@
+id: wizard-flow
+title: Wizard Flow
+description: Step-based user flow with progress and validations.
+requiredComponents:
+  - sap.m.Wizard
+  - sap.m.WizardStep
+optionalComponents:
+  - sap.m.Input
+  - sap.m.Select
+  - sap.m.Button
+tokenBindings:
+  spacing.step: spacing.2
+  color.progress: color.primary.bg
+accessibilityChecklist:
+  - Announce current step and total steps.
+  - Ensure step transitions preserve logical focus.
+  - Expose validation errors with field-level semantics.
+uiSkeleton:
+  type: app.wizard
+  regions:
+    flow:
+      type: sap.m.Wizard
+      children:
+        - type: sap.m.WizardStep
+        - type: sap.m.WizardStep
+    actions:
+      type: sap.m.Toolbar
+      children:
+        - type: sap.m.Button
+          props:
+            text: Next
+            type: Emphasized
+

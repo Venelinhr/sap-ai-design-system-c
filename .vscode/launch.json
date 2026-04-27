@@ -1,0 +1,50 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run FastAPI (uvicorn)",
+      "type": "python",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "sapui5_llm_ready.api:app",
+        "--reload",
+        "--port",
+        "8000"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Validate PO (Deterministic)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/validate_po_generation.py",
+      "args": [
+        "--out-dir",
+        "generated"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Validate PO (Claude LLM)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/validate_po_generation_llm.py",
+      "args": [
+        "--out-dir",
+        "generated"
+      ],
+      "env": {
+        "ANTHROPIC_API_KEY": "${env:ANTHROPIC_API_KEY}"
+      },
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}
+

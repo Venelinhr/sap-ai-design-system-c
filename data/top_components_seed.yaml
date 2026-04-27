@@ -1,0 +1,22 @@
+topComponents:
+  - sap.m.Button
+  - sap.m.Input
+  - sap.m.Select
+  - sap.m.ComboBox
+  - sap.m.DatePicker
+  - sap.m.Table
+  - sap.m.ColumnListItem
+  - sap.m.Dialog
+  - sap.m.MessageStrip
+  - sap.m.Toolbar
+  - sap.m.OverflowToolbar
+  - sap.m.SearchField
+  - sap.m.Page
+  - sap.m.Panel
+  - sap.m.Text
+  - sap.m.Label
+  - sap.m.CheckBox
+  - sap.m.Switch
+  - sap.m.ObjectStatus
+  - sap.uxap.ObjectPageLayout
+

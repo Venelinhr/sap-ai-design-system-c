@@ -1,0 +1,60 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Tools
+.ruff_cache/
+.mypy_cache/
+
+# Local / generated (regenerable)
+generated/
+*.local.json
+test-outputs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Node (if used locally)
+node_modules/
+
+# Env and tokens (never commit)
+.env
+.env.*
+!.env.example
+
+# Large local chat / session exports
+docs/chat-exports/
+docs/session-exports/
+
+# Old/backup files
+*_OLD.md
+*_OLD.*
+*.backup
+*.bak
+
+# Temporary files
+*.tmp
+*.temp
+
+# Presentation files (too large for GitHub)
+*.pptx
+*.pdf
+
+# Figma exports (if any)
+figma-exports/

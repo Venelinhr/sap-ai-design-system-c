@@ -1,0 +1,50 @@
+schemaVersion: "1.0.0"
+source:
+  system: figma
+  ref: "https://www.figma.com/community/file/1494295794601744471"
+
+# Lightweight, high-signal mappings only.
+# This is NOT a 1:1 export of every component.
+
+tokens:
+  semantic:
+    color.primary.bg: "sapPrimary"
+    color.primary.text: "sapPrimaryText"
+    color.danger.bg: "sapError"
+    color.neutral.bg: "sapNeutral"
+    spacing.2: "sapSpace2"
+    spacing.3: "sapSpace3"
+    radius.sm: "sapRadiusSmall"
+
+components:
+  sap.m.Button:
+    intentTags:
+      - primary-action
+      - secondary-action
+      - destructive
+    variants:
+      emphasis:
+        - Default
+        - Emphasized
+        - Transparent
+      sentiment:
+        - Accept
+        - Reject
+    composition:
+      notes:
+        - Prefer a single primary action per surface.
+
+patterns:
+  listReport:
+    title: "List Report (table + filter bar)"
+    description: "Common enterprise pattern: filter/search + data table + row actions."
+    uiPlan:
+      type: "pattern.listReport"
+      regions:
+        header:
+          type: "sap.m.Toolbar"
+        filters:
+          type: "sap.ui.comp.filterbar.FilterBar"
+        content:
+          type: "sap.m.Table"
+

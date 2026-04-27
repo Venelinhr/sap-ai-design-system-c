@@ -1,0 +1,29 @@
+id: dashboard-cards
+title: Dashboard Cards
+description: Filter + KPI cards + drilldown pattern for operational dashboards.
+requiredComponents:
+  - sap.m.Toolbar
+  - sap.f.GridContainer
+  - sap.f.Card
+optionalComponents:
+  - sap.m.Select
+  - sap.m.DateRangeSelection
+tokenBindings:
+  spacing.grid: spacing.3
+  color.card.bg: color.neutral.bg
+accessibilityChecklist:
+  - Ensure cards have descriptive titles and landmarks.
+  - Provide keyboard access for drilldown actions.
+  - Preserve sufficient color contrast for KPI status states.
+uiSkeleton:
+  type: app.dashboard
+  regions:
+    filters:
+      type: sap.m.Toolbar
+    grid:
+      type: sap.f.GridContainer
+      children:
+        - type: sap.f.Card
+        - type: sap.f.Card
+        - type: sap.f.Card
+

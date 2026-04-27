@@ -1,0 +1,79 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:form="sap.ui.layout.form"
+  xmlns:core="sap.ui.core"
+>
+  <Dialog
+    id="unsubDialog"
+    title="Schedule cancellation"
+    class="sapUiSizeCompact"
+    contentWidth="36rem"
+    stretchOnPhone="true"
+  >
+    <content>
+      <MessageStrip
+        type="Warning"
+        showIcon="true"
+        text="In production this would call your subscription-billing BAPI / OData: validate notice period, credit exposure, and rev-rec rules before committing."
+        class="sapUiSmallMargin"
+      />
+      <Page
+        id="unsubPage"
+        showHeader="true"
+        title="Off-boarding (company-level)"
+        backgroundDesign="Solid"
+      >
+        <content>
+          <form:SimpleForm
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="4"
+            labelSpanL="4"
+            labelSpanM="4"
+            adjustLabelSpan="false"
+            emptySpanXL="0"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsXL="1"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="true"
+            class="sapUiSmallMargin"
+          >
+            <Label text="Reason code" required="true" />
+            <Select selectedKey="{/unsub/reason}" forceSelection="true" width="100%">
+              <items>
+                <core:Item key="COST" text="CSC / cost optimisation" />
+                <core:Item key="PROJ" text="Project ended — no ongoing scope" />
+                <core:Item key="DUP" text="Duplicated in another contract" />
+                <core:Item key="MIG" text="Cloud migration to different legal entity" />
+              </items>
+            </Select>
+            <Label text="Earliest effective date" />
+            <DatePicker
+              value="{/unsub/effective}"
+              valueFormat="yyyy-MM-dd"
+              displayFormat="medium"
+              placeholder="Pick a date (demo)"
+            />
+            <Label text="Contractual notice" />
+            <Text text="90 days rolling notice — your CSQ references clause 12.3 (illustrative)." />
+            <Label text="Estimated credit note (demo)" />
+            <ObjectNumber
+              number="1,100.00"
+              unit="EUR"
+              state="Success"
+            />
+          </form:SimpleForm>
+        </content>
+        <footer>
+          <OverflowToolbar>
+            <ToolbarSpacer />
+            <Button type="Transparent" text="Back" press=".onCloseUnsub" />
+            <Button type="Emphasized" text="Submit cancellation" press=".onConfirmUnsub" />
+          </OverflowToolbar>
+        </footer>
+      </Page>
+    </content>
+  </Dialog>
+</core:FragmentDefinition>
