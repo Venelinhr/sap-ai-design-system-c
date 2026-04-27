@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PO Entry — Demo & Validation | SAP Fiori</title>
+<script id="sap-ui-bootstrap"
+  src="https://ui5.sap.com/resources/sap-ui-core.js"
+  data-sap-ui-theme="sap_horizon"
+  data-sap-ui-async="true"
+  data-sap-ui-frameOptions="allow"
+  data-sap-ui-compatVersion="edge"
+  data-sap-ui-libs="sap.m,sap.f,sap.uxap,sap.ui.layout">
+</script>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+  body { display: flex; flex-direction: column; }
+  #shell  { flex-shrink: 0; }
+  #app    { flex: 1; overflow: hidden; }
+
+  /* Demo bar */
+  #demo-bar {
+    position: fixed;
+    top: 3.5rem;
+    right: 1rem;
+    z-index: 9999;
+    background: #1C2D59;
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-family: "72", "72full", Arial, sans-serif;
+    font-size: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    min-width: 15rem;
+    user-select: none;
+  }
+  #demo-bar h3 {
+    margin: 0 0 0.6rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    font-weight: 700;
+  }
+  .demo-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin: 0.25rem 0;
+    padding: 0.45rem 0.75rem;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+  }
+  .demo-btn:hover { background: rgba(255,255,255,0.18); }
+  .demo-btn .ico { font-size: 1rem; }
+  .demo-btn.primary { background: #0070F2; border-color: #0070F2; }
+  .demo-btn.primary:hover { background: #0057C2; border-color: #0057C2; }
+  .demo-btn.danger  { background: #BB0000; border-color: #BB0000; }
+  .demo-btn.danger:hover  { background: #990000; border-color: #990000; }
+  .demo-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    margin: 0.5rem 0;
+  }
+  #demo-status {
+    margin-top: 0.6rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 0.25rem;
+    background: rgba(255,255,255,0.06);
+    font-size: 0.7rem;
+    opacity: 0.8;
+    min-height: 1rem;
+  }
+  #demo-toggle {
+    position: fixed;
+    top: 3.5rem;
+    right: 1rem;
+    z-index: 10000;
+    background: #1C2D59;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.7rem;
+    cursor: pointer;
+    display: none;
+  }
+
+  .sapUiSizeCompact .sapUiSimpleFormContent { padding: 0 0.5rem; }
+  .sapUiSizeCompact .sapMPanel { margin-bottom: 0.5rem; }
+  .sapUiSizeCompact .sapMOH { padding: 0.5rem 1rem; }
+  .poSubTitle { margin: 0.5rem 1rem 0 !important; }
+</style>
+</head>
+<body class="sapUiBody sapUiSizeCompact" id="body">
+  <div id="shell"></div>
+  <div id="app"></div>
+
+  <div id="demo-bar">
+    <h3>🧪 Demo &amp; Validation</h3>
+
+    <button class="demo-btn primary" onclick="demoLoadAll()">
+      <span class="ico">📋</span> Load Full Sample Data
+    </button>
+
+    <hr class="demo-divider" />
+
+    <button class="demo-btn" onclick="demoFillHeader()">
+      <span class="ico">📝</span> Fill Header Only
+    </button>
+    <button class="demo-btn" onclick="demoAddItems()">
+      <span class="ico">➕</span> Add 3 Sample Line Items
+    </button>
+    <button class="demo-btn" onclick="demoFillNotes()">
+      <span class="ico">💬</span> Fill Notes Fields
+    </button>
+
+    <hr class="demo-divider" />
+
+    <button class="demo-btn danger" onclick="demoValidationError()">
+      <span class="ico">⚠️</span> Trigger Validation Errors
+    </button>
+    <button class="demo-btn" onclick="demoClearErrors()">
+      <span class="ico">✅</span> Clear All Errors
+    </button>
+    <button class="demo-btn" onclick="demoReset()">
+      <span class="ico">🔄</span> Reset Form
+    </button>
+
+    <hr class="demo-divider" />
+
+    <button class="demo-btn" onclick="demoSaveDraft()">
+      <span class="ico">💾</span> Save as Draft
+    </button>
+    <button class="demo-btn primary" onclick="demoOrder()">
+      <span class="ico">🚀</span> Submit Order
+    </button>
+
+    <div id="demo-status">Ready — choose a scenario above.</div>
+  </div>
+
+<script>
+sap.ui.getCore().attachInit(function () {
+  "use strict";
+
+  sap.ui.require([
+    "sap/m/App",
+    "sap/m/Page",
+    "sap/m/Bar",
+    "sap/m/Button",
+    "sap/m/Label",
+    "sap/m/Input",
+    "sap/m/Select",
+    "sap/m/DatePicker",
+    "sap/m/TextArea",
+    "sap/ui/core/Item",
+    "sap/m/Table",
+    "sap/m/Column",
+    "sap/m/ColumnListItem",
+    "sap/m/Text",
+    "sap/m/Title",
+    "sap/m/Toolbar",
+    "sap/m/ToolbarSpacer",
+    "sap/m/ToolbarSeparator",
+    "sap/m/ObjectHeader",
+    "sap/m/ObjectAttribute",
+    "sap/m/ObjectStatus",
+    "sap/m/Panel",
+    "sap/m/VBox",
+    "sap/m/HBox",
+    "sap/m/MessageToast",
+    "sap/m/MessageBox",
+    "sap/m/BusyDialog",
+    "sap/m/Breadcrumbs",
+    "sap/m/Link",
+    "sap/m/Avatar",
+    "sap/f/ShellBar",
+    "sap/ui/layout/form/SimpleForm"
+  ], function (
+    App, Page, Bar, Button, Label, Input, Select, DatePicker, TextArea,
+    Item, Table, Column, ColumnListItem, Text, Title, Toolbar, ToolbarSpacer,
+    ToolbarSeparator, ObjectHeader, ObjectAttribute, ObjectStatus, Panel,
+    VBox, HBox, MessageToast, MessageBox, BusyDialog, Breadcrumbs, Link,
+    Avatar, ShellBar, SimpleForm
+  ) {
+
+    /* ── state ──────────────────────────────────────────────────────── */
+    var iCnt  = 0;
+    var aRows = [];
+
+    /* ── helpers ────────────────────────────────────────────────────── */
+    function mkItems(arr) {
+      return arr.map(function (a) { return new Item({ key: a[0], text: a[1] }); });
+    }
+    function setStatus(msg) {
+      var el = document.getElementById("demo-status");
+      if (el) el.textContent = msg;
+    }
+    function fmtDate(offset) {
+      return new Date(Date.now() + offset * 864e5).toISOString().split("T")[0];
+    }
+
+    /* ── header controls ────────────────────────────────────────────── */
+    var oDocType = new Select({ width: "100%", required: true, change: sync,
+      items: mkItems([
+        ["","Select…"],["NB","NB – Standard PO"],["FO","FO – Framework Order"],
+        ["UB","UB – Stock Transport"],["ZNB","ZNB – Service PO"]
+      ])
+    });
+
+    var oVendor = new Input({ width: "100%", required: true,
+      placeholder: "Vendor number or name", liveChange: sync });
+
+    var oPoDate = new DatePicker({ width: "100%", required: true,
+      displayFormat: "MMM d, yyyy", valueFormat: "yyyy-MM-dd", change: sync });
+    oPoDate.setValue(fmtDate(0));
+
+    var oCurrency = new Select({ width: "100%", required: true,
+      change: function () { sync(); recalcAll(); },
+      items: mkItems([
+        ["","Select…"],["USD","USD – US Dollar"],["EUR","EUR – Euro"],
+        ["GBP","GBP – British Pound"],["JPY","JPY – Japanese Yen"],
+        ["CHF","CHF – Swiss Franc"],["SAR","SAR – Saudi Riyal"],["AED","AED – UAE Dirham"]
+      ])
+    });
+    oCurrency.setSelectedKey("USD");
+
+    var oCoCode = new Select({ width: "100%", required: true, change: sync,
+      items: mkItems([
+        ["","Select…"],["1000","1000 – IDES AG"],["1010","1010 – SAP SE"],
+        ["2000","2000 – IDES US INC"],["3000","3000 – IDES Japan"]
+      ])
+    });
+
+    var oPOrg = new Select({ width: "100%", required: true,
+      items: mkItems([
+        ["","Select…"],["1000","1000 – IDES Europe"],
+        ["2000","2000 – IDES North America"],["3000","3000 – IDES Asia Pacific"]
+      ])
+    });
+
+    var oPGrp = new Select({ width: "100%",
+      items: mkItems([
+        ["","Select…"],["001","001 – General Procurement"],
+        ["002","002 – IT Procurement"],["003","003 – Facilities"],["004","004 – Services"]
+      ])
+    });
+
+    var oPayTerms = new Select({ width: "100%",
+      items: mkItems([
+        ["","Select…"],["NT30","NT30 – Net 30 Days"],["NT45","NT45 – Net 45 Days"],
+        ["NT60","NT60 – Net 60 Days"],["2/10","2/10 Net 30"],["COD","COD – Cash on Delivery"]
+      ])
+    });
+
+    var oInco = new Select({ width: "100%",
+      items: mkItems([
+        ["","Select…"],["EXW","EXW – Ex Works"],["FCA","FCA – Free Carrier"],
+        ["DAP","DAP – Delivered at Place"],["DDP","DDP – Delivered Duty Paid"],
+        ["FOB","FOB – Free on Board"],["CIF","CIF – Cost, Insurance & Freight"]
+      ])
+    });
+
+    var oPlant = new Select({ width: "100%",
+      items: mkItems([
+        ["","Select…"],["1000","1000 – Hamburg"],["1100","1100 – Berlin"],
+        ["2000","2000 – Philadelphia"],["3000","3000 – New York"]
+      ])
+    });
+
+    var oStorLoc = new Select({ width: "100%",
+      items: mkItems([
+        ["","Select…"],["0001","0001 – Main Warehouse"],
+        ["0002","0002 – Spare Parts"],["0003","0003 – Finished Goods"]
+      ])
+    });
+
+    var oTgtDate = new DatePicker({ width: "100%",
+      displayFormat: "MMM d, yyyy", valueFormat: "yyyy-MM-dd" });
+    oTgtDate.setValue(fmtDate(14));
+
+    var oNoteHdr  = new TextArea({ width: "100%", rows: 3,
+      placeholder: "General notes or instructions visible to the vendor…" });
+    var oNoteInt  = new TextArea({ width: "100%", rows: 3,
+      placeholder: "Internal remarks (not transmitted to vendor)…" });
+
+    /* ── Simple Forms ───────────────────────────────────────────────── */
+    var oFmGeneral = new SimpleForm({
+      editable: true, layout: "ColumnLayout",
+      columnsXL: 4, columnsL: 4, columnsM: 2,
+      content: [
+        new Label({ text: "Document Type", required: true }), oDocType,
+        new Label({ text: "Vendor",        required: true }), oVendor,
+        new Label({ text: "PO Date",       required: true }), oPoDate,
+        new Label({ text: "Currency",      required: true }), oCurrency
+      ]
+    });
+
+    var oFmOrg = new SimpleForm({
+      editable: true, layout: "ColumnLayout",
+      columnsXL: 4, columnsL: 4, columnsM: 2,
+      content: [
+        new Label({ text: "Company Code",    required: true }), oCoCode,
+        new Label({ text: "Purchasing Org.", required: true }), oPOrg,
+        new Label({ text: "Purchasing Group" }), oPGrp,
+        new Label({ text: "Payment Terms"   }), oPayTerms
+      ]
+    });
+
+    var oFmDeliv = new SimpleForm({
+      editable: true, layout: "ColumnLayout",
+      columnsXL: 4, columnsL: 4, columnsM: 2,
+      content: [
+        new Label({ text: "Incoterms"            }), oInco,
+        new Label({ text: "Plant"                }), oPlant,
+        new Label({ text: "Storage Location"     }), oStorLoc,
+        new Label({ text: "Target Delivery Date" }), oTgtDate
+      ]
+    });
+
+    /* ── Totals ─────────────────────────────────────────────────────── */
+    var oTxtNet   = new Text({ text: "0.00 USD" });
+    var oTxtTax   = new Text({ text: "0.00 USD" });
+    var oTxtGross = new Text({ text: "0.00 USD" });
+
+    function recalcAll() {
+      var cur = oCurrency.getSelectedKey() || "USD";
+      var net = aRows.reduce(function (s, r) {
+        return s + (parseFloat(r.qIn.getValue()) || 0) * (parseFloat(r.pIn.getValue()) || 0);
+      }, 0);
+      oTxtNet.setText(net.toFixed(2) + " " + cur);
+      oTxtTax.setText((net * 0.1).toFixed(2) + " " + cur);
+      oTxtGross.setText((net * 1.1).toFixed(2) + " " + cur);
+      oAttrNet.setText(net.toFixed(2) + " " + cur);
+    }
+
+    /* ── Items table ────────────────────────────────────────────────── */
+    var oItemCntTitle = new Title({ text: "0", level: "H6" });
+
+    var oTable = new Table({
+      sticky: ["ColumnHeaders"],
+      noDataText: "No items. Choose Add to create a line item.",
+      columns: [
+        new Column({ width: "4rem",   header: new Text({ text: "Item"          }) }),
+        new Column({ width: "9rem",   header: new Text({ text: "Material/Serv."})}),
+        new Column({                  header: new Text({ text: "Short Text"     }) }),
+        new Column({ width: "5.5rem", hAlign: "End", header: new Text({ text: "Qty" }) }),
+        new Column({ width: "4.5rem", header: new Text({ text: "UoM"           }) }),
+        new Column({ width: "7rem",   hAlign: "End", header: new Text({ text: "Net Price" }) }),
+        new Column({ width: "9rem",   header: new Text({ text: "Delivery Date" }) }),
+        new Column({ width: "5.5rem", header: new Text({ text: "Plant"         }) }),
+        new Column({ width: "7rem",   hAlign: "End", header: new Text({ text: "Net Value" }) }),
+        new Column({ width: "3rem",   header: new Text({ text: ""              }) })
+      ]
+    });
+
+    function addItem(overrides) {
+      iCnt++;
+      var id  = iCnt;
+      var no  = String(id * 10).padStart(5, "0");
+      var o   = overrides || {};
+
+      var qIn = new Input({ width: "100%", textAlign: "End",
+        value: o.qty || "1", liveChange: function () { calcLine(id); } });
+      var pIn = new Input({ width: "100%", textAlign: "End",
+        value: o.price || "", placeholder: "0.00",
+        liveChange: function () { calcLine(id); } });
+      var ltT = new Text({ text: "0.00", textAlign: "End" });
+
+      var matSel = new Select({ width: "100%", items: mkItems([
+        ["EA","EA"],["PC","PC"],["KG","KG"],["M","M"],
+        ["L","L"],["BOX","BOX"],["HR","HR"],["DAY","DAY"]
+      ]) });
+      if (o.uom) matSel.setSelectedKey(o.uom);
+
+      var plSel = new Select({ width: "100%", items: mkItems([
+        ["","—"],["1000","1000"],["1100","1100"],["2000","2000"],["3000","3000"]
+      ]) });
+      if (o.plant) plSel.setSelectedKey(o.plant);
+
+      var dp = new DatePicker({ width: "100%", displayFormat: "MM/dd/yyyy",
+        valueFormat: "yyyy-MM-dd", value: o.date || fmtDate(14) });
+
+      var row = new ColumnListItem("row" + id, {
+        cells: [
+          new Text({ text: no }),
+          new Input({ width: "100%", value: o.mat || "", placeholder: "Material No." }),
+          new Input({ width: "100%", value: o.txt || "", placeholder: "Short description" }),
+          qIn, matSel, pIn, dp, plSel, ltT,
+          new Button({ icon: "sap-icon://delete", type: "Transparent",
+            press: function () { delItem(id); } })
+        ]
+      });
+
+      aRows.push({ id: id, qIn: qIn, pIn: pIn, ltT: ltT });
+      oTable.addItem(row);
+      oItemCntTitle.setText(String(oTable.getItems().length));
+      calcLine(id);
+    }
+
+    function calcLine(id) {
+      var r = aRows.find(function (x) { return x.id === id; });
+      if (!r) return;
+      r.ltT.setText(
+        ((parseFloat(r.qIn.getValue()) || 0) * (parseFloat(r.pIn.getValue()) || 0)).toFixed(2)
+      );
+      recalcAll();
+    }
+
+    function delItem(id) {
+      var row = sap.ui.getCore().byId("row" + id);
+      if (row) oTable.removeItem(row);
+      aRows = aRows.filter(function (x) { return x.id !== id; });
+      oItemCntTitle.setText(String(oTable.getItems().length));
+      recalcAll();
+      MessageToast.show("Item removed");
+    }
+
+    /* ── Object Header ──────────────────────────────────────────────── */
+    var oAttrVendor = new ObjectAttribute({ title: "Vendor",       text: "—" });
+    var oAttrDate   = new ObjectAttribute({ title: "PO Date",      text: "—" });
+    var oAttrCur    = new ObjectAttribute({ title: "Currency",     text: "USD" });
+    var oAttrCoCode = new ObjectAttribute({ title: "Company Code", text: "—" });
+    var oAttrNet    = new ObjectAttribute({ title: "Net Value",    text: "0.00 USD" });
+    var oObjStatus  = new ObjectStatus({ text: "Draft", state: "None" });
+
+    function sync() {
+      oAttrVendor.setText(oVendor.getValue() || "—");
+      oAttrCur.setText(oCurrency.getSelectedKey() || "—");
+      oAttrCoCode.setText(oCoCode.getSelectedKey() || "—");
+      var dv = oPoDate.getValue();
+      if (dv) {
+        var d = new Date(dv + "T00:00:00");
+        oAttrDate.setText(d.toLocaleDateString("en-US",
+          { month: "short", day: "numeric", year: "numeric" }));
+      } else {
+        oAttrDate.setText("—");
+      }
+      recalcAll();
+    }
+
+    var oObjHdr = new ObjectHeader({
+      title: "Create Purchase Order",
+      responsive: true,
+      attributes: [oAttrVendor, oAttrDate, oAttrCur, oAttrCoCode, oAttrNet],
+      statuses: [oObjStatus]
+    });
+
+    /* ── Panels ─────────────────────────────────────────────────────── */
+    var oPanelHdr = new Panel({
+      headerText: "Header Data",
+      expandable: true, expanded: true,
+      content: [new VBox({ renderType: "Bare", items: [
+        new Title({ text: "General", level: "H6", titleStyle: "H6",
+          addStyleClass: "poSubTitle" }),
+        oFmGeneral,
+        new Title({ text: "Organizational Data", level: "H6", titleStyle: "H6",
+          addStyleClass: "poSubTitle" }),
+        oFmOrg,
+        new Title({ text: "Delivery & Logistics", level: "H6", titleStyle: "H6",
+          addStyleClass: "poSubTitle" }),
+        oFmDeliv
+      ]})]
+    });
+
+    var oPanelItems = new Panel({
+      headerToolbar: new Toolbar({ content: [
+        new Title({ text: "Purchase Order Items", level: "H4" }),
+        new Text({ text: " (" }),
+        oItemCntTitle,
+        new Text({ text: ")" }),
+        new ToolbarSpacer(),
+        new Button({ text: "Add", icon: "sap-icon://add",
+          type: "Emphasized", press: function () { addItem(); } })
+      ]}),
+      content: [
+        oTable,
+        new Toolbar({ content: [
+          new ToolbarSpacer(),
+          new Label({ text: "Net Value:" }), oTxtNet,
+          new ToolbarSeparator(),
+          new Label({ text: "Tax (10%):" }), oTxtTax,
+          new ToolbarSeparator(),
+          new Label({ text: "Total (Gross):" }), oTxtGross
+        ]})
+      ]
+    });
+
+    var oPanelNotes = new Panel({
+      headerText: "Notes",
+      expandable: true, expanded: false,
+      content: [new HBox({ renderType: "Bare", wrap: "Wrap", items: [
+        new VBox({ width: "50%", renderType: "Bare", items: [
+          new Label({ text: "Header Text" }), oNoteHdr
+        ]}),
+        new VBox({ width: "50%", renderType: "Bare", items: [
+          new Label({ text: "Internal Note" }), oNoteInt
+        ]})
+      ]})]
+    });
+
+    /* ── Validation ─────────────────────────────────────────────────── */
+    var oRequiredFields = [
+      { c: oDocType, n: "Document Type" },
+      { c: oVendor,  n: "Vendor"        },
+      { c: oPoDate,  n: "PO Date"       },
+      { c: oCurrency,n: "Currency"      },
+      { c: oCoCode,  n: "Company Code"  },
+      { c: oPOrg,    n: "Purchasing Org."}
+    ];
+
+    function validate() {
+      var missing = [];
+      oRequiredFields.forEach(function (f) {
+        var v = f.c.getSelectedKey ? f.c.getSelectedKey() : f.c.getValue();
+        if (!v) {
+          f.c.setValueState("Error");
+          f.c.setValueStateText(f.n + " is required");
+          missing.push(f.n);
+        } else {
+          f.c.setValueState("None");
+        }
+      });
+      if (missing.length) MessageToast.show("Required: " + missing.join(", "));
+      return !missing.length;
+    }
+
+    /* ── Actions ────────────────────────────────────────────────────── */
+    var oBusy = new BusyDialog({ title: "Please wait…" });
+    oBusy.addStyleClass("sapUiSizeCompact");
+
+    function handleOrder() {
+      if (!validate()) return;
+      if (!oTable.getItems().length) {
+        MessageToast.show("Add at least one line item before ordering.");
+        return;
+      }
+      oBusy.setText("Creating purchase order…");
+      oBusy.open();
+      setTimeout(function () {
+        oBusy.close();
+        var no = "45" + String(Math.floor(1e8 + Math.random() * 9e8));
+        oObjStatus.setText("Ordered");
+        oObjStatus.setState("Success");
+        MessageBox.success(
+          "Purchase Order " + no + " created and submitted for approval.",
+          { title: "Purchase Order Created", actions: [MessageBox.Action.OK],
+            styleClass: "sapUiSizeCompact" }
+        );
+      }, 1600);
+    }
+
+    function handleDraft() {
+      oBusy.setText("Saving draft…");
+      oBusy.open();
+      setTimeout(function () {
+        oBusy.close();
+        oObjStatus.setText("Draft – Saved");
+        MessageToast.show("Draft saved.");
+      }, 800);
+    }
+
+    /* ── Shell & App ────────────────────────────────────────────────── */
+    new ShellBar({
+      title: "Manage Purchase Orders",
+      showNotifications: true,
+      profile: new Avatar({ initials: "JM", backgroundColor: "Accent6", displaySize: "XS" })
+    }).placeAt("shell");
+
+    new App({ pages: [
+      new Page({
+        showHeader: false,
+        subHeader: new Bar({ contentLeft: [
+          new Breadcrumbs({
+            links: [new Link({ text: "Purchase Orders", href: "#" })],
+            currentLocationText: "Create Purchase Order"
+          })
+        ]}),
+        enableScrolling: true,
+        content: [new VBox({ width: "100%",
+          items: [oObjHdr, oPanelHdr, oPanelItems, oPanelNotes]
+        })],
+        footer: new Bar({
+          contentLeft:  [new Button({ text: "Cancel", press: function () {
+            MessageBox.confirm("Discard all unsaved changes?", {
+              actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+              styleClass: "sapUiSizeCompact",
+              onClose: function (a) {
+                if (a === MessageBox.Action.OK) MessageToast.show("Cancelled.");
+              }
+            });
+          }})],
+          contentRight: [
+            new Button({ text: "Save as Draft", press: handleDraft }),
+            new Button({ text: "Order", type: "Emphasized", press: handleOrder })
+          ]
+        })
+      })
+    ]}).placeAt("app");
+
+    sync();
+
+    /* ────────────────────────────────────────────────────────────────
+       Demo scenario functions — exposed globally for demo-bar buttons
+    ──────────────────────────────────────────────────────────────── */
+
+    window.demoFillHeader = function () {
+      oDocType.setSelectedKey("NB");
+      oVendor.setValue("1001234 – Acme Supplies GmbH");
+      oPoDate.setValue(fmtDate(0));
+      oCurrency.setSelectedKey("EUR");
+      oCoCode.setSelectedKey("1010");
+      oPOrg.setSelectedKey("1000");
+      oPGrp.setSelectedKey("002");
+      oPayTerms.setSelectedKey("NT30");
+      oInco.setSelectedKey("DAP");
+      oPlant.setSelectedKey("1000");
+      oStorLoc.setSelectedKey("0001");
+      oTgtDate.setValue(fmtDate(21));
+      sync();
+      setStatus("✅ Header data filled.");
+    };
+
+    window.demoAddItems = function () {
+      var items = [
+        { mat: "100-110",  txt: "Laptop ThinkPad X1 Carbon Gen 12", qty: "5",  price: "1499.00", uom: "PC",  plant: "1000", date: fmtDate(21) },
+        { mat: "100-220",  txt: "USB-C Docking Station Pro",         qty: "5",  price:  "249.50", uom: "PC",  plant: "1000", date: fmtDate(21) },
+        { mat: "SVC-0055", txt: "On-site Setup Service (per day)",   qty: "3",  price:  "850.00", uom: "DAY", plant: "1000", date: fmtDate(28) }
+      ];
+      items.forEach(function (o) { addItem(o); });
+      setStatus("✅ 3 line items added.");
+    };
+
+    window.demoFillNotes = function () {
+      oNoteHdr.setValue("Please deliver to Hamburg HQ, Att: IT Department. Confirm delivery 48h in advance. PO ref must appear on all shipping documents.");
+      oNoteInt.setValue("Budget approved by IT Steering Committee on " + new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) + ". Cost center: 4200-IT-EQUIP.");
+      oPanelNotes.setExpanded(true);
+      setStatus("✅ Notes filled.");
+    };
+
+    window.demoLoadAll = function () {
+      demoFillHeader();
+      // clear existing items first
+      aRows.forEach(function (r) {
+        var row = sap.ui.getCore().byId("row" + r.id);
+        if (row) oTable.removeItem(row);
+      });
+      aRows = []; iCnt = 0;
+      oItemCntTitle.setText("0");
+      demoAddItems();
+      demoFillNotes();
+      oPanelHdr.setExpanded(true);
+      oPanelNotes.setExpanded(true);
+      setStatus("✅ Full demo data loaded.");
+    };
+
+    window.demoValidationError = function () {
+      // clear required fields to trigger errors
+      oDocType.setSelectedKey("");
+      oVendor.setValue("");
+      oCoCode.setSelectedKey("");
+      oPOrg.setSelectedKey("");
+      validate();
+      oPanelHdr.setExpanded(true);
+      setStatus("⚠️ Validation errors triggered.");
+    };
+
+    window.demoClearErrors = function () {
+      oRequiredFields.forEach(function (f) { f.c.setValueState("None"); });
+      setStatus("✅ All error states cleared.");
+    };
+
+    window.demoReset = function () {
+      oDocType.setSelectedKey("");
+      oVendor.setValue("");
+      oPoDate.setValue(fmtDate(0));
+      oCurrency.setSelectedKey("USD");
+      oCoCode.setSelectedKey("");
+      oPOrg.setSelectedKey("");
+      oPGrp.setSelectedKey("");
+      oPayTerms.setSelectedKey("");
+      oInco.setSelectedKey("");
+      oPlant.setSelectedKey("");
+      oStorLoc.setSelectedKey("");
+      oTgtDate.setValue(fmtDate(14));
+      oNoteHdr.setValue("");
+      oNoteInt.setValue("");
+      aRows.forEach(function (r) {
+        var row = sap.ui.getCore().byId("row" + r.id);
+        if (row) oTable.removeItem(row);
+      });
+      aRows = []; iCnt = 0;
+      oItemCntTitle.setText("0");
+      demoClearErrors();
+      oObjStatus.setText("Draft"); oObjStatus.setState("None");
+      sync();
+      setStatus("🔄 Form reset to empty state.");
+    };
+
+    window.demoSaveDraft = function () { handleDraft(); setStatus("💾 Saving draft…"); };
+    window.demoOrder     = function () { handleOrder(); setStatus("🚀 Submitting order…"); };
+  });
+});
+</script>
+</body>
+</html>
