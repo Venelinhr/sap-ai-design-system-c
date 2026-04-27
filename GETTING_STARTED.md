@@ -13,8 +13,8 @@ This guide will help you quickly get started with building SAPUI5 applications u
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Venelinhr/sap-ai-design-system-c.git
-cd sap-ai-design-system-c
+git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git
+cd SAP-LLM-ready-design-system
 ```
 
 ### 2. Install Dependencies
@@ -276,7 +276,7 @@ Found a bug or want to add a feature?
 
 ## 📞 Support
 
-- **GitHub Issues**: https://github.com/Venelinhr/sap-ai-design-system-c/issues
+- **GitHub Issues**: https://github.com/Venelinhr/SAP-LLM-ready-design-system/issues
 - **Documentation**: Check the [docs/](docs/) folder
 - **Case Study**: [CASE_STUDY_SAP_DESIGN_SYSTEM_LLM_READY.md](CASE_STUDY_SAP_DESIGN_SYSTEM_LLM_READY.md)
 

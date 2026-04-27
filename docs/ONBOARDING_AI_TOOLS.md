@@ -1,14 +1,14 @@
 # Onboarding: AI tools and this repository
 
-**Repository:** [github.com/Venelinhr/sap-ai-design-system-c](https://github.com/Venelinhr/sap-ai-design-system-c) (clone URL below)
+**Repository:** [github.com/Venelinhr/SAP-LLM-ready-design-system](https://github.com/Venelinhr/SAP-LLM-ready-design-system) (clone URL below)
 
 Use this file if you work with **Cursor**, **Claude Code**, **Windsurf**, or **any editor + LLM** on SAP Fiori / SAPUI5 tasks in this project.
 
 ## Clone and install (all tools)
 
 ```bash
-git clone https://github.com/Venelinhr/sap-ai-design-system-c.git
-cd sap-ai-design-system-c
+git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git
+cd SAP-LLM-ready-design-system
 python3 -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -e ".[dev]"

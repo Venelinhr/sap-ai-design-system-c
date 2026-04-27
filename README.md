@@ -1,4 +1,4 @@
-# SAPUI5 LLM-Ready Design System
+# SAP-LLM-ready-design-system
 
 **Transform traditional SAP design systems into AI-powered development tools**
 
@@ -85,8 +85,8 @@ Customer Subscription Management demo - Another example of AI-generated SAPUI5 a
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/Venelinhr/sap-ai-design-system-c.git
-cd sap-ai-design-system-c
+git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git
+cd SAP-LLM-ready-design-system
 ```
 
 2. **Install dependencies**
@@ -361,7 +361,7 @@ MIT License - See [LICENSE](LICENSE) for details
 
 ## 🔗 Links
 
-- **Repository**: https://github.com/Venelinhr/sap-ai-design-system-c
+- **Repository**: https://github.com/Venelinhr/SAP-LLM-ready-design-system
 
 ## 💬 Support
 
