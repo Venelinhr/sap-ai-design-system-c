@@ -101,10 +101,32 @@ The validation system automatically converts short names to full namespaces duri
 Execute tasks in this order:
 1. **Understand the request** - Clarify requirements
 2. **Map requirements → SAPUI5 components** - Select verified controls
-3. **Validate against documentation** - Check SAPUI5 API
+3. **Validate against latest SAPUI5 sources** - Check current API documentation
 4. **Check component compatibility** - Ensure composability
 5. **Validate UX against Fiori standards** - SAP Fiori principles
 6. **Only then implement** - Generate code
+
+**Step 3 - Validate against latest SAPUI5 sources (MANDATORY):**
+Before implementing, ALWAYS verify against the latest official SAP sources:
+- [SAPUI5 GitHub Repository](https://github.com/SAP/ui5) - Latest code and changes
+- [SAPUI5 API Reference](https://ui5.sap.com/#/api) - Official API documentation
+- [SAP Fiori Design Guidelines](https://experience.sap.com/fiori-design/) - Design standards
+- [SAPUI5 Version Info](https://ui5.sap.com/#/version) - Current version and release notes
+
+**Validation Checklist:**
+- Check SAPUI5 version compatibility
+- Verify component API hasn't changed or been deprecated
+- Confirm design tokens are current
+- Validate against latest SAP Fiori guidelines
+- Ensure no breaking changes since last registry update
+
+**Why This Matters:**
+- SAPUI5 components may be deprecated or updated between versions
+- API properties can change
+- Design tokens may evolve
+- New best practices emerge
+
+**Always validate your component usage against the latest SAPUI5 documentation before implementation.**
 
 If any step fails → DO NOT proceed.
 
