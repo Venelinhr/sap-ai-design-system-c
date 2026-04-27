@@ -213,10 +213,7 @@ sapui5-llm-ready/
 │   ├── TESTING_WITH_CLAUDE.md
 │   ├── TESTING_WITH_CURSOR.md
 │   ├── TESTING_WITH_WINDSURF.md
-│   ├── VALIDATION_FRAMEWORK.md
-│   └── presentations/
-│       └── SAPUI5_LLM_READY_PRESENTATION.md
-├── CASE_STUDY_SAP_DESIGN_SYSTEM_LLM_READY.md
+│   └── VALIDATION_FRAMEWORK.md
 ├── .gitignore
 └── package.json
 ```
@@ -297,15 +294,12 @@ MIT License - See [LICENSE](LICENSE) for details
 ## 🔗 Links
 
 - **Repository**: https://github.com/Venelinhr/sap-ai-design-system-c
-- **Case Study**: [CASE_STUDY_SAP_DESIGN_SYSTEM_LLM_READY.md](CASE_STUDY_SAP_DESIGN_SYSTEM_LLM_READY.md)
-- **Presentation**: [docs/presentations/SAPUI5_LLM_READY_PRESENTATION.md](docs/presentations/SAPUI5_LLM_READY_PRESENTATION.md)
 
 ## 💬 Support
 
 For questions or issues:
 - Open an issue on GitHub
 - Check the documentation in `docs/`
-- Review the case study for detailed examples
 
 ---
 
