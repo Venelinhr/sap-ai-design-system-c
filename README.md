@@ -246,11 +246,11 @@ node benchmark/run-benchmark.js leaderboard
 
 **Target Score**: ≥85 for LLM-Ready certification
 
-## � Figma Diagrams
+## 📊 Workflow Diagram
 
-Visual diagrams explaining the LLM-Ready workflow and architecture:
+![SAPUI5 LLM-Ready Workflow](diagrams/SAPUI5%20LLM-Ready%20Workflow.png)
 
-- [SAPUI5 LLM-Ready Workflow](https://www.figma.com/board/qPDUwfOK3T729nJMUCvJaH) - Transformation from traditional to LLM-ready systems
+**Additional Figma Diagrams:**
 - [LLM-Ready Validation Pipeline](https://www.figma.com/board/2sWf37ruN0ObZLcm7Vhbcb) - Validation pipeline from generation to scoring
 - [LLM-Ready System Architecture](https://www.figma.com/board/yuDdy0qWqwBgdtULdxbWI4) - System architecture with data flow
 - [Component Registry Flow](https://www.figma.com/board/hF4MpwElNu0gKACr9YxYGk) - Component registry and short name mapping
