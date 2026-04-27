@@ -81,7 +81,7 @@ Each component includes:
 - Usage examples
 - Versioning details
 
-All components are validated and ready for production use with AI assistants.
+All components are validated and ready for production.
 
 ## 🎉 First Outcome
 
