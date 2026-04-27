@@ -87,12 +87,6 @@ All components are validated and ready for production.
 
 When building SAPUI5 applications, **always verify** the latest information from official SAP sources:
 
-**Primary Sources of Truth:**
-- [SAPUI5 GitHub Repository](https://github.com/SAP/ui5) - Latest code and changes
-- [SAPUI5 API Reference](https://ui5.sap.com/#/api) - Official API documentation
-- [SAP Fiori Design Guidelines](https://experience.sap.com/fiori-design/) - Design standards
-- [SAPUI5 Version Info](https://ui5.sap.com/#/version) - Current version and release notes
-
 **Validation Checklist:**
 1. Check SAPUI5 version compatibility
 2. Verify component API hasn't changed
