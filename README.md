@@ -255,9 +255,8 @@ Visual diagrams explaining the LLM-Ready workflow and architecture:
 - [LLM-Ready System Architecture](https://www.figma.com/board/yuDdy0qWqwBgdtULdxbWI4) - System architecture with data flow
 - [Component Registry Flow](https://www.figma.com/board/hF4MpwElNu0gKACr9YxYGk) - Component registry and short name mapping
 
-##  Documentation
+## 📚 Documentation
 
-- **[Case Study](CASE_STUDY_SAP_DESIGN_SYSTEM_LLM_READY.md)** - Complete transformation journey
 - **[Easy Prompting Guide](docs/EASY_PROMPTING_GUIDE.md)** - How to use short names
 - **[Validation Framework](docs/VALIDATION_FRAMEWORK.md)** - Validation system details
 - **[Testing with Claude](docs/TESTING_WITH_CLAUDE.md)** - Claude-specific instructions
