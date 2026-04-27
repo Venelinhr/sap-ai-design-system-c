@@ -64,6 +64,8 @@ Create a Customer Subscription Management application that allows sales represen
 
 Use ONLY components from this design system registry. Do NOT hallucinate or use components not in the registry.
 
+The registry contains 25 commonly used SAPUI5 components including layout, form, display, data, navigation, and feedback components. See [Component Registry](COMPONENT_REGISTRY.md) for the complete list.
+
 ### Required Components:
 - sap.m.Page (for all pages)
 - sap.m.ObjectHeader (for detail page)

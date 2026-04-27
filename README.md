@@ -47,7 +47,7 @@ A design system is LLM-Ready if it meets these criteria:
 ## 🎯 What This Does
 
 Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready systems (built for AI) by:
-- Creating machine-readable component registries
+- Creating machine-readable component registries (25 common SAPUI5 components)
 - Implementing automated validation pipelines
 - Enforcing registry-only constraints
 - Providing prompt examples for Claude, Cursor, Windsurf
@@ -327,6 +327,9 @@ Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 - **[Testing with Claude](docs/TESTING_WITH_CLAUDE.md)** - Claude-specific instructions
 - **[Testing with Cursor](docs/TESTING_WITH_CURSOR.md)** - Cursor-specific instructions
 - **[Testing with Windsurf](docs/TESTING_WITH_WINDSURF.md)** - Windsurf-specific instructions
+- **[Prompt Examples](PROMPT_EXAMPLES.md)** - Example prompts for different use cases
+- **[Detailed Prompt Example](docs/DETAILED_PROMPT_EXAMPLE.md)** - Comprehensive prompt template
+- **[Component Registry](docs/COMPONENT_REGISTRY.md)** - List of 25 available SAPUI5 components
 
 ## 🎓 Key Learnings
 
