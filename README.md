@@ -83,6 +83,31 @@ Each component includes:
 
 All components are validated and ready for production.
 
+## ⚠️ Important: Always Check Latest SAPUI5 Updates
+
+When building SAPUI5 applications, **always verify** the latest information from official SAP sources:
+
+**Primary Sources of Truth:**
+- [SAPUI5 GitHub Repository](https://github.com/SAP/ui5) - Latest code and changes
+- [SAPUI5 API Reference](https://ui5.sap.com/#/api) - Official API documentation
+- [SAP Fiori Design Guidelines](https://experience.sap.com/fiori-design/) - Design standards
+- [SAPUI5 Version Info](https://ui5.sap.com/#/version) - Current version and release notes
+
+**Validation Checklist:**
+1. Check SAPUI5 version compatibility
+2. Verify component API hasn't changed
+3. Confirm design tokens are current
+4. Validate against latest SAP Fiori guidelines
+5. Test generated code in actual SAPUI5 environment
+
+**Why This Matters:**
+- SAPUI5 components may be deprecated or updated
+- API properties can change between versions
+- Design tokens may evolve
+- New best practices emerge
+
+**Always validate your generated code against the latest SAPUI5 documentation before production use.**
+
 ## 🎉 First Outcome
 
 ![My very first result](examples/My%20very%20first%20result.png)
