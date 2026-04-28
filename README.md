@@ -350,35 +350,35 @@ sapui5-llm-ready/
 
 ## 📊 Workflow Diagrams
 
-**SAPUI5 LLM-Ready Workflow (New - Figma Jam)**
+**SAPUI5 LLM-Ready Workflow Complete**
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/board/2WTk1XdsKHqCw0hWV9R2mG/SAPUI5-LLM-Ready-Workflow?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+![SAPUI5 LLM-Ready Workflow Complete](diagrams/SAPUI5%20LLM-Ready%20Workflow%20Complete.png)
 
-This diagram shows the transformation from traditional SAP design systems to LLM-ready systems. Traditional systems (built for humans) cause LLM hallucinations and ~50% build failures. LLM-ready systems (built for machines) achieve zero hallucinations and 100% build success through 41 verified controls, component registries, and comprehensive documentation (COMPONENTS.md, SKILL.md, USAGE_INSTRUCTIONS.md).
-
----
-
-**SAPUI5 LLM-Ready Transformation Workflow (New - Figma Jam)**
-
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/board/TVLfPBqkxOhhiTddUNC67i/SAPUI5-LLM-Ready-Transformation-Workflow?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-
-The 5-step transformation process: (1) Define Source of Truth from SAPUI5 API, (2) Extract & Structure components into machine-readable format (41 verified controls), (3) Constrain LLM with component registry, (4) Add retrieval for context (COMPONENTS.md, SKILL.md, USAGE_INSTRUCTIONS.md), (5) Build and verify. This systematic approach transforms human-readable documentation into machine-readable systems.
+This diagram shows the complete SAPUI5 LLM-Ready workflow from user request to working application. It includes the 3-layer validation architecture (Planner → Validator → Builder), registry check against 41 verified controls, and the build/test cycle. The flow demonstrates how AI assistants use the component registry and documentation to achieve zero hallucinations and 100% build success.
 
 ---
 
-**LLM-Ready Quality Assurance (New - Figma Jam)**
+**3-Layer Validation Architecture**
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/board/CeEXq1x7OP5fYrNn65P1yo/LLM-Ready-Quality-Assurance?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+![3-Layer Validation Architecture](diagrams/3-Layer%20Validation%20Architecture.png)
 
-Quality assurance is achieved through the verified component registry (41 controls) and comprehensive documentation (COMPONENTS.md, SKILL.md). Both Cursor AI and Claude AI achieved 95/100 scores with zero hallucinations by using only verified controls.
+This diagram illustrates the 3-layer validation architecture used by AI assistants: (1) Planner Agent creates UI_PLAN, (2) Validator Agent critically verifies the plan against the 41-component registry, (3) Builder Agent generates final implementation. The execution flow is: User Request → Planner (UI_PLAN) → Validator (PASS/FAIL) → Builder (Final Code). If validation fails, a feedback loop returns to the Planner for revision.
 
 ---
 
-**Breakthrough Flow Methodology (New - Figma Jam)**
+**LLM-Ready Quality Assurance**
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/board/s566D7bjwOVNcoWuhULf0U/Breakthrough-Flow-Methodology?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+![LLM-Ready Quality Assurance](diagrams/LLM-Ready%20Quality%20Assurance.png)
 
-This methodology represents the breakthrough moment when we shifted from prompt engineering to system design. The key insight: instead of trying to make LLMs understand human documentation, we restructure the design system to be machine-readable. This reduced hallucinations from common to zero and improved build success from 50% to 100%.
+This diagram shows the quality assurance process achieved through the verified component registry (41 controls) and comprehensive documentation (COMPONENTS.md, SKILL.md). The process includes: Registry Check (component in registry), Property Check (property in documentation), and Design Token Check. Results: 95/100 Validation Score, Zero Hallucinations, 100% Build Success. Both Cursor AI and Claude AI achieved these results by using only verified controls.
+
+---
+
+**Breakthrough Flow Methodology**
+
+![Breakthrough Flow Methodology](diagrams/Breakthrough%20Flow%20Methodology.png)
+
+This diagram represents the breakthrough moment when we shifted from prompt engineering to system design. Traditional Approach (Prompt Engineering → LLM Tries to Understand → Hallucinations, 50% Build Success) vs LLM-Ready Approach (Restructure Design System to Machine-Readable Format → 41 Component Registry + COMPONENTS.md, SKILL.md → Zero Hallucinations, 100% Build Success). The key insight: instead of trying to make LLMs understand human documentation, we restructure the design system to be machine-readable.
 
 **Additional Figma Diagrams:**
 - [LLM-Ready System Architecture](https://www.figma.com/board/yuDdy0qWqwBgdtULdxbWI4) - System architecture with data flow
