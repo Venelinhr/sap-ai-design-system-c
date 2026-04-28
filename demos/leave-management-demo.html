@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>DEMO</title>
+    <style>
+      :root {
+        --page-surface: #f4f5f6;
+        --content-max: 680px;
+      }
+      html {
+        box-sizing: border-box;
+        -webkit-text-size-adjust: 100%;
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      *, *::before, *::after {
+        box-sizing: inherit;
+      }
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: clamp(12px, 3vw, 36px);
+        padding-bottom: max(clamp(12px, 3vw, 36px), env(safe-area-inset-bottom));
+        padding-left: max(clamp(12px, 3vw, 36px), env(safe-area-inset-left));
+        padding-right: max(clamp(12px, 3vw, 36px), env(safe-area-inset-right));
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: visible;
+        background:
+          radial-gradient(1200px 500px at 10% -10%, rgba(0, 112, 242, 0.06), transparent 55%),
+          radial-gradient(900px 400px at 100% 0%, rgba(0, 135, 80, 0.05), transparent 50%),
+          var(--page-surface);
+      }
+      #content {
+        width: 100%;
+        max-width: var(--content-max);
+        margin-inline: auto;
+        background-color: var(--sapBackgroundColor, #f5f6f7);
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        padding: clamp(12px, 2.5vw, 28px);
+        height: auto !important;
+        max-height: none !important;
+        min-height: 0;
+        overflow: visible !important;
+      }
+      #content .sapUiView,
+      #content .sapMApp,
+      #content .sapMNav {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+      }
+      body.sapUiBody {
+        height: auto !important;
+        min-height: 100dvh;
+        overflow: visible !important;
+      }
+      #content .sapMPage {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+      }
+      #content section.sapMPageEnableScrolling,
+      #content section[id$="-cont"] {
+        padding: 20px 24px 32px !important;
+        box-sizing: border-box;
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+        flex: none !important;
+      }
+      #content .sapMPageHeader,
+      #content .sapMPage .sapMPageHeader {
+        display: none !important;
+      }
+      @media (max-width: 600px) {
+        #content {
+          padding: 12px;
+        }
+      }
+      #content .sapMTokenizer {
+        overflow: visible !important;
+      }
+      #content .sapMTokenizerScrollContainer {
+        overflow: visible !important;
+      }
+      #content .sapMInputBaseContentWrapper {
+        overflow: visible !important;
+      }
+    </style>
+    <script
+      id="sap-ui-bootstrap"
+      src="https://ui5.sap.com/resources/sap-ui-core.js"
+      data-sap-ui-theme="sap_horizon"
+      data-sap-ui-compatVersion="edge"
+      data-sap-ui-libs="sap.m,sap.ui.layout,sap.ui.core,sap.ui.unified,sap.tnt"
+      data-sap-ui-resourceroots='{"leavemgmt":"./"}'>
+    </script>
+    <script>
+      sap.ui.getCore().attachInit(function() {
+        var oView = sap.ui.xmlview({
+          viewName: "leavemgmt.view.ComponentDemo",
+          viewData: {}
+        });
+        oView.placeAt("content");
+      });
+    </script>
+  </head>
+  <body class="sapUiBody sapUiSizeCompact">
+    <div id="content"></div>
+  </body>
+</html>
