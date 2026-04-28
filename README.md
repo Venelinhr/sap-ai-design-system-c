@@ -358,11 +358,11 @@ This diagram shows the transformation from traditional SAP design systems to LLM
 
 ---
 
-**SAPUI5 LLM-Ready Transformation Workflow**
+**SAPUI5 LLM-Ready Transformation Workflow (New - Figma Jam)**
 
-![SAPUI5 LLM-Ready Transformation Workflow](diagrams/SAPUI5%20LLM-Ready%20Transformation%20Workflow.png)
+[![SAPUI5 LLM-Ready Transformation Workflow](https://www.figma.com/board/TVLfPBqkxOhhiTddUNC67i)](https://www.figma.com/board/TVLfPBqkxOhhiTddUNC67i)
 
-The 5-step transformation process: (1) Define Source of Truth from SAPUI5 API, (2) Extract & Structure components into machine-readable format, (3) Constrain LLM with component registry, (4) Add retrieval for context, (5) Build and verify. This systematic approach transforms human-readable documentation into machine-readable systems.
+The 5-step transformation process: (1) Define Source of Truth from SAPUI5 API, (2) Extract & Structure components into machine-readable format (41 verified controls), (3) Constrain LLM with component registry, (4) Add retrieval for context (COMPONENTS.md, SKILL.md, USAGE_INSTRUCTIONS.md), (5) Build and verify. This systematic approach transforms human-readable documentation into machine-readable systems.
 
 ---
 
