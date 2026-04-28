@@ -374,9 +374,9 @@ Quality assurance is achieved through the verified component registry (41 contro
 
 ---
 
-**Breakthrough Flow Methodology**
+**Breakthrough Flow Methodology (New - Figma Jam)**
 
-![Breakthrough Flow Methodology](diagrams/Breakthrough%20Flow%20Methodology.png)
+[![Breakthrough Flow Methodology](https://www.figma.com/board/s566D7bjwOVNcoWuhULf0U)](https://www.figma.com/board/s566D7bjwOVNcoWuhULf0U)
 
 This methodology represents the breakthrough moment when we shifted from prompt engineering to system design. The key insight: instead of trying to make LLMs understand human documentation, we restructure the design system to be machine-readable. This reduced hallucinations from common to zero and improved build success from 50% to 100%.
 
