@@ -34,7 +34,7 @@ Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready s
 ## How to Start (3 Steps)
 
 1. **Clone the repository** — `git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git` 
-2. **Open in your AI assistant** — Claude, Cursor, Windsurf, VS Code, or ChatGPT
+2. **Open in your AI assistant** — Claude, Cursor, Windsurf, VS Code.
 3. **Start building** — The design system rules load automatically
 
 See [GETTING_STARTED.md](GETTING_STARTED.md) for the full walkthrough, or jump to [Installation by AI Tool](#installation-by-ai-tool) for tool-specific setup.
@@ -42,7 +42,7 @@ See [GETTING_STARTED.md](GETTING_STARTED.md) for the full walkthrough, or jump t
 **Key files:**
 - **[GETTING_STARTED.md](GETTING_STARTED.md)** — Complete getting started guide
 - **[COMPONENTS.md](COMPONENTS.md)** — Full component documentation (41 verified controls)
-- **[USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)** — Tool-specific instructions for Claude, Cursor, Windsurf, VS Code, ChatGPT
+- **[USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)** — Tool-specific instructions for Claude, Cursor, Windsurf, VS Code.
 - **[PROMPT_EXAMPLES.md](PROMPT_EXAMPLES.md)** — Example prompts for different use cases
 - **[.cursor/skills/sapui5-basic-form-demo/SKILL.md](.cursor/skills/sapui5-basic-form-demo/SKILL.md)** — Complete skill documentation
 
