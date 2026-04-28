@@ -14,7 +14,7 @@ The SAPUI5 LLM-Ready Design System transforms traditional SAP design systems int
 
 ---
 
-## 🎯 What This Does
+## What This Does
 
 Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready systems (built for AI) by:
 - Creating machine-readable component registries (41 verified controls)
@@ -35,7 +35,7 @@ Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready s
 
 ---
 
-## 🎯 What "LLM-Ready" Means
+## What "LLM-Ready" Means
 
 ### How to Start (3 Steps)
 1. **Clone the repository** - `git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git`
@@ -76,7 +76,7 @@ Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready s
 
 ---
 
-## 🎯 What "LLM-Ready" Means
+## What "LLM-Ready" Means
 
 A design system is LLM-Ready if it meets these criteria:
 
@@ -111,7 +111,7 @@ A design system is LLM-Ready if it meets these criteria:
 
 ---
 
-## 🎯 Available Components (41 Verified Controls)
+## Available Components (41 Verified Controls)
 
 ### Core Container Controls (2)
 - `sap.m.App` - Application container
@@ -184,7 +184,7 @@ A design system is LLM-Ready if it meets these criteria:
 For detailed component documentation, see [COMPONENTS.md](COMPONENTS.md) or [SKILL.md](.cursor/skills/sapui5-basic-form-demo/SKILL.md).
 
 
-## 📖 How It Works
+## How It Works
 
 ### The Problem
 Traditional design systems are built for humans, not machines. When LLMs try to use them:
@@ -209,7 +209,7 @@ LLM-ready design systems are built for machines:
 4. **Add Retrieval** - Dynamic context delivery via COMPONENTS.md and USAGE_INSTRUCTIONS.md
 5. **Build & Verify** - Generate code and verify against registry
 
-## 🤖 Prompt Examples
+## Prompt Examples
 
 ### Using with Claude AI
 
@@ -297,7 +297,7 @@ Apply SAP Horizon theme and proper design tokens.
 
 See USAGE_INSTRUCTIONS.md for detailed ChatGPT-specific instructions.
 
-## ✅ Best Practices
+## Best Practices
 
 ### What To Do
 - **DO** use short names (Page, Table, Button) for easier prompting
@@ -328,7 +328,7 @@ See USAGE_INSTRUCTIONS.md for detailed ChatGPT-specific instructions.
 - **DON'T** mix density modes incorrectly
 - **DON'T** skip the multi-step architecture (Planner → Validator → Builder)
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 sapui5-llm-ready/
@@ -346,7 +346,7 @@ sapui5-llm-ready/
 └── COMPONENT_REGISTRY_ANALYSIS.md  # Registry analysis snapshot
 ```
 
-## 📊 Workflow Diagrams
+## Workflow Diagrams
 
 **SAPUI5 LLM-Ready Workflow Complete**
 
@@ -378,7 +378,7 @@ This diagram shows the quality assurance process achieved through the verified c
 
 This diagram represents the breakthrough moment when we shifted from prompt engineering to system design. Traditional Approach (Prompt Engineering → LLM Tries to Understand → Hallucinations, 50% Build Success) vs LLM-Ready Approach (Restructure Design System to Machine-Readable Format → 41 Component Registry + COMPONENTS.md, SKILL.md → Zero Hallucinations, 100% Build Success). The key insight: instead of trying to make LLMs understand human documentation, we restructure the design system to be machine-readable.
 
-## 📸 Examples
+## Examples
 
 Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 
@@ -393,14 +393,14 @@ Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 ![Example 9](examples/example-9.png)
 ![Example 10](examples/example-10.png)
 
-## 📚 Documentation
+## Documentation
 
 - **[GETTING_STARTED.md](GETTING_STARTED.md)** - Complete getting started guide
 - **[COMPONENTS.md](COMPONENTS.md)** - Detailed component documentation
 - **[USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)** - Instructions for Claude, Cursor, Windsurf, VS Code, ChatGPT
 - **[PROMPT_EXAMPLES.md](PROMPT_EXAMPLES.md)** - Example prompts for different use cases
 
-## 🎓 Key Learnings
+## Key Learnings
 
 1. **Systems over prompts** - Build component registries and documentation, don't just prompt better
 2. **Registry-only rule** - LLMs must only use verified components
@@ -408,7 +408,7 @@ Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 4. **Short name mapping** - Allow both short names and full namespaces
 5. **Zero hallucinations** - Achievable with proper constraints
 
-## 🏆 Achievements
+## Achievements
 
 - ✅ Transformed traditional SAP design system to LLM-ready
 - ✅ All 5 LLM-ready criteria met
@@ -420,7 +420,7 @@ Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 - ✅ Comprehensive documentation (COMPONENTS.md, USAGE_INSTRUCTIONS.md)
 - ✅ Completed in April 2026
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -428,15 +428,15 @@ Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 4. Verify components are in the 41-control registry
 5. Submit a pull request
 
-## 📄 License
+## License
 
 MIT License - See [LICENSE](LICENSE) for details
 
-## 🔗 Links
+## Links
 
 - **Repository**: https://github.com/Venelinhr/SAP-LLM-ready-design-system
 
-## 💬 Support
+## Support
 
 For questions or issues:
 - Open an issue on GitHub
