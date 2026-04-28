@@ -319,20 +319,21 @@ See USAGE_INSTRUCTIONS.md for detailed ChatGPT-specific instructions.
 ## ✅ What To Do
 
 - **DO** use short names (Page, Table, Button) for easier prompting
-- **DO** validate your output using the validation pipeline
+- **DO** use only the 41 verified controls from the registry
 - **DO** follow SAP Fiori guidelines
-- **DO** include design tokens (density, spacing, semantic classes)
-- **DO** use the SKILL.md as your source of truth
-- **DO** run validation after generation
-- **DO** check the case study for examples
+- **DO** include design tokens (sapUiSizeCompact, sapUiSmallMarginBottom)
+- **DO** use COMPONENTS.md and SKILL.md as your source of truth
+- **DO** check USAGE_INSTRUCTIONS.md for your specific AI tool
+- **DO** apply SAP Horizon theme (sap_horizon)
+- **DO** verify components are in the 41-control registry
 
 ## ❌ What NOT To Do
 
-- **DON'T** hallucinate properties not in the registry
-- **DON'T** use controls not documented in SKILL.md
+- **DON'T** use controls not in the 41-component registry
+- **DON'T** hallucinate properties not documented in COMPONENTS.md or SKILL.md
 - **DON'T** guess API specifications
 - **DON'T** ignore SAP Fiori guidelines
-- **DON'T** skip validation
+- **DON'T** forget namespace prefixes (unified:FileUploader, tnt:InfoLabel)
 - **DON'T** use deprecated APIs
 - **DON'T** mix density modes incorrectly
 
@@ -342,50 +343,19 @@ See USAGE_INSTRUCTIONS.md for detailed ChatGPT-specific instructions.
 sapui5-llm-ready/
 ├── .cursor/skills/          # Cursor AI skill definitions
 │   └── sapui5-basic-form-demo/
-│       └── SKILL.md        # Verified component registry
-├── validation/              # Validation pipeline
-│   ├── component-whitelist-validator.js
-│   ├── design-token-validator.js
-│   └── run-validation.js
-├── schemas/                 # JSON schemas
-├── tests/                   # Test prompts and outputs
-│   └── canonical-test-prompt.md
-├── docs/                    # Documentation
-│   ├── EASY_PROMPTING_GUIDE.md
-│   ├── TESTING_WITH_CLAUDE.md
-│   ├── TESTING_WITH_CURSOR.md
-│   ├── TESTING_WITH_WINDSURF.md
-│   └── VALIDATION_FRAMEWORK.md
-├── .gitignore
-└── package.json
+│       └── SKILL.md        # Verified component registry (41 controls)
+├── .cursor/rules/           # Cursor AI rules
+│   └── sapui5-llm-ready.md # LLM-ready design system rules
+├── .windsurf/rules/         # Windsurf rules
+│   └── sapui5-fiori.md     # SAP Fiori rules for Windsurf
+├── COMPONENTS.md            # Detailed component documentation
+├── USAGE_INSTRUCTIONS.md   # Instructions for Claude, Cursor, Windsurf, VS Code, ChatGPT
+├── GETTING_STARTED.md      # Getting started guide
+├── README.md               # This file
+└── COMPONENT_REGISTRY_ANALYSIS.md  # Registry analysis snapshot
 ```
 
-## 🔧 Validation
-
-### Run Validation
-
-```bash
-# Validate a specific output file
-node validation/run-validation.js <output-file>
-
-# Run benchmark
-node benchmark/run-benchmark.js run <output-file> <model-name>
-
-# View leaderboard
-node benchmark/run-benchmark.js leaderboard
-```
-
-### Scoring System
-
-- **Structure Accuracy (0-25)**: JSON structure correctness
-- **Component Validity (0-20)**: Components in registry
-- **Props Accuracy (0-15)**: Properties valid and complete
-- **SAPUI5 Compliance (0-25)**: API compliance + design tokens
-- **Consistency (0-15)**: Metadata completeness
-
-**Target Score**: ≥85 for LLM-Ready certification
-
-## 📊 Workflow Diagrams
+##  Workflow Diagrams
 
 **SAPUI5 LLM-Ready Workflow**
 
