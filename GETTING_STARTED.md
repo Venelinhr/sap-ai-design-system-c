@@ -2,11 +2,13 @@
 
 This guide will help you quickly get started with building SAPUI5 applications using AI-assisted development with zero hallucinations and 100% build success.
 
+**Current Status:** 41 verified SAPUI5 controls with 100% API-accurate properties, aggregations, and events.
+
 ## 🎯 What You'll Need
 
-- Node.js installed (for validation)
-- An AI assistant (Claude, Cursor, Windsurf, or other LLM)
-- Basic understanding of SAPUI5 concepts
+- An AI assistant (Claude, Cursor, Windsurf, VS Code with Copilot, ChatGPT, or other LLM)
+- Basic understanding of SAPUI5 concepts (optional - the design system handles this)
+- Clone this repository
 
 ## 📋 Prerequisites
 
@@ -17,269 +19,278 @@ git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git
 cd SAP-LLM-ready-design-system
 ```
 
-### 2. Install Dependencies
+### 2. No Installation Required
 
-```bash
-npm install
-```
-
-### 3. Verify Installation
-
-```bash
-node validation/run-validation.js --help
-```
-
-If you see the help message, you're ready to go!
+The design system is ready to use immediately with your AI assistant. No dependencies need to be installed.
 
 ## 🚀 Quick Start (5 Minutes)
 
 ### Step 1: Choose Your AI Assistant
 
 **For Claude AI:**
-- Use the prompts in [PROMPT_EXAMPLES.md](PROMPT_EXAMPLES.md#-claude-ai-prompts)
-- Follow [Testing with Claude](docs/TESTING_WITH_CLAUDE.md)
+- Open the repository in Claude Desktop
+- The `.windsurf/rules/sapui5-fiori.md` file is automatically loaded
+- Use prompts from [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md#claude-anthropic)
+- See detailed component documentation in [COMPONENTS.md](COMPONENTS.md)
 
 **For Cursor AI:**
-- The SKILL.md is already configured in `.cursor/skills/`
-- Use prompts from [PROMPT_EXAMPLES.md](PROMPT_EXAMPLES.md#-cursor-ai-prompts)
-- Follow [Testing with Cursor](docs/TESTING_WITH_CURSOR.md)
+- Open the repository in Cursor IDE
+- The `.cursor/rules/sapui5-llm-ready.md` file is automatically loaded
+- The `.cursor/skills/sapui5-basic-form-demo/SKILL.md` skill is automatically activated
+- Use prompts from [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md#cursor-ai)
 
 **For Windsurf:**
-- The `.windsurfrules` file is already configured
-- Use prompts from [PROMPT_EXAMPLES.md](PROMPT_EXAMPLES.md#-windsurf-prompts)
-- Follow [Testing with Windsurf](docs/TESTING_WITH_WINDSURF.md)
+- Open the repository in Windsurf IDE
+- The `.windsurf/rules/sapui5-fiori.md` file is automatically loaded
+- Use prompts from [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md#windsurf)
 
-**For Other LLMs:**
-- Use the universal prompt template from [PROMPT_EXAMPLES.md](PROMPT_EXAMPLES.md#-universal-prompt-template-chatgpt-etc)
+**For VS Code with GitHub Copilot:**
+- Open the repository in VS Code
+- Keep [COMPONENTS.md](COMPONENTS.md) open for reference
+- Use prompts from [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md#vs-code-with-ai-extensions)
 
-### Step 2: Generate Your First SAPUI5 Component
+**For ChatGPT (Web Interface):**
+- Copy the contents of [COMPONENTS.md](COMPONENTS.md)
+- Paste it into ChatGPT as context
+- Use prompts from [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md#chatgpt-openai)
 
-**Example Prompt (Claude):**
+### Step 2: Generate Your First SAPUI5 Application
+
+**Example Prompt (Any AI):**
 ```
-Generate a SAPUI5 form with:
-- Title: "User Registration"
-- Fields: First Name, Last Name, Email
-- Submit button
-- Use only controls from SKILL.md
-- Apply SAP Horizon theme with sapUiSizeCompact
-
-Output: JSON format with meta section
+I'm building a SAPUI5 application using the LLM-ready design system.
+Create a customer information form with:
+- Fields: First Name, Last Name, Email, Phone, Address
+- Use SimpleForm with ResponsiveGridLayout layout
+- Add Save and Cancel buttons
+- Use only verified controls from the registry (41 controls)
+- Apply SAP Horizon theme with sapUiSizeCompact density
 ```
 
-### Step 3: Validate Your Output
+### Step 3: Review the Generated Code
 
-```bash
-# Save the LLM output to a file (e.g., output.json)
-node validation/run-validation.js output.json
-```
+The AI will generate:
+1. **Form Architecture** - Sections, fields, interaction flow
+2. **SAPUI5 XML View** - Clean, modular, readable code
+3. **Controller Logic** - Event handling, validation, user feedback
 
-**Expected Result:**
-- Score: ≥85/100
-- Status: PASSED
-- Zero hallucinations
-
-### Step 4: Iterate if Needed
-
-If validation fails:
-1. Check the error messages
-2. Fix the issues in your prompt
-3. Regenerate
-4. Re-validate
+**Verify:**
+- All controls are in the 41-component registry
+- All properties are documented in [COMPONENTS.md](COMPONENTS.md)
+- Theme is `sap_horizon`
+- Density is `sapUiSizeCompact` or `sapUiSizeCozy`
 
 ## 📖 Understanding the System
 
-### The Component Registry
+### The Component Registry (41 Verified Controls)
 
-The verified component registry is in `.cursor/skills/sapui5-basic-form-demo/SKILL.md`
+The verified component registry is in [COMPONENTS.md](COMPONENTS.md) and `.cursor/skills/sapui5-basic-form-demo/SKILL.md`
 
-**Supported Controls (Short Names):**
-- `Page` - sap.m.Page
-- `App` - sap.m.App
-- `Panel` - sap.m.Panel
-- `Table` - sap.m.Table
-- `Button` - sap.m.Button
-- `Input` - sap.m.Input
-- `Label` - sap.m.Label
-- `Select` - sap.m.Select
-- `CheckBox` - sap.m.CheckBox
-- `Switch` - sap.m.Switch
-- `DatePicker` - sap.m.DatePicker
-- `TextArea` - sap.m.TextArea
-- `ComboBox` - sap.m.ComboBox
-- `Dialog` - sap.m.Dialog
+**Core Container Controls (2):**
+- `App` - Application container
+- `Page` - Page container
 
-**You can use either short names or full namespaces.**
+**Form Controls (21):**
+- `Label` - Form label
+- `Input` - Text input
+- `TextArea` - Multi-line input
+- `Select` - Dropdown selection
+- `ComboBox` - Searchable dropdown
+- `Item` - Select/ComboBox item
+- `Switch` - Toggle switch
+- `CheckBox` - Checkbox
+- `DatePicker` - Date picker
+- `MessageStrip` - Message display
+- `Link` - Hyperlink
+- `Slider` - Range slider
+- `MultiComboBox` - Multi-select dropdown
+- `RatingIndicator` - Star rating
+- `ProgressIndicator` - Progress bar
+- `SegmentedButton` - Segmented button group
+- `SegmentedButtonItem` - Segmented button item
+- `StepInput` - Numeric input with +/-
+- `ToggleButton` - Toggle button
+- `RadioButton` - Radio button
+- `MaskInput` - Input with mask format
+
+**Action Controls (5):**
+- `Button` - Action button
+- `Toolbar` - Toolbar container
+- `ToolbarSpacer` - Toolbar spacer
+- `OverflowToolbar` - Toolbar with overflow
+- `SearchField` - Search input
+
+**Display Controls (9):**
+- `Text` - Text display
+- `ObjectStatus` - Status indicator
+- `Image` - Image display
+- `Title` - Title text
+- `ObjectHeader` - Object header
+- `ObjectAttribute` - Object attribute
+- `GenericTag` - Generic tag
+- `MessagePopover` - Message popover
+- `MessagePopoverItem` - Message popover item
+
+**Layout Controls (12):**
+- `Panel` - Grouping container
+- `Table` - Tabular data display
+- `Column` - Table column
+- `ColumnListItem` - Table row item
+- `Dialog` - Modal dialog
+- `HBox` - Horizontal flexbox
+- `VBox` - Vertical flexbox
+- `List` - List control
+- `StandardListItem` - Standard list item
+- `IconTabBar` - Tab bar with icons
+- `IconTabFilter` - Tab filter
+- `Breadcrumbs` - Breadcrumb navigation
+
+**Layout Controls (sap.ui.layout.form) (1):**
+- `SimpleForm` - Form layout
+
+**Other Controls (2):**
+- `FileUploader` - File upload (requires `xmlns:unified="sap.ui.unified"`)
+- `InfoLabel` - Info label (requires `xmlns:tnt="sap.tnt"`)
+
+**You can use either short names (e.g., "Page", "Table") or full namespaces (e.g., "sap.m.Page", "sap.m.Table").**
+
+### Bootstrap Configuration
+
+**Required bootstrap settings:**
+```html
+<script
+  id="sap-ui-bootstrap"
+  src="https://ui5.sap.com/resources/sap-ui-core.js"
+  data-sap-ui-theme="sap_horizon"
+  data-sap-ui-compatVersion="edge"
+  data-sap-ui-async="true"
+  data-sap-ui-libs="sap.m,sap.ui.layout,sap.ui.core"
+  data-sap-ui-resourceroots='{"appnamespace":"./"}'
+></script>
+```
 
 ### Design Tokens
 
+**Theme:**
+- `sap_horizon` - Official SAP Fiori Horizon theme
+
 **Density Classes:**
-- `sapUiSizeCompact` - Desktop/non-touch
-- `sapUiSizeCozy` - Touch devices
+- `sapUiSizeCompact` - Desktop/non-touch (smaller controls)
+- `sapUiSizeCozy` - Touch devices (larger touch targets)
 
 **Spacing Tokens:**
 - `sapUiContentPadding` - Content spacing
 - `sapUiSmallMargin` - Small margin
+- `sapUiSmallMarginBottom` - Small bottom margin (default for panels)
 - `sapUiMediumMargin` - Medium margin
-
-**Semantic Classes:**
-- `sapMListBG` - List background
-- `sapMBarBG` - Toolbar background
-- `sapMPageBG` - Page background
-
-### Output Format
-
-Your LLM should output JSON in this format:
-
-```json
-{
-  "ui": {
-    "components": [...]
-  },
-  "meta": {
-    "model": "claude",
-    "design_system_version": "1.0",
-    "timestamp": "2026-04-27T12:00:00Z"
-  }
-}
-```
 
 ## ✅ Do's and Don'ts
 
 ### ✅ DO
 
 - Use short names (Page, Table, Button) for easier prompting
-- Validate your output after generation
-- Include the meta section with model, version, timestamp
-- Apply SAP Horizon theme tokens
-- Follow SAP Fiori guidelines
-- Check SKILL.md for available controls
-- Use the validation pipeline
+- Use only the 41 verified controls from the registry
+- Apply SAP Horizon theme (sap_horizon)
+- Apply sapUiSizeCompact density for desktop
+- Follow SAP Fiori guidelines (Clarity, Consistency, Responsiveness, Accessibility)
+- Check [COMPONENTS.md](COMPONENTS.md) for available controls and properties
+- Use the multi-step agent architecture (Planner → Validator → Builder)
+- Request validation against SAPUI5 API
 
 ### ❌ DON'T
 
-- Hallucinate properties not in the registry
-- Use controls not documented in SKILL.md
+- Use controls not in the 41-component registry
+- Hallucinate properties not documented in [COMPONENTS.md](COMPONENTS.md) or SKILL.md
 - Guess API specifications
-- Skip validation
 - Use deprecated APIs
-- Mix density modes incorrectly
-- Forget design tokens
+- Forget namespace requirements for FileUploader and InfoLabel
+- Skip the multi-step validation process
 
 ## 🔧 Advanced Usage
 
-### Running Benchmarks
+### Multi-Step Agent Architecture
 
-```bash
-# Run a benchmark test
-node benchmark/run-benchmark.js run output.json claude
+The design system uses a multi-step agent architecture:
 
-# View leaderboard
-node benchmark/run-benchmark.js leaderboard
-```
+1. **Planner** - Translate request to structured UI plan
+2. **Validator** - Critically verify the plan (check SAPUI5 API, no deprecated APIs, composability)
+3. **Builder** - Generate final implementation
 
-### Understanding Validation Scores
+If validation fails → Provide feedback → Revise plan → Re-validate → Build
 
-- **Structure Accuracy (0-25)**: JSON structure correctness
-- **Component Validity (0-20)**: Components in registry
-- **Props Accuracy (0-15)**: Properties valid and complete
-- **SAPUI5 Compliance (0-25)**: API compliance + design tokens
-- **Consistency (0-15)**: Metadata completeness
+### Namespace Requirements
 
-**Target Score**: ≥85 for LLM-Ready certification
+**For FileUploader:**
+- Add to XML namespaces: `xmlns:unified="sap.ui.unified"`
+- Use prefix: `unified:FileUploader`
 
-### Common Issues and Solutions
-
-**Issue: Unknown component error**
-- Solution: Check SKILL.md for the correct component name or short name
-
-**Issue: Hallucinated property error**
-- Solution: Remove the property or verify it exists in SKILL.md
-
-**Issue: Missing design tokens**
-- Solution: Add sapUiContentPadding and sapUiSizeCompact classes
-
-**Issue: Low consistency score**
-- Solution: Add meta.model, meta.design_system_version, meta.timestamp
+**For InfoLabel:**
+- Add to XML namespaces: `xmlns:tnt="sap.tnt"`
+- Use prefix: `tnt:InfoLabel`
 
 ## 📚 Next Steps
 
-1. **Read the Case Study**: [CASE_STUDY_SAP_DESIGN_SYSTEM_LLM_READY.md](CASE_STUDY_SAP_DESIGN_SYSTEM_LLM_READY.md)
-2. **Review Prompt Examples**: [PROMPT_EXAMPLES.md](PROMPT_EXAMPLES.md)
-3. **Check Documentation**: [docs/](docs/)
-4. **Try the Presentation**: [docs/presentations/SAPUI5_LLM_READY_PRESENTATION.md](docs/presentations/SAPUI5_LLM_READY_PRESENTATION.md)
+1. **Read Component Documentation**: [COMPONENTS.md](COMPONENTS.md)
+2. **Review Usage Instructions**: [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)
+3. **Check Prompt Examples**: [PROMPT_EXAMPLES.md](PROMPT_EXAMPLES.md)
+4. **Read the README**: [README.md](README.md)
 
 ## 🎓 Learning Path
 
 ### Beginner
 1. Generate a simple form (3-5 fields)
-2. Validate the output
-3. Understand the score breakdown
+2. Review the generated code
+3. Verify all controls are in the registry
+4. Test in a browser
 
 ### Intermediate
 1. Generate a list view with Table
 2. Add ObjectStatus for status indicators
-3. Apply proper design tokens
+3. Apply proper design tokens (sapUiSizeCompact, sapUiSmallMarginBottom)
+4. Use Toolbar with ToolbarSpacer
 
 ### Advanced
 1. Generate a master-detail view
 2. Implement navigation between views
 3. Use multiple SAPUI5 controls together
+4. Apply proper namespace handling for FileUploader and InfoLabel
 
 ## 💡 Tips for Success
 
 1. **Start Simple**: Begin with basic forms, then move to complex layouts
-2. **Validate Often**: Run validation after each generation
-3. **Use Short Names**: They're easier to type and remember
-4. **Check SKILL.md**: Always verify components exist in the registry
-5. **Include Meta**: Always add the meta section for consistency
-6. **Apply Design Tokens**: Don't forget density and spacing classes
-7. **Iterate**: If validation fails, fix and try again
+2. **Use Short Names**: They're easier to type and remember
+3. **Check Registry**: Always verify components exist in the 41-control registry
+4. **Apply Design Tokens**: Don't forget density and spacing classes
+5. **Iterate**: If the code doesn't work, refine your prompt
+6. **Reference Documentation**: Keep [COMPONENTS.md](COMPONENTS.md) open for reference
 
 ## 🆘 Troubleshooting
 
-### Validation Command Not Found
+### AI Won't Follow Instructions
 
-```bash
-# Make sure you're in the repository root
-cd sap-ai-design-system-c
+- Be explicit about using the LLM-ready design system
+- Reference the [COMPONENTS.md](COMPONENTS.md) file
+- Emphasize "use only verified controls from the registry"
+- Provide the exact component count (41 controls)
 
-# Check if node_modules exists
-ls node_modules
+### Unknown Component Error
 
-# If not, install dependencies
-npm install
-```
+- Check [COMPONENTS.md](COMPONENTS.md) for the correct component name
+- Use short names (e.g., "Page" instead of "sap.m.Page")
+- Verify the control is in the 41-component registry
 
-### LLM Won't Follow Instructions
+### Wrong Namespace Error
 
-- Be explicit about using SKILL.md
-- Emphasize "no guessing" or "no hallucinations"
-- Provide the exact output format you want
-- Include examples in your prompt
-
-### Low Validation Score
-
-- Check which category has low points
-- Fix the specific issue (e.g., add missing properties)
-- Re-validate
-- Aim for ≥85/100 overall
-
-## 🤝 Contributing
-
-Found a bug or want to add a feature?
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run validation to ensure quality
-5. Submit a pull request
+- For FileUploader: Add `xmlns:unified="sap.ui.unified"` and use `unified:FileUploader`
+- For InfoLabel: Add `xmlns:tnt="sap.tnt"` and use `tnt:InfoLabel`
 
 ## 📞 Support
 
 - **GitHub Issues**: https://github.com/Venelinhr/SAP-LLM-ready-design-system/issues
-- **Documentation**: Check the [docs/](docs/) folder
-- **Case Study**: [CASE_STUDY_SAP_DESIGN_SYSTEM_LLM_READY.md](CASE_STUDY_SAP_DESIGN_SYSTEM_LLM_READY.md)
+- **Component Documentation**: [COMPONENTS.md](COMPONENTS.md)
+- **Usage Instructions**: [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)
+- **Registry Analysis**: [COMPONENT_REGISTRY_ANALYSIS.md](COMPONENT_REGISTRY_ANALYSIS.md)
 
 ---
 
-**Ready to build? Start with a simple form and validate your output!**
+**Ready to build? Open the repository in your AI assistant and start building SAP applications immediately!**

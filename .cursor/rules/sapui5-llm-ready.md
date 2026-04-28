@@ -1,31 +1,20 @@
----
-trigger: glob
-globs: **/*.{xml,js,html,css,md,yaml,yml,py}
-description: SAP Fiori / SAPUI5 work in this repo — API truth, make gates, tokens
----
+# SAPUI5 LLM-Ready Design System Rules for Cursor AI
 
-# SAP AI Design System (LLM-Ready)
+## Quick Start
 
-## For LLMs (Claude, ChatGPT, Cursor, Windsurf)
+This repository is designed to be LLM-ready for Cursor AI. When you load this GitHub repo, you can immediately start building SAP applications using the verified component registry and design system rules.
 
-**This repository is designed to be LLM-ready.** When you load this GitHub repo, you can immediately start building SAP applications using the verified component registry and design system rules.
+## Component Registry (41 Controls)
 
-### Quick Start for LLMs
+**Use only verified controls from `.cursor/skills/sapui5-basic-form-demo/SKILL.md`**
 
-1. **Read the SKILL.md file** - Located at `.cursor/skills/sapui5-basic-form-demo/SKILL.md`
-2. **Use only verified controls** - All 41 controls are 100% API-accurate and verified against official SAPUI5 documentation
-3. **Follow SAP Fiori guidelines** - Use sap_horizon theme and sapUiSizeCompact density
-4. **No hallucinations** - The registry-only constraint ensures zero unknown components or properties
+All 41 controls are 100% API-accurate and verified against official SAPUI5 documentation at https://ui5.sap.com/#/api
 
-### Component Registry (41 Controls)
-
-**Verified Controls (100% API-Accurate):**
-
-**Core Container Controls:**
+### Core Container Controls
 - `sap.m.App` - Application container
 - `sap.m.Page` - Page container
 
-**Form Controls (sap.m):**
+### Form Controls (sap.m)
 - `sap.m.Label` - Form label
 - `sap.m.Input` - Text input
 - `sap.m.TextArea` - Multi-line input
@@ -48,14 +37,14 @@ description: SAP Fiori / SAPUI5 work in this repo — API truth, make gates, tok
 - `sap.m.RadioButton` - Radio button
 - `sap.m.MaskInput` - Input with mask format
 
-**Action Controls (sap.m):**
+### Action Controls (sap.m)
 - `sap.m.Button` - Action button
 - `sap.m.Toolbar` - Toolbar container
 - `sap.m.ToolbarSpacer` - Toolbar spacer
 - `sap.m.OverflowToolbar` - Toolbar with overflow
 - `sap.m.SearchField` - Search input
 
-**Display Controls (sap.m):**
+### Display Controls (sap.m)
 - `sap.m.Text` - Text display
 - `sap.m.ObjectStatus` - Status indicator
 - `sap.m.Image` - Image display
@@ -66,7 +55,7 @@ description: SAP Fiori / SAPUI5 work in this repo — API truth, make gates, tok
 - `sap.m.MessagePopover` - Message popover
 - `sap.m.MessagePopoverItem` - Message popover item
 
-**Layout Controls (sap.m):**
+### Layout Controls (sap.m)
 - `sap.m.Panel` - Grouping container
 - `sap.m.Table` - Tabular data display
 - `sap.m.Column` - Table column
@@ -80,14 +69,16 @@ description: SAP Fiori / SAPUI5 work in this repo — API truth, make gates, tok
 - `sap.m.IconTabFilter` - Tab filter
 - `sap.m.Breadcrumbs` - Breadcrumb navigation
 
-**Layout Controls (sap.ui.layout.form):**
+### Layout Controls (sap.ui.layout.form)
 - `sap.ui.layout.form.SimpleForm` - Form layout
 
-**Other Controls:**
+### Other Controls
 - `sap.ui.unified.FileUploader` - File upload
 - `sap.tnt.InfoLabel` - Info label
 
-**Short Names (Use for easier prompting):**
+## Short Names for Easier Prompting
+
+You can use short names instead of full namespaces:
 - `Page` → `sap.m.Page`
 - `Table` → `sap.m.Table`
 - `Button` → `sap.m.Button`
@@ -124,7 +115,7 @@ description: SAP Fiori / SAPUI5 work in this repo — API truth, make gates, tok
 - `MessagePopover` → `sap.m.MessagePopover`
 - `FileUploader` → `sap.ui.unified.FileUploader`
 
-### Bootstrap Configuration
+## Bootstrap Configuration
 
 **Required bootstrap settings:**
 ```html
@@ -147,9 +138,8 @@ description: SAP Fiori / SAPUI5 work in this repo — API truth, make gates, tok
 - `sapUiSizeCozy` - For touch devices (larger touch targets, optimized for touch interaction)
 - **Apply to:** `<body>` tag and/or View
 - **Detection:** Use `Device.support.touch` to determine appropriate density
-- `Manifest.json:` Specify supported densities: `"contentDensities": { "compact": true, "cozy": true }`
 
-### Mandatory Rules
+## Mandatory Rules
 
 1. **Read SKILL.md** - Located at `.cursor/skills/sapui5-basic-form-demo/SKILL.md`
 2. **Use only verified controls** - Registry-only constraint (41 controls)
@@ -163,7 +153,7 @@ description: SAP Fiori / SAPUI5 work in this repo — API truth, make gates, tok
    - `xmlns:tnt="sap.tnt"` for InfoLabel
    - Use `unified:FileUploader` and `tnt:InfoLabel` with appropriate prefixes
 
-### Multi-Step Agent Architecture
+## Multi-Step Agent Architecture
 
 Execute tasks in this order:
 1. **Planner** - Translate request to structured UI plan
@@ -172,14 +162,14 @@ Execute tasks in this order:
 
 If validation fails → Provide feedback → Revise plan → Re-validate → Build
 
-### Output Requirements
+## Output Requirements
 
 You MUST produce:
 1. **Form Architecture** - Sections, fields, interaction flow
 2. **SAPUI5 XML View** - Clean, modular, readable
 3. **Controller Logic** - Event handling, validation, user feedback
 
-### Prohibited Behavior
+## Prohibited Behavior
 
 - No hallucinated APIs
 - No skipped validation
@@ -187,22 +177,11 @@ You MUST produce:
 - No vague descriptions instead of code
 - No components not in SKILL.md
 
----
+## Validation
 
-## Repository-Specific Rules
+After generating code, validate using:
+```bash
+node validation/run-validation.js <your-output-file>
+```
 
-Before changing **UI** or **registry** code:
-
-1. **Read** `AGENTS.md` end-to-end.
-2. **SAPUI5 / OpenUI5:** use only controls and aggregations from the [SAPUI5 API](https://ui5.sap.com/#/api). Prefer `sap_horizon` + `sapUiSizeCompact` like existing `index.html` bootstraps.
-3. **CDN Selection Strategy:**
-   - **Primary:** Always try Official SAPUI5 CDN first: `https://ui5.sap.com/resources/sap-ui-core.js` (includes all official SAPUI5 components)
-   - **Fallback:** If components don't load properly with official SAPUI5 CDN, fallback to OpenUI5 CDN: `https://openui5.hana.ondemand.com/resources/sap-ui-core.js` (open-source version, may have limited component availability)
-   - **Namespace Handling:** Components from `sap.ui.unified` require namespace alias (e.g., `xmlns:unified="sap.ui.unified"`) and prefix (e.g., `unified:FileUploader`)
-4. **After XML/view changes:** run `make build-sap-po` or at least `make validate-sap-demo` when demo XML is touched.
-5. **Registry:** component IDs must exist in `data/registry.json` and match `schemas/component_spec.schema.json`.
-6. **Static marketing HTML** (deck, pitch): no new raw hex or `px` in consumer CSS — use `examples/purchase-order/demo/_shared/llm-tokens.css` variables; run `make token-audit` before commit.
-7. **Figma** (`data/figma/signals.yaml`) does not override the API.
-8. Default quality bar: `make all` (see `CONTRIBUTING.md`).
-
-For **Object Page / subscription** demo specifics, see `.cursor/skills/sapui5-opl-subscription-demo/SKILL.md`.
+Target score: ≥85 for LLM-Ready certification

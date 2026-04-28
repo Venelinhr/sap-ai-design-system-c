@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script id="sap-ui-bootstrap" src="https://ui5.sap.com/resources/sap-ui-core.js" data-sap-ui-theme="sap_horizon" data-sap-ui-libs="sap.m"></script>
+  <style>
+    body {
+      font-family: '72', 'Roboto', Arial, sans-serif;
+      font-size: 16px;
+      margin: 20px;
+    }
+    .category {
+      margin-bottom: 30px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .category-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #0070f3;
+    }
+    .component {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body class="sapUiSizeCompact">
+  <div id="content"></div>
+  <script>
+    sap.ui.getCore().attachInit(function() {
+      var oVBox = new sap.m.VBox();
+      
+      // Form Components
+      var oFormCat = new sap.m.VBox();
+      oFormCat.addItem(new sap.m.Title({text: "Form Components", level: "H1"}));
+      oFormCat.addItem(new sap.m.Button({text: "Button"}));
+      oFormCat.addItem(new sap.m.Input({placeholder: "Input"}));
+      oFormCat.addItem(new sap.m.CheckBox({text: "Check", selected: true}));
+      oFormCat.addItem(new sap.m.Switch({state: true}));
+      oFormCat.addItem(new sap.m.Slider({value: 50}));
+      oFormCat.addItem(new sap.m.DatePicker({placeholder: "Date"}));
+      oFormCat.addItem(new sap.m.TextArea({placeholder: "Text", rows: 2}));
+      oFormCat.addItem(new sap.m.SearchField({placeholder: "Search"}));
+      oFormCat.addItem(new sap.m.Label({text: "Label"}));
+      oFormCat.addItem(new sap.m.RadioButton({text: "Radio", selected: true}));
+      oFormCat.addItem(new sap.m.Select({items: [new sap.ui.core.Item({key:"1", text:"Opt1"}), new sap.ui.core.Item({key:"2", text:"Opt2"})]}));
+      oFormCat.addItem(new sap.m.ComboBox({items: [new sap.ui.core.Item({key:"1", text:"Item1"})]}));
+      oFormCat.addItem(new sap.m.SegmentedButton({items: [new sap.m.SegmentedButtonItem({text:"Tab1"}), new sap.m.SegmentedButtonItem({text:"Tab2"})]}));
+      oFormCat.addItem(new sap.m.RatingIndicator({value: 3}));
+      oFormCat.addItem(new sap.m.StepInput({value: 5}));
+      oFormCat.addItem(new sap.m.ToggleButton({text: "Toggle", pressed: true}));
+      oFormCat.addItem(new sap.m.TimePicker({placeholder: "Time"}));
+      oFormCat.addItem(new sap.m.DateRangeSelection({placeholder: "Range"}));
+      oFormCat.addItem(new sap.m.DateTimeInput({placeholder: "DateTime"}));
+      oFormCat.addItem(new sap.m.MaskInput({placeholder: "Mask", mask: "999-999-9999"}));
+      oFormCat.addItem(new sap.m.RangeSlider({value: [20, 80]}));
+      oFormCat.addItem(new sap.m.FacetFilter({type: "Light"}));
+      
+      // Display Components
+      var oDisplayCat = new sap.m.VBox();
+      oDisplayCat.addItem(new sap.m.Title({text: "Display Components", level: "H1"}));
+      oDisplayCat.addItem(new sap.m.Text({text: "Sample Text"}));
+      oDisplayCat.addItem(new sap.m.Title({text: "Title Sample"}));
+      oDisplayCat.addItem(new sap.m.Link({text: "Click here", href: "#"}));
+      oDisplayCat.addItem(new sap.m.Icon({src: "sap-icon://home", size: "2rem"}));
+      oDisplayCat.addItem(new sap.m.ProgressIndicator({percentValue: 75}));
+      oDisplayCat.addItem(new sap.m.ObjectStatus({text: "Success", state: "Success"}));
+      oDisplayCat.addItem(new sap.m.ObjectAttribute({text: "Attribute"}));
+      oDisplayCat.addItem(new sap.m.GenericTile({header: "Tile", subheader: "Subtitle"}));
+      oDisplayCat.addItem(new sap.m.TileContent({}));
+      oDisplayCat.addItem(new sap.m.NumericContent({value: "100", unit: "USD"}));
+      oDisplayCat.addItem(new sap.m.ProgressRing({percent: 60}));
+      
+      // Layout Components
+      var oLayoutCat = new sap.m.VBox();
+      oLayoutCat.addItem(new sap.m.Title({text: "Layout Components", level: "H1"}));
+      oLayoutCat.addItem(new sap.m.Toolbar({content: [new sap.m.Button({text: "Action"})]}));
+      oLayoutCat.addItem(new sap.m.Panel({headerText: "Panel Header", content: [new sap.m.Text({text: "Panel Content"})]}));
+      oLayoutCat.addItem(new sap.m.IconTabBar({}));
+      oLayoutCat.addItem(new sap.m.TabContainer({}));
+      oLayoutCat.addItem(new sap.m.OverflowToolbar({}));
+      oLayoutCat.addItem(new sap.m.Bar({}));
+      oLayoutCat.addItem(new sap.m.Wizard({}));
+      oLayoutCat.addItem(new sap.m.TileContainer({}));
+      oLayoutCat.addItem(new sap.m.HBox({items: [new sap.m.Button({text: "HBox Btn1"}), new sap.m.Button({text: "HBox Btn2"})]}));
+      oLayoutCat.addItem(new sap.m.VBox({items: [new sap.m.Button({text: "VBox Btn1"}), new sap.m.Button({text: "VBox Btn2"})]}));
+      oLayoutCat.addItem(new sap.m.FlexBox({items: [new sap.m.Button({text: "FlexBtn"})]}));
+      oLayoutCat.addItem(new sap.m.NavContainer({}));
+      oLayoutCat.addItem(new sap.m.App({}));
+      
+      // Data Components
+      var oDataCat = new sap.m.VBox();
+      oDataCat.addItem(new sap.m.Title({text: "Data Components", level: "H1"}));
+      oDataCat.addItem(new sap.m.Table({columns: [new sap.m.Column({header: new sap.m.Text({text: "Col1"})}), new sap.m.Column({header: new sap.m.Text({text: "Col2"})})], items: [new sap.m.ColumnListItem({cells: [new sap.m.Text({text: "Row1"}), new sap.m.Text({text: "Row2"})]})]}));
+      oDataCat.addItem(new sap.m.List({items: [new sap.m.StandardListItem({title: "Item 1"}), new sap.m.StandardListItem({title: "Item 2"})]}));
+      oDataCat.addItem(new sap.m.ObjectHeader({title: "Object Header"}));
+      
+      // Feedback Components
+      var oFeedbackCat = new sap.m.VBox();
+      oFeedbackCat.addItem(new sap.m.Title({text: "Feedback Components", level: "H1"}));
+      oFeedbackCat.addItem(new sap.m.Button({text: "Open Dialog", press: function() {new sap.m.Dialog({title: "Dialog", content: [new sap.m.Text({text: "Content"})], beginButton: new sap.m.Button({text: "Close", press: function() {this.getParent().close();}})}).open();}}));
+      oFeedbackCat.addItem(new sap.m.Button({text: "Show Toast", press: function() {sap.m.MessageToast.show("Message");}}));
+      oFeedbackCat.addItem(new sap.m.BusyIndicator({size: "2rem"}));
+      oFeedbackCat.addItem(new sap.m.Button({text: "Action Sheet", press: function() {new sap.m.ActionSheet({title: "Actions", buttons: [new sap.m.Button({text: "Action"})], cancelButtonPress: function() {}}).openBy(this);}}));
+      oFeedbackCat.addItem(new sap.m.NotificationListGroup({title: "Group"}));
+      oFeedbackCat.addItem(new sap.m.NotificationList({}));
+      oFeedbackCat.addItem(new sap.m.Button({text: "P13n Dialog", press: function() {new sap.m.P13nDialog({title: "Personalization"}).open();}}));
+      oFeedbackCat.addItem(new sap.m.Button({text: "Message Box", press: function() {sap.m.MessageBox.show("Message");}}));
+      
+      // Add all categories to main VBox
+      oVBox.addItem(oFormCat);
+      oVBox.addItem(oDisplayCat);
+      oVBox.addItem(oLayoutCat);
+      oVBox.addItem(oDataCat);
+      oVBox.addItem(oFeedbackCat);
+      
+      oVBox.placeAt("content");
+    });
+  </script>
+</body>
+</html>

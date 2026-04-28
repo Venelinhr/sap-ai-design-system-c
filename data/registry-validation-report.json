@@ -1,0 +1,68 @@
+{
+  "timestamp": "2026-04-27T16:41:30.191Z",
+  "validation_results": {
+    "json_schema": {
+      "valid": false,
+      "errors": [
+        {
+          "instancePath": "",
+          "schemaPath": "#/required",
+          "keyword": "required",
+          "params": {
+            "missingProperty": "ui_tree"
+          },
+          "message": "must have required property 'ui_tree'"
+        }
+      ]
+    },
+    "component_whitelist": {
+      "valid": true,
+      "unknownComponents": [],
+      "validComponents": [],
+      "errors": []
+    },
+    "hallucination": {
+      "hasHallucinations": false,
+      "hallucinatedComponents": [],
+      "hallucinatedProperties": [],
+      "warnings": []
+    },
+    "design_tokens": {
+      "valid": false,
+      "foundTokens": {
+        "colors": [],
+        "spacing": [],
+        "typography": [],
+        "density": [],
+        "themeClasses": [],
+        "semanticClasses": []
+      },
+      "issues": [
+        "Missing required theme classes (e.g., sapUiContentPadding)",
+        "Missing density class (e.g., sapUiSizeCompact or sapUiSizeCozy)",
+        "Missing spacing design tokens (e.g., sapUiSmallMargin)"
+      ],
+      "score": 0
+    }
+  },
+  "score": {
+    "total": 0,
+    "breakdown": {
+      "structure_accuracy": 0,
+      "component_validity": 0,
+      "props_accuracy": 0,
+      "sapui5_compliance": 0,
+      "consistency": 0,
+      "design_token_score": 0
+    }
+  },
+  "issues": [
+    "Schema: must have required property 'ui_tree'",
+    "Missing required theme classes (e.g., sapUiContentPadding)",
+    "Missing density class (e.g., sapUiSizeCompact or sapUiSizeCozy)",
+    "Missing spacing design tokens (e.g., sapUiSmallMargin)",
+    "Missing ui_tree",
+    "Error parsing output: Cannot read properties of undefined (reading 'type')"
+  ],
+  "status": "failed"
+}
