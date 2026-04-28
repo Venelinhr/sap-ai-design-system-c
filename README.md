@@ -352,7 +352,7 @@ sapui5-llm-ready/
 
 **SAPUI5 LLM-Ready Workflow (New - Figma Jam)**
 
-[![SAPUI5 LLM-Ready Workflow](https://www.figma.com/board/2WTk1XdsKHqCw0hWV9R2mG)](https://www.figma.com/board/2WTk1XdsKHqCw0hWV9R2mG)
+<iframe style="border: 1px solid rgba(0,0,0,0.1);" width="100%" height="450" src="https://www.figma.com/board/2WTk1XdsKHqCw0hWV9R2mG?embed-host=share" allowfullscreen></iframe>
 
 This diagram shows the transformation from traditional SAP design systems to LLM-ready systems. Traditional systems (built for humans) cause LLM hallucinations and ~50% build failures. LLM-ready systems (built for machines) achieve zero hallucinations and 100% build success through 41 verified controls, component registries, and comprehensive documentation (COMPONENTS.md, SKILL.md, USAGE_INSTRUCTIONS.md).
 
@@ -360,7 +360,7 @@ This diagram shows the transformation from traditional SAP design systems to LLM
 
 **SAPUI5 LLM-Ready Transformation Workflow (New - Figma Jam)**
 
-[![SAPUI5 LLM-Ready Transformation Workflow](https://www.figma.com/board/TVLfPBqkxOhhiTddUNC67i)](https://www.figma.com/board/TVLfPBqkxOhhiTddUNC67i)
+<iframe style="border: 1px solid rgba(0,0,0,0.1);" width="100%" height="450" src="https://www.figma.com/board/TVLfPBqkxOhhiTddUNC67i?embed-host=share" allowfullscreen></iframe>
 
 The 5-step transformation process: (1) Define Source of Truth from SAPUI5 API, (2) Extract & Structure components into machine-readable format (41 verified controls), (3) Constrain LLM with component registry, (4) Add retrieval for context (COMPONENTS.md, SKILL.md, USAGE_INSTRUCTIONS.md), (5) Build and verify. This systematic approach transforms human-readable documentation into machine-readable systems.
 
@@ -368,7 +368,7 @@ The 5-step transformation process: (1) Define Source of Truth from SAPUI5 API, (
 
 **LLM-Ready Quality Assurance (New - Figma Jam)**
 
-[![LLM-Ready Quality Assurance](https://www.figma.com/board/CeEXq1x7OP5fYrNn65P1yo)](https://www.figma.com/board/CeEXq1x7OP5fYrNn65P1yo)
+<iframe style="border: 1px solid rgba(0,0,0,0.1);" width="100%" height="450" src="https://www.figma.com/board/CeEXq1x7OP5fYrNn65P1yo?embed-host=share" allowfullscreen></iframe>
 
 Quality assurance is achieved through the verified component registry (41 controls) and comprehensive documentation (COMPONENTS.md, SKILL.md). Both Cursor AI and Claude AI achieved 95/100 scores with zero hallucinations by using only verified controls.
 
@@ -376,7 +376,7 @@ Quality assurance is achieved through the verified component registry (41 contro
 
 **Breakthrough Flow Methodology (New - Figma Jam)**
 
-[![Breakthrough Flow Methodology](https://www.figma.com/board/s566D7bjwOVNcoWuhULf0U)](https://www.figma.com/board/s566D7bjwOVNcoWuhULf0U)
+<iframe style="border: 1px solid rgba(0,0,0,0.1);" width="100%" height="450" src="https://www.figma.com/board/s566D7bjwOVNcoWuhULf0U?embed-host=share" allowfullscreen></iframe>
 
 This methodology represents the breakthrough moment when we shifted from prompt engineering to system design. The key insight: instead of trying to make LLMs understand human documentation, we restructure the design system to be machine-readable. This reduced hallucinations from common to zero and improved build success from 50% to 100%.
 
@@ -408,7 +408,7 @@ Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 
 ## 🎓 Key Learnings
 
-1. **Systems over prompts** - Build validation systems, don't just prompt better
+1. **Systems over prompts** - Build component registries and documentation, don't just prompt better
 2. **Registry-only rule** - LLMs must only use verified components
 3. **Documentation + code analysis** - Always check both sources
 4. **Short name mapping** - Allow both short names and full namespaces
