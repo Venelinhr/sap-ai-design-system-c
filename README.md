@@ -380,10 +380,6 @@ This diagram shows the quality assurance process achieved through the verified c
 
 This diagram represents the breakthrough moment when we shifted from prompt engineering to system design. Traditional Approach (Prompt Engineering → LLM Tries to Understand → Hallucinations, 50% Build Success) vs LLM-Ready Approach (Restructure Design System to Machine-Readable Format → 41 Component Registry + COMPONENTS.md, SKILL.md → Zero Hallucinations, 100% Build Success). The key insight: instead of trying to make LLMs understand human documentation, we restructure the design system to be machine-readable.
 
-**Additional Figma Diagrams:**
-- [LLM-Ready System Architecture](https://www.figma.com/board/yuDdy0qWqwBgdtULdxbWI4) - System architecture with data flow
-- [Component Registry Flow](https://www.figma.com/board/hF4MpwElNu0gKACr9YxYGk) - Component registry and short name mapping
-
 ## 📸 Examples
 
 Additional examples of SAPUI5 components generated using the LLM-Ready approach:
