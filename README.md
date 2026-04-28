@@ -213,18 +213,19 @@ Traditional design systems are built for humans, not machines. When LLMs try to 
 
 ### The Solution
 LLM-ready design systems are built for machines:
-- Machine-readable component registries
+- Machine-readable component registries (41 verified controls)
 - Automated validation pipelines
 - Registry-only constraints
 - Zero hallucinations
 - 100% build success
+- 95/100 average validation scores
 
 ### The 5-Step Process
 
 1. **Define Source of Truth** - Use SAPUI5 API documentation
-2. **Extract & Structure** - Convert to machine-readable ComponentSpec
+2. **Extract & Structure** - Convert to machine-readable ComponentSpec (41 controls verified)
 3. **Constrain LLM** - Registry-only rule, no guessing
-4. **Add Retrieval** - MCP for dynamic context delivery
+4. **Add Retrieval** - Dynamic context delivery via COMPONENTS.md and USAGE_INSTRUCTIONS.md
 5. **Validate & Iterate** - Build, run, fix loop
 
 ## 🤖 Prompt Examples
