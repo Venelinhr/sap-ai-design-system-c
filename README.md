@@ -42,23 +42,6 @@ Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready s
 2. **Open in your AI assistant** - Claude, Cursor, or Windsurf
 3. **Start building** - The design system rules load automatically
 
-### Installation by AI Tool
-
-**Claude Desktop:**
-- Open the repository in Claude Desktop
-- The design system rules load automatically from `.cursor/rules/` and `.windsurf/rules/`
-- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for detailed instructions
-
-**Cursor AI:**
-- Open the repository in Cursor
-- Rules load automatically from `.cursor/rules/sapui5-llm-ready.md`
-- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for detailed instructions
-
-**Windsurf:**
-- Open the repository in Windsurf
-- Rules load automatically from `.windsurf/rules/sapui5-fiori.md`
-- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for details
-
 ### Key Files to Reference
 - **[GETTING_STARTED.md](GETTING_STARTED.md)** - Complete getting started guide
 - **[COMPONENTS.md](COMPONENTS.md)** - Detailed component documentation
