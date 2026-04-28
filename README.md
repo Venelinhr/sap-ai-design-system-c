@@ -135,25 +135,6 @@ All components are validated against official SAPUI5 API documentation.
 
 See [COMPONENTS.md](COMPONENTS.md) for detailed documentation of each control.
 
-## ⚠️ Important: Always Check Latest SAPUI5 Updates
-
-When building SAPUI5 applications, **always verify** the latest information from official SAP sources:
-
-**Validation Checklist:**
-1. Check SAPUI5 version compatibility
-2. Verify component API hasn't changed
-3. Confirm design tokens are current
-4. Validate against latest SAP Fiori guidelines
-5. Test generated code in actual SAPUI5 environment
-
-**Why This Matters:**
-- SAPUI5 components may be deprecated or updated
-- API properties can change between versions
-- Design tokens may evolve
-- New best practices emerge
-
-**Always validate your generated code against the latest SAPUI5 documentation before production use.**
-
 ## 🎉 First Outcome
 
 ![My very first result](examples/My%20very%20first%20result.png)
