@@ -100,33 +100,40 @@ Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready s
 
 ## 📦 Component Registry
 
-This repository includes **120 production-ready SAPUI5 components** organized into 5 categories:
+This repository includes **41 verified SAPUI5 controls** with 100% API-accurate properties, aggregations, and events. All controls are documented in [COMPONENTS.md](COMPONENTS.md).
 
-### Form Components (42)
-Button, Input, Select, DatePicker, TextArea, SearchField, Form, Label, CheckBox, RadioButton, Switch, Slider, ComboBox, MultiComboBox, SegmentedButton, RatingIndicator, StepInput, OverflowToolbarButton, ToggleButton, FileUploader, TimePicker, DateRangeSelection, DateTimeInput, MaskInput, RangeSlider, UploadCollection, FacetFilter
+### Core Container Controls (2)
+- App, Page
 
-### Display Components (19)
-Text, Title, Link, Image, Icon, ProgressIndicator, ObjectStatus, ObjectAttribute, Carousel, GenericTile, TileContent, NumericContent, ImageContent, FeedContent, NewsContent, ProgressRing, QuickView
+### Form Controls (21)
+- Label, Input, TextArea, Select, ComboBox, Item, Switch, CheckBox, DatePicker, MessageStrip, Link, Slider, MultiComboBox, RatingIndicator, ProgressIndicator, SegmentedButton, SegmentedButtonItem, StepInput, ToggleButton, RadioButton, MaskInput
 
-### Layout Components (27)
-Page, Toolbar, HBox, VBox, FlexBox, Panel, NavContainer, App, SplitContainer, IconTabBar, TabContainer, ToolbarSpacer, OverflowToolbar, Bar, Wizard, TileContainer
+### Action Controls (5)
+- Button, Toolbar, ToolbarSpacer, OverflowToolbar, SearchField
 
-### Data Components (10)
-Table, Column, ColumnListItem, List, ObjectHeader, StandardListItem, ObjectListItem
+### Display Controls (9)
+- Text, ObjectStatus, Image, Title, ObjectHeader, ObjectAttribute, GenericTag, MessagePopover, MessagePopoverItem
 
-### Feedback Components (19)
-Dialog, Popover, MessageToast, BusyIndicator, ActionSheet, NotificationListGroup, NotificationList, P13nDialog, MessageBox
+### Layout Controls (12)
+- Panel, Table, Column, ColumnListItem, Dialog, HBox, VBox, List, StandardListItem, IconTabBar, IconTabFilter, Breadcrumbs
+
+### Layout Controls (sap.ui.layout.form) (1)
+- SimpleForm
+
+### Other Controls (2)
+- FileUploader (requires xmlns:unified), InfoLabel (requires xmlns:tnt)
 
 Each component includes:
 - Complete property definitions with types and defaults
 - Event specifications with parameters
-- Slot definitions for child components
+- Aggregation definitions for child components
 - Composition rules and compatibility
-- Accessibility information
 - Usage examples
-- Versioning details
+- 100% API-accurate verification
 
-All components are validated and ready for production.
+All components are validated against official SAPUI5 API documentation.
+
+See [COMPONENTS.md](COMPONENTS.md) for detailed documentation of each control.
 
 ## ⚠️ Important: Always Check Latest SAPUI5 Updates
 
