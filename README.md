@@ -235,10 +235,10 @@ LLM-ready design systems are built for machines:
 **Basic Prompt:**
 ```
 Generate a SAPUI5 form with the following requirements:
-- Use controls from the verified registry only
+- Use only the 41 verified controls from the registry
 - Follow SAP Fiori guidelines
-- Apply SAP Horizon theme
-- Include design tokens for density and spacing
+- Apply SAP Horizon theme (sap_horizon)
+- Include design tokens for density (sapUiSizeCompact) and spacing
 
 Requirements:
 [Your requirements here]
@@ -246,59 +246,75 @@ Requirements:
 
 **Advanced Prompt with Context:**
 ```
-You are a SAPUI5 expert. Use only the controls documented in the SKILL.md file. 
+You are a SAPUI5 expert. Use only the 41 verified controls documented in COMPONENTS.md and SKILL.md.
 Generate a [component type] with:
 - Short names or full namespaces (both supported)
 - SAP Horizon theme compliance
-- Proper design tokens
+- Proper design tokens (sapUiSizeCompact, sapUiSmallMarginBottom)
 
-Output format: JSON with meta.model, meta.design_system_version, meta.timestamp
+See USAGE_INSTRUCTIONS.md for detailed Claude-specific instructions.
 ```
 
 ### Using with Cursor AI
 
 **Project Context:**
-Add this to your `.cursorrules` or project description:
-```
-Always use SAPUI5 controls from the verified registry in .cursor/skills/sapui5-basic-form-demo/SKILL.md
-Never hallucinate properties. Use short names (Page, Table, Button) or full namespaces (sap.m.Page, sap.m.Table, sap.m.Button)
-Validate output using node validation/run-validation.js
-```
+The `.cursor/rules/sapui5-llm-ready.md` file provides automatic context. Simply:
+1. Open the repository in Cursor
+2. Start prompting with natural language
+3. Cursor will automatically use the 41-component registry
 
 **Prompt Pattern:**
 ```
-Generate a SAPUI5 [component] using only verified controls from SKILL.md.
+Generate a SAPUI5 [component] using only verified controls from the registry.
 Include all required properties and SAP Horizon design tokens.
 ```
 
+See USAGE_INSTRUCTIONS.md for detailed Cursor-specific instructions.
+
 ### Using with Windsurf
 
-**Windsurf Rules (.windsurfrules):**
-The `.windsurfrules` file in this repo already contains the necessary rules. Simply:
+**Windsurf Rules:**
+The `.windsurf/rules/sapui5-fiori.md` file provides automatic context. Simply:
 1. Open the repository in Windsurf
 2. Start prompting with natural language
-3. Windsurf will automatically use the SKILL.md context
+3. Windsurf will automatically use the 41-component registry
 
 **Example Prompt:**
 ```
-Create a SAPUI5 list view with columns for [fields]. Use only controls from the verified registry.
+Create a SAPUI5 list view with columns for [fields]. Use only controls from the verified registry (41 controls).
 ```
 
-### Using with Other LLMs (ChatGPT, etc.)
+See USAGE_INSTRUCTIONS.md for detailed Windsurf-specific instructions.
 
-**Universal Prompt Template:**
+### Using with VS Code (GitHub Copilot, Continue.dev)
+
+**Setup:**
+1. Open the repository in VS Code
+2. Keep COMPONENTS.md open for reference
+3. Use prompts that reference the 41 verified controls
+
+**Example Prompt:**
 ```
-Context: You are building SAPUI5 applications using a verified component registry.
-Constraints:
-- Use only controls from the registry (see SKILL.md)
-- No guessing or inventing properties
-- Apply SAP Horizon theme tokens
-- Include meta.model, meta.design_system_version, meta.timestamp in output
-
-Task: [Your task here]
-
-Output: JSON format with component structure
+Generate a SAPUI5 [component] using only verified controls from COMPONENTS.md.
+Apply SAP Horizon theme and sapUiSizeCompact density.
 ```
+
+See USAGE_INSTRUCTIONS.md for detailed VS Code-specific instructions.
+
+### Using with ChatGPT (Web Interface)
+
+**Setup:**
+1. Copy the contents of COMPONENTS.md
+2. Paste it into ChatGPT as context
+3. Use prompts that reference the 41 verified controls
+
+**Example Prompt:**
+```
+Using the component registry I provided (41 verified controls), generate a SAPUI5 [component].
+Apply SAP Horizon theme and proper design tokens.
+```
+
+See USAGE_INSTRUCTIONS.md for detailed ChatGPT-specific instructions.
 
 ## ✅ What To Do
 
