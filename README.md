@@ -39,7 +39,7 @@ Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready s
 
 ### How to Start (3 Steps)
 1. **Clone the repository** - `git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git`
-2. **Open in your AI assistant** - Claude, Cursor, Windsurf, VS Code, or ChatGPT
+2. **Open in your AI assistant** - Claude, Cursor, or Windsurf
 3. **Start building** - The design system rules load automatically
 
 ### Installation by AI Tool
@@ -57,21 +57,12 @@ Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready s
 **Windsurf:**
 - Open the repository in Windsurf
 - Rules load automatically from `.windsurf/rules/sapui5-fiori.md`
-- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for detailed instructions
-
-**VS Code (GitHub Copilot, Continue.dev):**
-- Open the repository in VS Code
-- Keep COMPONENTS.md open for reference
-- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for detailed instructions
-
-**ChatGPT (Web Interface):**
-- Copy contents of COMPONENTS.md and paste as context
-- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for detailed instructions
+- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for details
 
 ### Key Files to Reference
 - **[GETTING_STARTED.md](GETTING_STARTED.md)** - Complete getting started guide
 - **[COMPONENTS.md](COMPONENTS.md)** - Detailed component documentation
-- **[USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)** - Instructions for Claude, Cursor, Windsurf, VS Code, ChatGPT
+- **[USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)** - Instructions for Claude, Cursor, Windsurf
 - **[.cursor/skills/sapui5-basic-form-demo/SKILL.md](.cursor/skills/sapui5-basic-form-demo/SKILL.md)** - Complete skill documentation
 
 ---
@@ -266,36 +257,6 @@ Create a SAPUI5 list view with columns for [fields]. Use only controls from the 
 ```
 
 See USAGE_INSTRUCTIONS.md for detailed Windsurf-specific instructions.
-
-### Using with VS Code (GitHub Copilot, Continue.dev)
-
-**Setup:**
-1. Open the repository in VS Code
-2. Keep COMPONENTS.md open for reference
-3. Use prompts that reference the 41 verified controls
-
-**Example Prompt:**
-```
-Generate a SAPUI5 [component] using only verified controls from COMPONENTS.md.
-Apply SAP Horizon theme and sapUiSizeCompact density.
-```
-
-See USAGE_INSTRUCTIONS.md for detailed VS Code-specific instructions.
-
-### Using with ChatGPT (Web Interface)
-
-**Setup:**
-1. Copy the contents of COMPONENTS.md
-2. Paste it into ChatGPT as context
-3. Use prompts that reference the 41 verified controls
-
-**Example Prompt:**
-```
-Using the component registry I provided (41 verified controls), generate a SAPUI5 [component].
-Apply SAP Horizon theme and proper design tokens.
-```
-
-See USAGE_INSTRUCTIONS.md for detailed ChatGPT-specific instructions.
 
 ## Best Practices
 
