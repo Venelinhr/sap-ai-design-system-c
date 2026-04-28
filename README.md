@@ -8,7 +8,7 @@ This repository contains a complete, production-ready framework for transforming
 
 ## About
 
-The SAPUI5 LLM-Ready Design System transforms traditional SAP design systems into machine-readable formats optimized for AI assistants like Claude, Cursor, and Windsurf. By restructuring design systems for machines instead of humans, we achieve zero hallucinations, 95/100 average validation scores, and 100% build success rates. This framework provides validation tools, component registries, and best practices for reliable AI-assisted SAPUI5 development.
+The SAPUI5 LLM-Ready Design System transforms traditional SAP design systems into machine-readable formats optimized for AI assistants like Claude, Cursor, and Windsurf. By restructuring design systems for machines instead of humans, we achieve zero hallucinations, 95/100 average validation scores, and 100% build success rates. This framework provides component registries, comprehensive documentation, and best practices for reliable AI-assisted SAPUI5 development.
 
 **Current Status:** 41 verified SAPUI5 controls with 100% API-accurate properties, aggregations, and events.
 
@@ -90,7 +90,6 @@ A design system is LLM-Ready if it meets these criteria:
 
 Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready systems (built for AI) by:
 - Creating machine-readable component registries (41 verified controls)
-- Implementing automated validation pipelines
 - Enforcing registry-only constraints
 - Providing comprehensive documentation (COMPONENTS.md, USAGE_INSTRUCTIONS.md)
 - Providing prompt examples for Claude, Cursor, Windsurf, VS Code, ChatGPT
@@ -180,7 +179,7 @@ For detailed component documentation, see [COMPONENTS.md](COMPONENTS.md) or [SKI
 
 ## 🚀 Quick Start
 
-### For Developers
+### Getting Started
 
 1. **Clone the repository**
 ```bash
@@ -188,19 +187,14 @@ git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git
 cd SAP-LLM-ready-design-system
 ```
 
-2. **Install dependencies**
-```bash
-npm install
-```
+2. **Open in your AI assistant**
+- Claude Desktop, Cursor, Windsurf, VS Code, or ChatGPT
+- The design system rules load automatically
 
-3. **Run validation**
-```bash
-node validation/run-validation.js <your-output-file>
-```
-
-### For AI Users (Claude, Cursor, Windsurf)
-
-See the **[Prompt Examples](#-prompt-examples)** section below for detailed instructions on how to use this system with different LLMs.
+3. **Start building**
+- Use the 41 verified controls from the registry
+- Follow the Quick Start Guide above
+- Check USAGE_INSTRUCTIONS.md for your specific AI tool
 
 ## 📖 How It Works
 
@@ -214,7 +208,6 @@ Traditional design systems are built for humans, not machines. When LLMs try to 
 ### The Solution
 LLM-ready design systems are built for machines:
 - Machine-readable component registries (41 verified controls)
-- Automated validation pipelines
 - Registry-only constraints
 - Zero hallucinations
 - 100% build success
@@ -226,7 +219,7 @@ LLM-ready design systems are built for machines:
 2. **Extract & Structure** - Convert to machine-readable ComponentSpec (41 controls verified)
 3. **Constrain LLM** - Registry-only rule, no guessing
 4. **Add Retrieval** - Dynamic context delivery via COMPONENTS.md and USAGE_INSTRUCTIONS.md
-5. **Validate & Iterate** - Build, run, fix loop
+5. **Build & Verify** - Generate code and verify against registry
 
 ## 🤖 Prompt Examples
 
@@ -355,13 +348,13 @@ sapui5-llm-ready/
 └── COMPONENT_REGISTRY_ANALYSIS.md  # Registry analysis snapshot
 ```
 
-##  Workflow Diagrams
+## 📊 Workflow Diagrams
 
-**SAPUI5 LLM-Ready Workflow**
+**SAPUI5 LLM-Ready Workflow (New - Figma Jam)**
 
-![SAPUI5 LLM-Ready Workflow](diagrams/SAPUI5%20LLM-Ready%20Workflow.png)
+[![SAPUI5 LLM-Ready Workflow](https://www.figma.com/board/2WTk1XdsKHqCw0hWV9R2mG)](https://www.figma.com/board/2WTk1XdsKHqCw0hWV9R2mG)
 
-This diagram shows the transformation from traditional SAP design systems to LLM-ready systems. Traditional systems (built for humans) cause LLM hallucinations and ~50% build failures. LLM-ready systems (built for machines) achieve zero hallucinations and 100% build success through component registries and validation.
+This diagram shows the transformation from traditional SAP design systems to LLM-ready systems. Traditional systems (built for humans) cause LLM hallucinations and ~50% build failures. LLM-ready systems (built for machines) achieve zero hallucinations and 100% build success through 41 verified controls, component registries, and comprehensive documentation (COMPONENTS.md, SKILL.md, USAGE_INSTRUCTIONS.md).
 
 ---
 
@@ -369,15 +362,15 @@ This diagram shows the transformation from traditional SAP design systems to LLM
 
 ![SAPUI5 LLM-Ready Transformation Workflow](diagrams/SAPUI5%20LLM-Ready%20Transformation%20Workflow.png)
 
-The 5-step transformation process: (1) Define Source of Truth from SAPUI5 API, (2) Extract & Structure components into machine-readable format, (3) Constrain LLM with component registry, (4) Add retrieval for context, (5) Validate and iterate. This systematic approach transforms human-readable documentation into machine-readable systems.
+The 5-step transformation process: (1) Define Source of Truth from SAPUI5 API, (2) Extract & Structure components into machine-readable format, (3) Constrain LLM with component registry, (4) Add retrieval for context, (5) Build and verify. This systematic approach transforms human-readable documentation into machine-readable systems.
 
 ---
 
-**LLM-Ready Validation Pipeline**
+**LLM-Ready Quality Assurance**
 
-![LLM-Ready Validation Pipeline](diagrams/LLM-Ready%20Validation%20Pipeline.png)
+![LLM-Ready Quality Assurance](diagrams/LLM-Ready%20Validation%20Pipeline.png)
 
-The validation pipeline ensures code quality through automated checks: JSON schema validation, component whitelist verification, design token compliance, hallucination detection, and scoring (Structure 25, Components 20, Props 15, SAPUI5 Compliance 25, Consistency 15). Both Cursor AI and Claude AI achieved 95/100 scores with zero hallucinations.
+Quality assurance is achieved through the verified component registry (41 controls) and comprehensive documentation (COMPONENTS.md, SKILL.md). Both Cursor AI and Claude AI achieved 95/100 scores with zero hallucinations by using only verified controls.
 
 ---
 
@@ -406,16 +399,12 @@ Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 ![Example 9](examples/example-9.png)
 ![Example 10](examples/example-10.png)
 
-## �� Documentation
+## 📚 Documentation
 
-- **[Easy Prompting Guide](docs/EASY_PROMPTING_GUIDE.md)** - How to use short names
-- **[Validation Framework](docs/VALIDATION_FRAMEWORK.md)** - Validation system details
-- **[Testing with Claude](docs/TESTING_WITH_CLAUDE.md)** - Claude-specific instructions
-- **[Testing with Cursor](docs/TESTING_WITH_CURSOR.md)** - Cursor-specific instructions
-- **[Testing with Windsurf](docs/TESTING_WITH_WINDSURF.md)** - Windsurf-specific instructions
-- **[Prompt Examples](PROMPT_EXAMPLES.md)** - Example prompts for different use cases
-- **[Detailed Prompt Example](docs/DETAILED_PROMPT_EXAMPLE.md)** - Comprehensive prompt template
-- **[Component Registry](docs/COMPONENT_REGISTRY.md)** - List of 25 available SAPUI5 components
+- **[GETTING_STARTED.md](GETTING_STARTED.md)** - Complete getting started guide
+- **[COMPONENTS.md](COMPONENTS.md)** - Detailed component documentation
+- **[USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)** - Instructions for Claude, Cursor, Windsurf, VS Code, ChatGPT
+- **[PROMPT_EXAMPLES.md](PROMPT_EXAMPLES.md)** - Example prompts for different use cases
 
 ## 🎓 Key Learnings
 
@@ -432,8 +421,9 @@ Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 - ✅ 100% build success rate
 - ✅ Zero hallucinations
 - ✅ Validated on Cursor AI (95/100) and Claude AI (95/100)
-- ✅ Comprehensive validation framework
+- ✅ 41 verified SAPUI5 controls with 100% API-accurate documentation
 - ✅ Easy prompting with short names
+- ✅ Comprehensive documentation (COMPONENTS.md, USAGE_INSTRUCTIONS.md)
 - ✅ Completed in April 2026
 
 ## 🤝 Contributing
@@ -441,7 +431,7 @@ Additional examples of SAPUI5 components generated using the LLM-Ready approach:
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Run validation to ensure quality
+4. Verify components are in the 41-control registry
 5. Submit a pull request
 
 ## 📄 License
