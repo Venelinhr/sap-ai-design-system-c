@@ -1,0 +1,8 @@
+{
+  "name": "sapui5-llm-ready-examples",
+  "private": true,
+  "scripts": {
+    "start": "node ../scripts/serve-examples.cjs",
+    "serve": "node ../scripts/serve-examples.cjs"
+  }
+}
