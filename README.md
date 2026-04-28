@@ -14,39 +14,64 @@ The SAPUI5 LLM-Ready Design System transforms traditional SAP design systems int
 
 ---
 
-## 🚀 Quick Start Guide (Top Tips)
+## 🎯 What This Does
+
+Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready systems (built for AI) by:
+- Creating machine-readable component registries (41 verified controls)
+- Enforcing registry-only constraints
+- Providing comprehensive documentation (COMPONENTS.md, USAGE_INSTRUCTIONS.md)
+- Providing prompt examples for Claude, Cursor, Windsurf, VS Code, ChatGPT
+- **Achieving 95/100 average validation scores** (quality metric: measures code quality, API compliance, structure)
+- **Achieving 100% build success rate** (build metric: code compiles and runs without errors)
+- **Zero hallucinations** (no unknown components or properties)
+
+## Results
+
+- **Cursor AI**: 95/100 average score (variance 11)
+- **Claude AI**: 95/100 average score (variance 0)
+- **Functional Quality**: 85/85 perfect
+- **Build Success**: 50% → 100%
+- **Hallucinations**: Common → Zero
+
+---
+
+## 🎯 What "LLM-Ready" Means
 
 ### How to Start (3 Steps)
 1. **Clone the repository** - `git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git`
 2. **Open in your AI assistant** - Claude, Cursor, Windsurf, VS Code, or ChatGPT
 3. **Start building** - The design system rules load automatically
 
-### What to Do ✅
-- **Use only 41 verified controls** - All are documented in [COMPONENTS.md](COMPONENTS.md)
-- **Use short names** - "Page", "Table", "Button" instead of full namespaces
-- **Apply SAP Horizon theme** - `data-sap-ui-theme="sap_horizon"`
-- **Use sapUiSizeCompact density** - For desktop applications
-- **Reference SKILL.md** - Located at `.cursor/skills/sapui5-basic-form-demo/SKILL.md`
-- **Check [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)** - For your specific AI tool
+### Installation by AI Tool
 
-### What to Check 🔍
-- **Component is in registry** - Verify in [COMPONENTS.md](COMPONENTS.md)
-- **Property is documented** - Check in SKILL.md or COMPONENTS.md
-- **Theme is sap_horizon** - Official SAP Fiori Horizon theme
-- **Density is correct** - sapUiSizeCompact (desktop) or sapUiSizeCozy (touch)
-- **Namespaces are correct** - `xmlns:unified="sap.ui.unified"` for FileUploader, `xmlns:tnt="sap.tnt"` for InfoLabel
+**Claude Desktop:**
+- Open the repository in Claude Desktop
+- The design system rules load automatically from `.cursor/rules/` and `.windsurf/rules/`
+- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for detailed instructions
 
-### What to Avoid ❌
-- **Don't use controls not in the 41-component registry** - This causes hallucinations
-- **Don't guess properties** - All properties must be documented
-- **Don't use deprecated APIs** - Check SAPUI5 API documentation
-- **Don't forget namespace prefixes** - Use `unified:FileUploader` and `tnt:InfoLabel`
-- **Don't skip the multi-step architecture** - Planner → Validator → Builder
+**Cursor AI:**
+- Open the repository in Cursor
+- Rules load automatically from `.cursor/rules/sapui5-llm-ready.md`
+- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for detailed instructions
+
+**Windsurf:**
+- Open the repository in Windsurf
+- Rules load automatically from `.windsurf/rules/sapui5-fiori.md`
+- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for detailed instructions
+
+**VS Code (GitHub Copilot, Continue.dev):**
+- Open the repository in VS Code
+- Keep COMPONENTS.md open for reference
+- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for detailed instructions
+
+**ChatGPT (Web Interface):**
+- Copy contents of COMPONENTS.md and paste as context
+- Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for detailed instructions
 
 ### Key Files to Reference
 - **[GETTING_STARTED.md](GETTING_STARTED.md)** - Complete getting started guide
 - **[COMPONENTS.md](COMPONENTS.md)** - Detailed component documentation
-- **[USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)** - Instructions for Claude, Cursor, Windsurf, VS Code
+- **[USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)** - Instructions for Claude, Cursor, Windsurf, VS Code, ChatGPT
 - **[.cursor/skills/sapui5-basic-form-demo/SKILL.md](.cursor/skills/sapui5-basic-form-demo/SKILL.md)** - Complete skill documentation
 
 ---
@@ -85,25 +110,6 @@ A design system is LLM-Ready if it meets these criteria:
 **This repository achieves all 5 criteria with 100% completion.**
 
 ---
-
-## 🎯 What This Does
-
-Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready systems (built for AI) by:
-- Creating machine-readable component registries (41 verified controls)
-- Enforcing registry-only constraints
-- Providing comprehensive documentation (COMPONENTS.md, USAGE_INSTRUCTIONS.md)
-- Providing prompt examples for Claude, Cursor, Windsurf, VS Code, ChatGPT
-- **Achieving 95/100 average validation scores** (quality metric: measures code quality, API compliance, structure)
-- **Achieving 100% build success rate** (build metric: code compiles and runs without errors)
-- **Zero hallucinations** (no unknown components or properties)
-
-##  Results
-
-- **Cursor AI**: 95/100 average score (variance 11)
-- **Claude AI**: 95/100 average score (variance 0)
-- **Functional Quality**: 85/85 perfect
-- **Build Success**: 50% → 100%
-- **Hallucinations**: Common → Zero
 
 ## 🎯 Available Components (41 Verified Controls)
 
@@ -177,24 +183,6 @@ Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready s
 
 For detailed component documentation, see [COMPONENTS.md](COMPONENTS.md) or [SKILL.md](.cursor/skills/sapui5-basic-form-demo/SKILL.md).
 
-## 🚀 Quick Start
-
-### Getting Started
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git
-cd SAP-LLM-ready-design-system
-```
-
-2. **Open in your AI assistant**
-- Claude Desktop, Cursor, Windsurf, VS Code, or ChatGPT
-- The design system rules load automatically
-
-3. **Start building**
-- Use the 41 verified controls from the registry
-- Follow the Quick Start Guide above
-- Check USAGE_INSTRUCTIONS.md for your specific AI tool
 
 ## 📖 How It Works
 
@@ -309,8 +297,9 @@ Apply SAP Horizon theme and proper design tokens.
 
 See USAGE_INSTRUCTIONS.md for detailed ChatGPT-specific instructions.
 
-## ✅ What To Do
+## ✅ Best Practices
 
+### What To Do
 - **DO** use short names (Page, Table, Button) for easier prompting
 - **DO** use only the 41 verified controls from the registry
 - **DO** follow SAP Fiori guidelines
@@ -319,9 +308,17 @@ See USAGE_INSTRUCTIONS.md for detailed ChatGPT-specific instructions.
 - **DO** check USAGE_INSTRUCTIONS.md for your specific AI tool
 - **DO** apply SAP Horizon theme (sap_horizon)
 - **DO** verify components are in the 41-control registry
+- **DO** use sapUiSizeCompact density for desktop applications
+- **DO** reference SKILL.md located at `.cursor/skills/sapui5-basic-form-demo/SKILL.md`
 
-## ❌ What NOT To Do
+### What To Check
+- **Component is in registry** - Verify in [COMPONENTS.md](COMPONENTS.md)
+- **Property is documented** - Check in SKILL.md or COMPONENTS.md
+- **Theme is sap_horizon** - Official SAP Fiori Horizon theme
+- **Density is correct** - sapUiSizeCompact (desktop) or sapUiSizeCozy (touch)
+- **Namespaces are correct** - `xmlns:unified="sap.ui.unified"` for FileUploader, `xmlns:tnt="sap.tnt"` for InfoLabel
 
+### What To Avoid
 - **DON'T** use controls not in the 41-component registry
 - **DON'T** hallucinate properties not documented in COMPONENTS.md or SKILL.md
 - **DON'T** guess API specifications
@@ -329,6 +326,7 @@ See USAGE_INSTRUCTIONS.md for detailed ChatGPT-specific instructions.
 - **DON'T** forget namespace prefixes (unified:FileUploader, tnt:InfoLabel)
 - **DON'T** use deprecated APIs
 - **DON'T** mix density modes incorrectly
+- **DON'T** skip the multi-step architecture (Planner → Validator → Builder)
 
 ## 📁 Repository Structure
 
