@@ -1,4 +1,6 @@
-![Header Image](illusion-llm.png)
+<div align="left">
+  <img src="illusion-llm.png" alt="Header Image" />
+</div>
 
 # SAP-LLM-ready-design-system
 
