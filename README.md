@@ -78,12 +78,15 @@ A design system is LLM-ready if it meets all five criteria:
 
 ## Available Components (41 Verified Controls)
 
-### Core Container Controls (2)
+<details>
+<summary>Core Container Controls (2)</summary>
 
 - `sap.m.App` — Application container
 - `sap.m.Page` — Page container
+</details>
 
-### Form Controls (21)
+<details>
+<summary>Form Controls (21)</summary>
 
 - `sap.m.Label` — Form label
 - `sap.m.Input` — Text input
@@ -106,16 +109,20 @@ A design system is LLM-ready if it meets all five criteria:
 - `sap.m.ToggleButton` — Toggle button
 - `sap.m.RadioButton` — Radio button
 - `sap.m.MaskInput` — Input with mask format
+</details>
 
-### Action Controls (5)
+<details>
+<summary>Action Controls (5)</summary>
 
 - `sap.m.Button` — Action button
 - `sap.m.Toolbar` — Toolbar container
 - `sap.m.ToolbarSpacer` — Toolbar spacer
 - `sap.m.OverflowToolbar` — Toolbar with overflow
 - `sap.m.SearchField` — Search input
+</details>
 
-### Display Controls (9)
+<details>
+<summary>Display Controls (9)</summary>
 
 - `sap.m.Text` — Text display
 - `sap.m.ObjectStatus` — Status indicator
@@ -126,8 +133,10 @@ A design system is LLM-ready if it meets all five criteria:
 - `sap.m.GenericTag` — Generic tag
 - `sap.m.MessagePopover` — Message popover
 - `sap.m.MessagePopoverItem` — Message popover item
+</details>
 
-### Layout Controls (12)
+<details>
+<summary>Layout Controls (12)</summary>
 
 - `sap.m.Panel` — Grouping container
 - `sap.m.Table` — Tabular data display
@@ -141,15 +150,20 @@ A design system is LLM-ready if it meets all five criteria:
 - `sap.m.IconTabBar` — Tab bar with icons
 - `sap.m.IconTabFilter` — Tab filter
 - `sap.m.Breadcrumbs` — Breadcrumb navigation
+</details>
 
-### Layout Controls — sap.ui.layout.form (1)
+<details>
+<summary>Layout Controls — sap.ui.layout.form (1)</summary>
 
 - `sap.ui.layout.form.SimpleForm` — Form layout
+</details>
 
-### Other Controls (2)
+<details>
+<summary>Other Controls (2)</summary>
 
 - `sap.ui.unified.FileUploader` — File upload
 - `sap.tnt.InfoLabel` — Info label
+</details>
 
 **Total: 41 verified controls with 100% API-accurate properties, aggregations, and events.**
 
