@@ -16,7 +16,7 @@ Without constraints, LLMs invent component names, reference removed APIs, and mi
 |--------|--------|-------|
 | Build success rate | 50% | **100%** |
 | Hallucinated components | Common | **Zero** |
-| Validation score (Cursor AI) | — | **95/100** (variance 11) |
+| Validation score (Cursor) | — | **95/100** (variance 11) |
 | Validation score (Claude AI) | — | **95/100** (variance 0) |
 | Functional quality | — | **85/85** perfect |
 
@@ -216,7 +216,7 @@ Generate a [component type] with:
 See USAGE_INSTRUCTIONS.md for detailed Claude-specific instructions.
 ```
 
-### Using with Cursor AI
+### Using with Cursor
 
 The `.cursor/rules/sapui5-llm-ready.md` file provides automatic context. Open the repository in Cursor and start prompting — Cursor will use the 41-component registry automatically.
 
@@ -265,7 +265,7 @@ See [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for full tool-specific instru
 
 ---
 
-## Installation by AI Tool
+## Installation
 
 ### Claude Desktop
 
@@ -278,7 +278,7 @@ Claude Desktop uses MCP server configuration. To use this repository with Claude
 
 **Note:** The `.cursor/rules/` and `.windsurf/rules/` directories are tool-specific (Cursor and Windsurf). Claude Desktop uses a different configuration mechanism via MCP servers.
 
-### Cursor AI
+### Cursor
 
 Open the repository in Cursor. Rules load automatically from `.cursor/rules/sapui5-llm-ready.md`. See [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for details.
 
@@ -403,10 +403,10 @@ The schemas are kept in sync with COMPONENTS.md through automated validation scr
 
 ```
 sapui5-llm-ready/
-├── .cursor/skills/              # Cursor AI skill definitions
+├── .cursor/skills/              # Cursor skill definitions
 │   └── sapui5-basic-form-demo/
 │       └── SKILL.md            # Verified component registry (41 controls)
-├── .cursor/rules/               # Cursor AI rules
+├── .cursor/rules/               # Cursor rules
 │   └── sapui5-llm-ready.md     # LLM-ready design system rules
 ├── .windsurf/rules/             # Windsurf rules
 │   └── sapui5-fiori.md         # SAP Fiori rules for Windsurf
@@ -434,12 +434,12 @@ sapui5-llm-ready/
 
 - ✅ All 5 LLM-ready criteria met with 100% completion
 - ✅ 100% build success rate (up from 50%)
-- ✅ Zero hallucinations across Claude AI and Cursor AI
+- ✅ Zero hallucinations across Claude AI and Cursor
 - ✅ 95/100 average validation score on both tools
 - ✅ 41 verified SAPUI5 controls with 100% API-accurate documentation
 - ✅ Validated across Claude, Cursor, Windsurf, VS Code, ChatGPT
 - ✅ Easy prompting with short names and full namespace support
-- ✅ Completed April 2026
+- ✅ Completed April 2026 (completed it in 3 days)
 
 ---
 
