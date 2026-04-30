@@ -460,7 +460,7 @@ sapui5-llm-ready/
 
 ## Documentation
 
-- **[Case Study](https://umber-femur-30406978.figma.site)** — Case study of the LLM-ready design system
+- **[Case Study](https://umber-femur-30406978.figma.site)** — Case study
 - **[GETTING_STARTED.md](GETTING_STARTED.md)** — Complete getting started guide
 - **[COMPONENTS.md](COMPONENTS.md)** — Detailed component documentation
 - **[USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md)** — Instructions for Claude, Cursor, Windsurf, VS Code, ChatGPT
