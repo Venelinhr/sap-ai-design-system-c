@@ -32,6 +32,7 @@ Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready s
 - Enforcing registry-only constraints so AI assistants never guess
 - Delivering ready-to-use prompt examples for Claude, Cursor, Windsurf, VS Code, and ChatGPT
 - Eliminating hallucinations through a 3-layer validation architecture (Planner → Validator → Builder)
+- Using only open data information from official SAP documents, API, and guidelines
 
 ---
 
