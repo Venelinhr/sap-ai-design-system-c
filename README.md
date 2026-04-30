@@ -35,11 +35,20 @@ Transforms traditional SAPUI5 design systems (built for humans) into LLM-ready s
 
 ---
 
-## How to Start (3 Steps)
+## How to Start (4 Steps)
 
-1. **Clone the repository** — `git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git` 
-2. **Open in your AI assistant** — Claude, Cursor, Windsurf, VS Code.
-3. **Start building** — The design system rules load automatically
+1. **Clone the repository** — `git clone https://github.com/Venelinhr/SAP-LLM-ready-design-system.git`
+2. **Install dependencies** — `npm install` (requires Node.js and npm)
+3. **Open in your AI assistant** — Claude, Cursor, Windsurf, VS Code.
+4. **Start building** — The design system rules load automatically
+
+**Prerequisites:**
+- Node.js (v14 or higher)
+- npm (comes with Node.js)
+
+**Verification:**
+- Run `npm test` to verify installation
+- Run `npm run validate` to check component registry
 
 See [GETTING_STARTED.md](GETTING_STARTED.md) for the full walkthrough, or jump to [Installation by AI Tool](#installation-by-ai-tool) for tool-specific setup.
 
@@ -260,7 +269,14 @@ See [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for full tool-specific instru
 
 ### Claude Desktop
 
-Open the repository in Claude Desktop. The design system rules load automatically from `.cursor/rules/` and `.windsurf/rules/`. See [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for details.
+Claude Desktop uses MCP server configuration. To use this repository with Claude Desktop:
+
+1. Clone the repository
+2. Create or edit `~/Library/Application Support/Claude/claude_desktop_config.json`
+3. Add the repository as an MCP server
+4. Reference [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md) for detailed steps
+
+**Note:** The `.cursor/rules/` and `.windsurf/rules/` directories are tool-specific (Cursor and Windsurf). Claude Desktop uses a different configuration mechanism via MCP servers.
 
 ### Cursor AI
 
@@ -371,6 +387,18 @@ Generated SAPUI5 components using the LLM-ready approach:
 
 ---
 
+## Machine-Readable Component Schemas
+
+The `schemas/` directory contains JSON schemas for all 41 components, enabling programmatic validation and LLM-constrained generation.
+
+**Schema format:** JSON Schema
+**Usage:** Schema validation ensures zero hallucinations by enforcing registry-only constraints
+**Programmatic access:** Load schemas using `require()` or import in Node.js applications
+
+The schemas are kept in sync with COMPONENTS.md through automated validation scripts. To validate against schemas, run `npm run validate`.
+
+---
+
 ## Repository Structure
 
 ```
@@ -411,7 +439,6 @@ sapui5-llm-ready/
 - ✅ 41 verified SAPUI5 controls with 100% API-accurate documentation
 - ✅ Validated across Claude, Cursor, Windsurf, VS Code, ChatGPT
 - ✅ Easy prompting with short names and full namespace support
-- ✅ Completed April 2026
 
 ---
 
