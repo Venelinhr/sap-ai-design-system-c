@@ -1,3 +1,5 @@
+![Header Image](illusion-llm.png)
+
 # SAP-LLM-ready-design-system
 
 **The SAPUI5 component registry that gives AI assistants a single source of truth**
