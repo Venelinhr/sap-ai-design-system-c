@@ -454,7 +454,6 @@ sapui5-llm-ready/
 - ✅ 41 verified SAPUI5 controls with 100% API-accurate documentation
 - ✅ Validated across Claude, Cursor, Windsurf, VS Code, ChatGPT
 - ✅ Easy prompting with short names and full namespace support
-- ✅ April 2026
 
 ---
 
@@ -485,4 +484,4 @@ For questions or issues, open an issue on GitHub or check the documentation in `
 
 ---
 
-Most teams try to write better prompts. This repository solves a different problem: making the design system itself the constraint.
+April 2026
