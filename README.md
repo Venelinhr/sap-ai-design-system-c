@@ -2,7 +2,7 @@
   <img src="illusion-llm.png" alt="Header Image" />
 </div>
 
-# From-LLM-to-Live-Demo-SAP-application
+# From LLM to Live Demo SAP application
 
 **The SAPUI5 component registry that gives AI assistants a single source of truth**
 
